@@ -1,0 +1,183 @@
+{
+  "_version": "1.42.0",
+  "sap.app": {
+    "id": "nu.sd.assignSales",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap-ux/fiori-freestyle-writer:basic",
+      "version": "0.12.8"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZNU_CONFIG_SALES_ORG_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/ZNU_CONFIG_SALES_ORG_SRV.xml"
+        }
+      },
+      "commonService": {
+        "uri": "/sap/opu/odata/sap/ZNU_CONFIG_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/ZNU_CONFIG_SRV.xml"
+        }
+      },
+      "appConfig": {
+        "uri": "localData/appConfig.json",
+        "type": "JSON"
+      }  
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nu.sd.assignSales.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "useBatch": false
+        }
+      },
+      "common": {
+        "dataSource": "commonService",
+        "preload": true,
+        "settings": {
+          "useBatch": false
+        }
+      },
+      "appConfig": {
+        "dataSource": "appConfig",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "OneWay"
+        }
+      }
+    },
+    "resources": {
+      "css": [{
+        "uri": "css/style.css"
+      }],
+      "js": [{
+        "uri": "libs/xlsx.full.min.js",
+        "uri2": "libs/filesaver.js"
+      }]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "nu.sd.assignSales.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [{
+        "name": "mainView",
+        "pattern": ":?query:",
+        "target": [
+          "TargetMainView"
+        ]
+      },
+      {
+        "name": "createView",
+        "pattern": "create",
+        "target": [
+          "CreateView"
+        ]
+      },
+      {
+        "name": "downloadView",
+        "pattern": "download",
+        "target": [
+          "DownloadView"
+        ]
+      },
+      {
+        "name": "massView",
+        "pattern": "mass",
+        "target": [
+          "MassView"
+        ]
+      }],
+      "targets": {
+        "TargetMainView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "mainView",
+          "viewName": "MainView"
+        },
+        "CreateView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "createView",
+          "viewName": "Create"
+        },
+        "DownloadView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "downloadView",
+          "viewName": "Download"
+        },
+        "MassView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "massView",
+          "viewName": "Mass"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "nu.sd.assignSales.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

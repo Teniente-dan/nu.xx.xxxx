@@ -1,0 +1,9 @@
+{
+    "specInputs":["in1", "in3", "in17"],
+    "mainField":"XXXX",
+    "valFields": ["in1", "in2", "in3", "in4", "in6", "in8", "in9", "in10", "in11", "in12"],
+    "fragFlow": "nu.sd.assignSales.view.fragments.flowCreation",
+    "fragValueHelp" : "nu.sd.assignSales.view.fragments.ValueHelpDialog",
+    "downloadFileName": "Assign Sales Data",
+    "templateName": "Assign Sales Template"
+}
