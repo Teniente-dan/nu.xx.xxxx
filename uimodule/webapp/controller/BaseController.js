@@ -75,6 +75,9 @@ sap.ui.define(
       },
       onPressToHome: function (oEvent) {
         this.getRouter().navTo("mainView");
+      },
+      replaceSpaces(val) {
+        return val.replace(/^\s+|\s+$/g, "_");
       }
     });
   }

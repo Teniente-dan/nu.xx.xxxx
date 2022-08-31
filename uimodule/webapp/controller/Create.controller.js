@@ -30,8 +30,8 @@ sap.ui.define([
         in14: true,
         in15: false,
       }), "datosGral");
-      this.datosGral = this.getModel("datosGral");      
-      this.appConfig =this.getOwnerComponent().appConfig;
+      this.datosGral = this.getModel("datosGral");
+      this.appConfig = this.getOwnerComponent().appConfig;
       this.specInputs = this.appConfig.specInputs;
     },
     onPageLoaded: function (oEvent) {
@@ -365,21 +365,6 @@ sap.ui.define([
         //     }
         //   });
       });
-      // return new Promise(function (resolve, reject) {
-      // //   that.getModel().read(url, {
-      // //     success: function (oData) {
-      // //       // oData.message = ""
-      // //       if (oData.message) {
-      // //         reject(MessageBox.error(oData.message));
-      // //       }
-      //       resolve(true);
-      // //     },
-      // //     error: function (oError) {
-      // //       MessageBox.error(oError.message);
-      // //       reject(oError);
-      // //     }
-      // //   });
-      // });
     },
     valAllFields: function () {
       var datosGral = this.datosGral.getData();
@@ -394,6 +379,19 @@ sap.ui.define([
       var res = datosGral.in1 && datosGral.in2 && datosGral.in3 && datosGral.in4 && datosGral.in6 && datosGral.in8 && datosGral.in9 && datosGral.in10 && datosGral.in11 && datosGral.in12;
       if (!res) {
         MessageBox.error("Please fill all fields with valid inputs");
+      }
+      res = this.valTrOptions(res);
+      return res;
+    },
+    valTrOptions: function (res) {
+      var datosGral = this.datosGral.getData();
+      if (datosGral.in14 && !datosGral.in16) {
+        MessageBox.error("Please enter a TR Description");
+        return false;
+      }
+      if (datosGral.in15 && !datosGral.in17) {
+        MessageBox.error("Please select a TR from the list");
+        return false;
       }
       return res;
     },
@@ -430,7 +428,7 @@ sap.ui.define([
       var oPayload = {
         action: "CREATE",
         toMain: [{
-          vkorg: datosGral.in1,
+          vkorg: datosGral.in1, //replaceSpaces(datosGral.in1),
           vtext: datosGral.in2,
           waers: datosGral.in3,
           name1: datosGral.in4,
