@@ -1,7 +1,5 @@
-# assignSales
+# clone Template
 
-Insert the purpose of this project and some interesting infos here
-
-## Credits
-
-This project has been generated with 💙 and [easy-ui5](https://github.com/SAP)
+1. Search and replace nu.xx.xxxx and nu/xx/xxxx with correct namespace and name
+2. replace specific service URL in manifest under mainService
+3. replace specific service XML in localService/
