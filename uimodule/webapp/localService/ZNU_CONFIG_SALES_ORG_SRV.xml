@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZNU_CONFIG_SALES_ORG_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="salesOrg" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vkorg"/>
+                </Key>
+                <Property Name="Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vtext" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="statsCurr" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Waers"/>
+                </Key>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Ltext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Long Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="salesOwn" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="strkorr"/>
+                </Key>
+                <Property Name="strkorr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="as4text" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="messType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="salesAction" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="action"/>
+                </Key>
+                <Property Name="action" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toMain" Relationship="ZNU_CONFIG_SALES_ORG_SRV.SalesToMain" FromRole="FromRole_SalesToMain" ToRole="ToRole_SalesToMain"/>
+                <NavigationProperty Name="toReturn" Relationship="ZNU_CONFIG_SALES_ORG_SRV.SalesToReturn" FromRole="FromRole_SalesToReturn" ToRole="ToRole_SalesToReturn"/>
+                <NavigationProperty Name="toRange" Relationship="ZNU_CONFIG_SALES_ORG_SRV.SalesToRange" FromRole="FromRole_SalesToRange" ToRole="ToRole_SalesToRange"/>
+                <NavigationProperty Name="toError" Relationship="ZNU_CONFIG_SALES_ORG_SRV.SalesToError" FromRole="FromRole_SalesToError" ToRole="ToRole_SalesToError"/>
+                <NavigationProperty Name="toOutput" Relationship="ZNU_CONFIG_SALES_ORG_SRV.SalesToOutput" FromRole="FromRole_SalesToOutput" ToRole="ToRole_SalesToOutput"/>
+                <NavigationProperty Name="toXLSX" Relationship="ZNU_CONFIG_SALES_ORG_SRV.SalesToXLSX" FromRole="FromRole_SalesToXLSX" ToRole="ToRole_SalesToXLSX"/>
+            </EntityType>
+            <EntityType Name="salesMain" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="vkorg"/>
+                </Key>
+                <Property Name="vkorg" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="vtext" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="waers" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="name1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="sort1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="street" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="houseNum1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="postCode1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="city1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="country" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="region" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="langu" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="as4text" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="strkorr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="rad3" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="rad4" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="salesRange" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sign"/>
+                </Key>
+                <Property Name="Sign" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Option" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Low" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="High" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="salesXLSX" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="soNumber"/>
+                </Key>
+                <Property Name="soNumber" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="soName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="currency" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="name" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="searchTerm" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="street" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="houseNum" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="postCode" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="city" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="country" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="region" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="lang" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="salesReturn" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="message"/>
+                </Key>
+                <Property Name="message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="messType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="salesOutput" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sorg"/>
+                </Key>
+                <Property Name="Sorg" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="SORG" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Msg" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="MSG" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="salesError" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Msg"/>
+                </Key>
+                <Property Name="Status" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="STATUS" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Msg" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="MSG" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="SalesToReturn" sap:content-version="1">
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesAction" Multiplicity="*" Role="FromRole_SalesToReturn"/>
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesReturn" Multiplicity="*" Role="ToRole_SalesToReturn"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesToReturn">
+                        <PropertyRef Name="action"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesToReturn">
+                        <PropertyRef Name="message"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SalesToOutput" sap:content-version="1">
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesAction" Multiplicity="*" Role="FromRole_SalesToOutput"/>
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesOutput" Multiplicity="*" Role="ToRole_SalesToOutput"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesToOutput">
+                        <PropertyRef Name="action"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesToOutput">
+                        <PropertyRef Name="Sorg"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SalesToError" sap:content-version="1">
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesAction" Multiplicity="*" Role="FromRole_SalesToError"/>
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesError" Multiplicity="*" Role="ToRole_SalesToError"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesToError">
+                        <PropertyRef Name="action"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesToError">
+                        <PropertyRef Name="Msg"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SalesToXLSX" sap:content-version="1">
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesAction" Multiplicity="*" Role="FromRole_SalesToXLSX"/>
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesXLSX" Multiplicity="*" Role="ToRole_SalesToXLSX"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesToXLSX">
+                        <PropertyRef Name="action"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesToXLSX">
+                        <PropertyRef Name="soNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SalesToRange" sap:content-version="1">
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesAction" Multiplicity="*" Role="FromRole_SalesToRange"/>
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesRange" Multiplicity="*" Role="ToRole_SalesToRange"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesToRange">
+                        <PropertyRef Name="action"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesToRange">
+                        <PropertyRef Name="Sign"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SalesToMain" sap:content-version="1">
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesAction" Multiplicity="*" Role="FromRole_SalesToMain"/>
+                <End Type="ZNU_CONFIG_SALES_ORG_SRV.salesMain" Multiplicity="*" Role="ToRole_SalesToMain"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesToMain">
+                        <PropertyRef Name="action"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesToMain">
+                        <PropertyRef Name="vkorg"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZNU_CONFIG_SALES_ORG_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="salesOrgSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesOrg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="statsCurrSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.statsCurr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="salesOwnSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesOwn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="salesActionSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesAction" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="salesMainSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesMain" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="salesRangeSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesRange" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="salesXLSXSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesXLSX" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="salesReturnSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="salesOutputSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesOutput" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="salesErrorSet" EntityType="ZNU_CONFIG_SALES_ORG_SRV.salesError" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="SalesToRangeSet" Association="ZNU_CONFIG_SALES_ORG_SRV.SalesToRange" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="salesActionSet" Role="FromRole_SalesToRange"/>
+                    <End EntitySet="salesRangeSet" Role="ToRole_SalesToRange"/>
+                </AssociationSet>
+                <AssociationSet Name="SalesToXLSXSet" Association="ZNU_CONFIG_SALES_ORG_SRV.SalesToXLSX" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="salesActionSet" Role="FromRole_SalesToXLSX"/>
+                    <End EntitySet="salesXLSXSet" Role="ToRole_SalesToXLSX"/>
+                </AssociationSet>
+                <AssociationSet Name="SalesToMainSet" Association="ZNU_CONFIG_SALES_ORG_SRV.SalesToMain" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="salesActionSet" Role="FromRole_SalesToMain"/>
+                    <End EntitySet="salesMainSet" Role="ToRole_SalesToMain"/>
+                </AssociationSet>
+                <AssociationSet Name="SalesToOutputSet" Association="ZNU_CONFIG_SALES_ORG_SRV.SalesToOutput" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="salesActionSet" Role="FromRole_SalesToOutput"/>
+                    <End EntitySet="salesOutputSet" Role="ToRole_SalesToOutput"/>
+                </AssociationSet>
+                <AssociationSet Name="SalesToErrorSet" Association="ZNU_CONFIG_SALES_ORG_SRV.SalesToError" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="salesActionSet" Role="FromRole_SalesToError"/>
+                    <End EntitySet="salesErrorSet" Role="ToRole_SalesToError"/>
+                </AssociationSet>
+                <AssociationSet Name="SalesToReturnSet" Association="ZNU_CONFIG_SALES_ORG_SRV.SalesToReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="salesActionSet" Role="FromRole_SalesToReturn"/>
+                    <End EntitySet="salesReturnSet" Role="ToRole_SalesToReturn"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sptcvmdhana11.sapdemo.lab:8001/sap/opu/odata/sap/ZNU_CONFIG_SALES_ORG_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sptcvmdhana11.sapdemo.lab:8001/sap/opu/odata/sap/ZNU_CONFIG_SALES_ORG_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,4 +1,4 @@
-<mvc:View controllerName="nu.xx.xxxx.controller.Mass"
+<mvc:View controllerName="nu.sd.dso.controller.Mass"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:unified="sap.ui.unified"

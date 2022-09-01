@@ -1,7 +1,7 @@
 sap.ui.require(["sap/ui/test/Opa5", "sap/ui/test/actions/Press"], function (Opa5, Press) {
     "use strict";
 
-    const sViewName = "nu.xx.xxxx.view.MainView";
+    const sViewName = "nu.sd.dso.view.MainView";
 
     Opa5.createPageObjects({
         onTheMainPage: {
@@ -24,12 +24,12 @@ sap.ui.require(["sap/ui/test/Opa5", "sap/ui/test/actions/Press"], function (Opa5
                     return this.waitFor({
                         controlType: "sap.m.Title",
                         properties: {
-                            text: "Title of nu.xx.xxxx",
+                            text: "Title of nu.sd.dso",
                         },
                         success: function () {
                             Opa5.assert.ok(true, "The page shows the correct title");
                         },
-                        errorMessage: "App does not show the expected title nu.xx.xxxx",
+                        errorMessage: "App does not show the expected title nu.sd.dso",
                     });
                 },
             },

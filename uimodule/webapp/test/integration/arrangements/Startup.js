@@ -6,11 +6,11 @@ sap.ui.define(
     function (Opa5) {
         "use strict";
 
-        return Opa5.extend("nu.xx.xxxx.test.integration.arrangements.Startup", {
+        return Opa5.extend("nu.sd.dso.test.integration.arrangements.Startup", {
             iStartMyApp: function () {
                 this.iStartMyUIComponent({
                     componentConfig: {
-                        name: "nu.xx.xxxx",
+                        name: "nu.sd.dso",
                         async: true,
                         manifest: true,
                     },
