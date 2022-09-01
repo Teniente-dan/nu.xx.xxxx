@@ -2,8 +2,8 @@
     "specInputs":["in2"],
     "mainField":"Vkorg",
     "valFields": ["in1", "in2"],
-    "fragFlow": "nu.sd.dso.view.fragments.flowCreation",
-    "fragValueHelp" : "nu.sd.dso.view.fragments.ValueHelpDialog",
+    "fragFlow": "nu.xx.xxxx.view.fragments.flowCreation",
+    "fragValueHelp" : "nu.xx.xxxx.view.fragments.ValueHelpDialog",
     "downloadFileName": "Assign Sales Data",
     "templateName": "Assign Sales Template"
 }

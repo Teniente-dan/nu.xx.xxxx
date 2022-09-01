@@ -4,13 +4,13 @@
 sap.ui.define(
   [
     "sap/ui/base/ManagedObject",
-    "nu/sd/dso/libs/filesaver",
-    "nu/sd/dso/libs/xlsx.full.min"
+    "nu/xx/xxxx/libs/filesaver",
+    "nu/xx/xxxx/libs/xlsx.full.min"
   ],
   function (ManagedObject, XlsxFullmin) {
     "use strict";
 
-    return ManagedObject.extend("nu.sd.dso.utils.XlsxUtils", {
+    return ManagedObject.extend("nu.xx.xxxx.utils.XlsxUtils", {
       constructor: function (oComponent) {
         this._oComponent = oComponent;
       },
