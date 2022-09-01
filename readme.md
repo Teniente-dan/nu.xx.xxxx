@@ -1,7 +1,7 @@
 # clone Template
 
 0. clone project
-00. rename root folder with correct namespace and name
+00. rename root folder with correct namespace and **name**
 000. ***remove remote***
 1. ***remove remote***
 2. ***remove remote***
