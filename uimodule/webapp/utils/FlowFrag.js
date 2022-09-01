@@ -5,14 +5,15 @@ sap.ui.define(
     "use strict";
 
     return ManagedObject.extend("nu.sd.assignSales.utils.FlowFrag", {
-      constructor: function (component) {
-        this.appConfig = component.appConfig;
+      constructor: function () {
+        this.appConfig;
       },
       exit: function () {
         delete this._oView;
       },
       open: function (data, title, oView) {
         this._oView = oView;
+        this.appConfig = oView.getController().appConfig;
         // oView.setModel(new JSONModel(config), "fragRes");
         oView.setModel(new JSONModel(data), "fragResData");
         console.log("Frag Loading...");
@@ -28,7 +29,7 @@ sap.ui.define(
 
           Fragment.load({
             id: oView.getId(),
-            name: this.appConfig.fragRoot,
+            name: this.appConfig.fragFlow,
             controller: oFragmentController,
           }).then(
             function (oDialog) {

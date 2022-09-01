@@ -7,8 +7,9 @@ sap.ui.define(
   ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
-   */
-  function (Controller) {
+   * @param {typeof sap.m.MessageBox} MessageBox 
+ */
+  function (Controller, MessageBox) {
     "use strict";
 
     return Controller.extend("nu.sd.assignSales.controller.MainView", {
@@ -23,7 +24,7 @@ sap.ui.define(
         this.initView();
       },
       initView: function () {
-        this.appConfig = this.getOwnerComponent().appConfig;
+        this.appConfig = this.getOwnerComponent().appConfig.getData();
       },
       onPressSingle: function (oEvent) {
         this.oRouter.navTo("createView");
@@ -51,7 +52,7 @@ sap.ui.define(
         var url = "/actionSet";
         var that = this;
         var oPayload = {
-          action: "TEMPLATE",
+          actionKey: "TEMPLATE",
           toXLSX: []
         };
         return new Promise(function (resolve, reject) {

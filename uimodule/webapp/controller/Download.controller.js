@@ -29,7 +29,7 @@ sap.ui.define([
         in15: false,
       }), "datosGral");
       this.datosGral = this.getModel("datosGral");
-      this.appConfig = this.getOwnerComponent().appConfig;
+      this.appConfig = this.getOwnerComponent().appConfig.getData();
     },
     onPageLoaded: function (oEvent) {
       this.initView();
@@ -63,13 +63,13 @@ sap.ui.define([
       switch (param) {
         case "in1":
         case "in2":
-          this.plantValueHelp();
+          this.f1ValueHelp();
           break;
         default:
           break;
       }
     },
-    plantValueHelp: function () {
+    f1ValueHelp: function () {
       var tableSelectId = this.byId('TableSelectId');
       tableSelectId.unbindAggregation("items");
       var tableSelectTemplate = new sap.m.ColumnListItem({
@@ -127,7 +127,7 @@ sap.ui.define([
         range.shift();
       }
       var oPayload = {
-        action: "DOWNLOAD",
+        actionKey: "DOWNLOAD",
         toRange: [{
           Sign: "I",
           Option: range[1] ? "BT" : "EQ",
@@ -164,7 +164,7 @@ sap.ui.define([
     },
     closeView: function () {
       this.initView();
-      this.oRouter.navTo("midOptionView");
+      this.oRouter.navTo("mainView");
     },
 
     onDownload: function (oEvent) {

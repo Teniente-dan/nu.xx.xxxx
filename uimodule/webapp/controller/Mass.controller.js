@@ -29,7 +29,7 @@ sap.ui.define([
         in15: false,
       }), "datosGral");
       this.datosGral = this.getModel("datosGral");
-      this.appConfig = this.getOwnerComponent().appConfig;
+      this.appConfig = this.getOwnerComponent().appConfig.getData();
     },
     onPageLoaded: function (oEvent) {
       this.initView();
@@ -38,7 +38,7 @@ sap.ui.define([
       var url = "/actionSet";
       var that = this;
       var oPayload = {
-        action: "TEMPLATE",
+        actionKey: "TEMPLATE",
         toXLSX: []
       };
       this.getModel().setUseBatch(false);
@@ -162,16 +162,12 @@ sap.ui.define([
       var url = "/actionSet";
       var that = this;
       var oPayload = {
-        action: "UPLOAD",
+        actionKey: "UPLOAD",
         toMain: arrToMain.map((item) => {
-          item.rad3 = datosGral.in14 ? "X" : "";
+          item.r1 = datosGral.in14 ? "X" : "";
           item.as4text = (datosGral.in14 ? (datosGral.in16 || "") : "").substring(0, 30);
-          item.rad4 = datosGral.in15 ? "X" : "";
+          item.r2 = datosGral.in15 ? "X" : "";
           item.strkorr = datosGral.in15 ? (datosGral.in17 || "") : "";
-          delete item.r1;
-          delete item.r2;
-          delete item.own;
-          delete item.des;
           return item;
         }),
         toReturn: [],
@@ -261,17 +257,18 @@ sap.ui.define([
       jsonObj.forEach((row) => {
         toMain.push({
           vkorg: row[this.oHeaders[0]] || "",
-          vtext: row[this.oHeaders[1]] || "",
-          waers: row[this.oHeaders[2]] || "",
-          name1: row[this.oHeaders[3]] || "",
-          sort1: row[this.oHeaders[4]] || "",
-          street: row[this.oHeaders[5]] || "",
-          houseNum1: row[this.oHeaders[6]] || "",
-          postCode1: row[this.oHeaders[7]] || "",//(row[this.oHeaders[7]] || "").substring(0, 40),
-          city1: row[this.oHeaders[8]] || "",
-          country: row[this.oHeaders[9]] || "",
-          region: row[this.oHeaders[10]] || "",
-          langu: row[this.oHeaders[11]] || ""
+          bukrs: row[this.oHeaders[1]] || "",
+          // vtext: row[this.oHeaders[1]] || "",
+          // waers: row[this.oHeaders[2]] || "",
+          // name1: row[this.oHeaders[3]] || "",
+          // sort1: row[this.oHeaders[4]] || "",
+          // street: row[this.oHeaders[5]] || "",
+          // houseNum1: row[this.oHeaders[6]] || "",
+          // postCode1: row[this.oHeaders[7]] || "",//(row[this.oHeaders[7]] || "").substring(0, 40),
+          // city1: row[this.oHeaders[8]] || "",
+          // country: row[this.oHeaders[9]] || "",
+          // region: row[this.oHeaders[10]] || "",
+          // langu: row[this.oHeaders[11]] || ""
         });
       });
       return toMain;

@@ -22,32 +22,17 @@
 								<form:formContainers>
 									<form:FormContainer >
 										<form:formElements>
-											<form:FormElement label="Sales Org Number">
+											<form:FormElement label="Sales Org.">
 												<form:fields>
 													<Input id="in1" width="100%" value="{datosGral>/in1}" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in1')" submit="onSOChange"/>
 												</form:fields>
 											</form:FormElement>
-											<form:FormElement label="Sales Org Name">
+											<form:FormElement label="Company Code">
 												<form:fields>
-													<Input id="in2" width="100%" maxLength="20" value="{datosGral>/in2}" required="true"/>
+													<Input id="in2" width="100%" value="{datosGral>/in2}" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in2')"/>
 												</form:fields>
 											</form:FormElement>
-											<form:FormElement label="Statistics Currency">
-												<form:fields>
-													<Input id="in3" width="100%" value="{datosGral>/in3}" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in3')"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Name">
-												<form:fields>
-													<Input id="in4" width="100%" maxLength="30" value="{datosGral>/in4}" required="true"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Search Term">
-												<form:fields>
-													<Input id="in5" width="100%" maxLength="10" value="{datosGral>/in5}"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Street/House number">
+											<!-- <form:FormElement label="Street/House number">
 												<form:fields>
 													<Input id="in6" width="100%" value="{datosGral>/in6}" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in6')"/>
 													<Input id="in7" width="100%" maxLength="10" value="{datosGral>/in7}">
@@ -56,32 +41,7 @@
 														</layoutData>
 													</Input>
 												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Postal Code">
-												<form:fields>
-													<Input id="in8" width="100%" maxLength="10" value="{datosGral>/in8}" liveChange="intputToUpperCase" required="true"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="City">
-												<form:fields>
-													<Input id="in9" width="100%" maxLength="30" value="{datosGral>/in9}" required="true"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Country">
-												<form:fields>
-													<Input id="in10" width="100%" value="{datosGral>/in10}" liveChange="intputToUpperCase" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in10')"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Region">
-												<form:fields>
-													<Input id="in11" width="100%" value="{datosGral>/in11}" liveChange="intputToUpperCase" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in11')"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Language">
-												<form:fields>
-													<Input id="in12" width="100%" maxLength="2" value="{datosGral>/in12}" liveChange="intputToUpperCase" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in12')"/>
-												</form:fields>
-											</form:FormElement>
+											</form:FormElement> -->
 											<form:FormElement label="">
 												<form:fields>
 													<RadioButtonGroup >

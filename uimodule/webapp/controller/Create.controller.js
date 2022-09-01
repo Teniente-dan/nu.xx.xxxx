@@ -31,7 +31,7 @@ sap.ui.define([
         in15: false,
       }), "datosGral");
       this.datosGral = this.getModel("datosGral");
-      this.appConfig = this.getOwnerComponent().appConfig;
+      this.appConfig = this.getOwnerComponent().appConfig.getData();
       this.specInputs = this.appConfig.specInputs;
     },
     onPageLoaded: function (oEvent) {
@@ -66,21 +66,10 @@ sap.ui.define([
         case "in1":
           this.salesOrgValueHelp();
           break;
-        case "in3":
-          this.statisticsValueHelp();
+        case "in2":
+          this.bukrsValueHelp();
           break;
-        case "in6":
-          this.streetValueHelp();
-          break;
-        case "in10":
-          this.countryValueHelp();
-          break;
-        case "in11":
-          this.regionValueHelp();
-          break;
-        case "in12":
-          this.languageValueHelp();
-          break;
+        // ownRequest
         case "in17":
           this.ownValueHelp();
           break;
@@ -88,145 +77,39 @@ sap.ui.define([
           break;
       }
     },
-    countryValueHelp: function () {
+    bukrsValueHelp: function () {
       var tableSelectId = this.byId('TableSelectId');
       tableSelectId.unbindAggregation("items");
       var tableSelectTemplate = new sap.m.ColumnListItem({
         cells: [
           new sap.m.Text({
-            text: "{common>Land1}"
+            text: "{common>Bukrs}"
           }),
           new sap.m.Text({
-            text: "{common>Landx}"
+            text: "{common>Butxt}"
           }),
           new sap.m.Text({
-            text: "{common>Natio}"
+            text: "{common>Ort01}"
+          }),
+          new sap.m.Text({
+            text: "{common>Waers}"
           })
+
         ]
       });
-      this.byId('valueHelpField1').setText('Country/Region');
+      this.byId('valueHelpField1').setText('Comp. Code');
       this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Name');
+      this.byId('valueHelpField2').setText('Company Name');
       this.byId("col3").setVisible(true);
-      this.byId('valueHelpField3').setText('Nationality');
-      this.byId("col4").setVisible(false);
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "common>/countrySet", tableSelectTemplate);
-    },
-    streetValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{common>CityName}"
-          }),
-          new sap.m.Text({
-            text: "{common>McStreet}"
-          }),
-          new sap.m.Text({
-            text: "{common>McCity}"
-          }),
-          new sap.m.Text({
-            text: "{common>CityExt}"
-          }),
-          new sap.m.Text({
-            text: "{common>Region}"
-          }),
-          new sap.m.Text({
-            text: "{common>Country}"
-          }),
-          new sap.m.Text({
-            text: "{common>Langu}"
-          }),
-          new sap.m.Text({
-            text: "{common>StrtCode}"
-          }),
-          new sap.m.Text({
-            text: "{common>CityCode}"
-          })
-        ]
-      });
-      this.byId('valueHelpField1').setText('City');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Street');
-      this.byId("col3").setVisible(true);
-      this.byId('valueHelpField3').setText('City 1');
+      this.byId('valueHelpField3').setText('City');
       this.byId("col4").setVisible(true);
-      this.byId('valueHelpField4').setText('City Extension');
-      this.byId("col5").setVisible(true);
-      this.byId('valueHelpField5').setText('Region');
-      this.byId("col6").setVisible(true);
-      this.byId('valueHelpField6').setText('Country/Region');
-      this.byId("col7").setVisible(true);
-      this.byId('valueHelpField7').setText('Language');
-      this.byId("col8").setVisible(true);
-      this.byId('valueHelpField8').setText('Street No');
-      this.byId("col9").setVisible(true);
-      this.byId('valueHelpField9').setText('City No');
-      tableSelectId.bindAggregation("items", "common>/streetSet", tableSelectTemplate);
-    },
-
-    regionValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{common>Land1}"
-          }),
-          new sap.m.Text({
-            text: "{common>Bland}"
-          }),
-          new sap.m.Text({
-            text: "{common>Bezei}"
-          })
-
-        ]
-      });
-      this.byId('valueHelpField1').setText('C/R');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Rg');
-      this.byId("col3").setVisible(true);
-      this.byId('valueHelpField3').setText('Description');
-      this.byId("col4").setVisible(false);
+      this.byId('valueHelpField4').setText('Currency');
       this.byId("col5").setVisible(false);
       this.byId("col6").setVisible(false);
       this.byId("col7").setVisible(false);
       this.byId("col8").setVisible(false);
       this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "common>/regionSet", tableSelectTemplate);
-    },
-
-    languageValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{common>Spras}"
-          }),
-          new sap.m.Text({
-            text: "{common>Sptxt}"
-          })
-
-        ]
-      });
-      this.byId('valueHelpField1').setText('Language');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Name of Language');
-      this.byId("col3").setVisible(false);
-      this.byId("col4").setVisible(false);
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "common>/languageSet", tableSelectTemplate);
+      tableSelectId.bindAggregation("items", "common>/bukrsSet", tableSelectTemplate);
     },
     ownValueHelp: function () {
       var tableSelectId = this.byId('TableSelectId');
@@ -253,34 +136,6 @@ sap.ui.define([
       this.byId("col9").setVisible(false);
       tableSelectId.bindAggregation("items", "/salesOwnSet", tableSelectTemplate);
     },
-
-    statisticsValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{Waers}"
-          }),
-          new sap.m.Text({
-            text: "{Ltext}"
-          })
-        ]
-      });
-      this.byId('valueHelpField1').setText('Crcy');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Long Text');
-      this.byId("col3").setVisible(false);
-      this.byId("col4").setVisible(false);
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-
-      tableSelectId.bindAggregation("items", "/statsCurrSet", tableSelectTemplate);
-    },
-
     salesOrgValueHelp: function () {
       var tableSelectId = this.byId('TableSelectId');
       tableSelectId.unbindAggregation("items");
@@ -327,11 +182,8 @@ sap.ui.define([
     getValueHelpToField: function (param) {
       var fieldMap = {
         "in1": "Vkorg",
-        "in3": "Waers",
-        "in6": "McStreet",
-        "in10": "Land1",
-        "in11": "Bland",
-        "in12": "Spras",
+        "in2": "Bukrs",
+        // own request
         "in17": "strkorr"
       };
       return fieldMap[param];
@@ -347,24 +199,24 @@ sap.ui.define([
       // var url = "/plantValPlantSet";
       var that = this;
       this.getModel().setUseBatch(false);
-      // return Promise.resolve(true);
-      return new Promise(function (resolve, reject) {
-        //   that.getModel().read(url, {
-        //     success: function (oData) {
-        //       // oData.message = ""
-        //       if (oData.message) {
-        //         reject(MessageBox.error(oData.message));
-        //       }
-        setTimeout(function () {
-          resolve(true);
-        }, 1000);
-        //     },
-        //     error: function (oError) {
-        //       MessageBox.error(oError.message);
-        //       reject(oError);
-        //     }
-        //   });
-      });
+      return Promise.resolve(true);
+      // return new Promise(function (resolve, reject) {
+      //   //   that.getModel().read(url, {
+      //   //     success: function (oData) {
+      //   //       // oData.message = ""
+      //   //       if (oData.message) {
+      //   //         reject(MessageBox.error(oData.message));
+      //   //       }
+      //   setTimeout(function () {
+      //     resolve(true);
+      //   }, 1000);
+      //   //     },
+      //   //     error: function (oError) {
+      //   //       MessageBox.error(oError.message);
+      //   //       reject(oError);
+      //   //     }
+      //   //   });
+      // });
     },
     valAllFields: function () {
       var datosGral = this.datosGral.getData();
@@ -376,7 +228,9 @@ sap.ui.define([
           this.byId(field).setValueState(sap.ui.core.ValueState.None);
         }
       });
-      var res = datosGral.in1 && datosGral.in2 && datosGral.in3 && datosGral.in4 && datosGral.in6 && datosGral.in8 && datosGral.in9 && datosGral.in10 && datosGral.in11 && datosGral.in12;
+      var res = valFields.every((field) => {
+        return datosGral[field];
+      });
       if (!res) {
         MessageBox.error("Please fill all fields with valid inputs");
       }
@@ -426,24 +280,14 @@ sap.ui.define([
       var url = "/actionSet";
       var that = this;
       var oPayload = {
-        action: "CREATE",
+        actionKey: "CREATE",
         toMain: [{
-          vkorg: datosGral.in1, //replaceSpaces(datosGral.in1),
-          vtext: datosGral.in2,
-          waers: datosGral.in3,
-          name1: datosGral.in4,
-          sort1: datosGral.in5,
-          street: datosGral.in6,
-          houseNum1: datosGral.in7,
-          postCode1: datosGral.in8,
-          city1: datosGral.in9,
-          country: datosGral.in10,
-          region: datosGral.in11,
-          langu: datosGral.in12,
+          vkorg: this.replaceSpaces(datosGral.in1),
+          bukrs: datosGral.in2,
           as4text: datosGral.in14 ? (datosGral.in16 || "") : "",
           strkorr: datosGral.in15 ? (datosGral.in17 || "") : "",
-          rad3: datosGral.in14 ? "X" : "",
-          rad4: datosGral.in15 ? "X" : "",
+          r1: datosGral.in14 ? "X" : "",
+          r2: datosGral.in15 ? "X" : "",
         }],
         toReturn: []
       };
@@ -467,10 +311,11 @@ sap.ui.define([
       if (arrResults.length > 0) {
         var okFlow = arrResults[0].message.split("&&");
         if (okFlow.length > 1) {
-          MessageBox.success(okFlow[1]);
-          setTimeout(() => {
-            this.closeView();
-          }, 2000);
+          MessageBox.success(okFlow[1], {
+            onClose: function () {
+              this.closeView();
+            }
+          });
         } else {
           var oResults = arrResults.map((result) => {
             return result.message;
@@ -492,31 +337,14 @@ sap.ui.define([
         case "in1":
           filterProperty1 = [new Filter("Vkorg", FilterOperator.Contains, sValue)];
           break;
-        case "in3":
-          filterProperty1 = new Filter({
-            filters: [new Filter("Waers", FilterOperator.Contains, sValue)],
-            and: false
-          });
-          break;
-        case "in6":
+        case "in2":
           filterProperty1 = [
-            new Filter("Region", FilterOperator.Contains, sValue),
-            new Filter("Country", FilterOperator.Contains, sValue),
-            new Filter("McStreet", FilterOperator.Contains, sValue)
+            new Filter("Bukrs", FilterOperator.Contains, sValue),
+            new Filter("Butxt", FilterOperator.Contains, sValue),
+            new Filter("Waers", FilterOperator.Contains, sValue)
           ];
           break;
-        case "in10":
-          filterProperty1 = [new Filter("Land1", FilterOperator.Contains, sValue)];
-          break;
-        case "in11":
-          filterProperty1 = [
-            new Filter("Land1", FilterOperator.Contains, sValue),
-            new Filter("Bland", FilterOperator.Contains, sValue)
-          ];
-          break;
-        case "in12":
-          filterProperty1 = [new Filter("Spras", FilterOperator.Contains, sValue)];
-          break;
+        // own request
         case "in17":
           filterProperty1 = [new Filter("strkorr", FilterOperator.Contains, sValue)];
           break;

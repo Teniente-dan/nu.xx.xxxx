@@ -33,7 +33,7 @@ sap.ui.define(
         //Fragmento de resultados de creacion de flujo 
         this.oFlowFrag = new FlowFrag(this);
 
-        this.appConfig = this.getModel("appConfig").getData();
+        this.appConfig = this.getModel("appConfig");
       },
     });
   }
