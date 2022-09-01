@@ -13,7 +13,7 @@
 		<content>
 			<HBox visible="{viewModel>/grupo1/vis}">
 				<VBox width="97%">
-					<Panel headerText="{i18n>MassView.MassUploadSalesOrgData}" width="auto" class="sapUiResponsiveMargin">
+					<Panel headerText="{i18n>MassView.MassUpload}" width="auto" class="sapUiResponsiveMargin">
 						<content>
 							<form:Form editable="true" id="__formDatGen">
 								<form:layout>

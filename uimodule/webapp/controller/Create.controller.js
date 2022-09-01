@@ -255,12 +255,12 @@ sap.ui.define([
       }
       this.oGlobalBusyDialog.open();
       setTimeout(() => {
-        this.createSalesOrg().finally(() => {
+        this.createFlow().finally(() => {
           this.oGlobalBusyDialog.close();
         });
       }, 1);
     },
-    createSalesOrg: function () {
+    createFlow: function () {
       var datosGral = this.datosGral.getData();
       return new Promise(function (resolve, reject) {
         this.valMainFieldOrg(datosGral.in1).then(function (result) {

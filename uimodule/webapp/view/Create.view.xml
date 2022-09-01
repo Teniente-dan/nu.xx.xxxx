@@ -13,7 +13,7 @@
 		<content>
 			<HBox visible="{viewModel>/grupo1/vis}">
 				<VBox width="97%">
-					<Panel headerText="{i18n>CreateView.SalesOrgCreation}" width="auto" class="sapUiResponsiveMargin">
+					<Panel headerText="{i18n>CreateView.Creation}" width="auto" class="sapUiResponsiveMargin">
 						<content>
 							<form:Form editable="true" id="__formDatGen">
 								<form:layout>

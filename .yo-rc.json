@@ -1,6 +1,6 @@
 {
   "generator-template-ui5-project": {
-    "projectname": "assignSales",
+    "projectname": "yyyy",
     "namespaceUI5": "nu.sd",
     "enableFPM": false,
     "platform": "Static webserver",

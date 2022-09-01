@@ -1,10 +1,9 @@
 <mvc:View controllerName="nu.xx.xxxx.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:layout="sap.ui.layout"
     xmlns="sap.m" displayBlock="true" height="100%" busyIndicatorDelay="0">
     <Page id="page" title="{i18n>title}">
         <content>
-            <Panel id="midActionPanel" backgroundDesign="Transparent" headerText="{i18n>MainViewView.AssignSalesOrgToCompany}">
+            <Panel id="midActionPanel" backgroundDesign="Transparent" headerText="{i18n>MainViewView.FlowName}">
                 <content>
                     <HBox width="100%" justifyContent="Center">
                         <VBox width="50%">
@@ -13,7 +12,7 @@
                                 <Button text="Mass Data Upload via Excel" press="onPressMass" type="Default" width="100%"/>
                                 <Button id="downButton" text="Download Excel Template" press="onPressDownloadTemplate" type="Default" width="100%"/>
                             </HBox>
-                            <Button id="midBut" text="{i18n>MainViewView.DownloadExistingAssignmentData}" press="onPressDownloadPlant" type="Default" width="100%" class="sapUiMediumMarginBottom"/>
+                            <Button id="midBut" text="{i18n>MainViewView.DownloadExisting}" press="onPressDownloadPlant" type="Default" width="100%" class="sapUiMediumMarginBottom"/>
                         </VBox>
                     </HBox>
                 </content>
@@ -21,7 +20,7 @@
         </content>
         <footer>
             <OverflowToolbar>
-                <Text text="{i18n>MidOptionView.Version}" class="version"/>
+                <Text text="{i18n>mainView.Version}" class="version"/>
             </OverflowToolbar>
         </footer>
     </Page>
