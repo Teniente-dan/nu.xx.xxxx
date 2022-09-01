@@ -6,7 +6,7 @@ sap.ui.define(
     function (BaseController) {
         "use strict";
 
-        return BaseController.extend("nu.sd.assignSales.controller.App", {
+        return BaseController.extend("nu.xx.xxxx.controller.App", {
             onInit() {},
         });
     }
