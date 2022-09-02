@@ -188,10 +188,15 @@ sap.ui.define([
       };
       return fieldMap[param];
     },
-
-    onSOChange: function (oEvent) {
-      var so = oEvent.getSource().getValue();
-      this.valMainFieldOrg(so);
+    onInputChange: function (oEvent, param) {
+      var inVal = oEvent.getSource().getValue();
+      switch (param) {
+        case "in1":
+          this.valMainFieldOrg(inVal);
+          break;
+        default:
+          break;
+      }
     },
     valMainFieldOrg: function (param) {
       var mainField = this.appConfig.mainField;
@@ -318,7 +323,7 @@ sap.ui.define([
           MessageBox.success(okFlow[1], {
             onClose: function () {
               this.closeView();
-            }
+            }.bind(this)
           });
         } else {
           var oResults = arrResults.map((result) => {

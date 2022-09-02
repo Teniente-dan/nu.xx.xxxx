@@ -24,7 +24,7 @@
 										<form:formElements>
 											<form:FormElement label="Sales Org.">
 												<form:fields>
-													<Input id="in1" width="100%" value="{datosGral>/in1}" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in1')" submit="onSOChange"/>
+													<Input id="in1" width="100%" value="{datosGral>/in1}" required="true" showValueHelp="true" valueHelpRequest="onValueHelp($event, 'in1')" submit="onInputChange($event, 'in1')"/>
 												</form:fields>
 											</form:FormElement>
 											<form:FormElement label="Company Code">
@@ -42,7 +42,8 @@
 													</Input>
 												</form:fields>
 											</form:FormElement> -->
-                      <!-- TR -->
+                      						
+											<!-- TR -->
 											<form:FormElement label="">
 												<form:fields>
 													<RadioButtonGroup >
