@@ -255,7 +255,11 @@ sap.ui.define([
       }
       this.oGlobalBusyDialog.open();
       setTimeout(() => {
-        this.createFlow().finally(() => {
+        this.createFlow()
+        .catch((err) => {
+          console.log(`%c${err}`, 'font-weight: bold; background-color: lightblue;font-size: large;')
+        })
+        .finally(() => {
           this.oGlobalBusyDialog.close();
         });
       }, 1);
