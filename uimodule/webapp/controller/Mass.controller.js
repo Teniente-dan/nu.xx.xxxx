@@ -97,34 +97,19 @@ sap.ui.define([
       }
     },
     ownValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{strkorr}"
-          }),
-          new sap.m.Text({
-            text: "{as4text}"
-          })
-        ]
-      });
-      this.byId('valueHelpField1').setText('Parent Request');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Short Description');
-      this.byId("col3").setVisible(false);
-      this.byId("col4").setVisible(false);
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "/salesOwnSet", tableSelectTemplate);
+      var arrFields = [{
+        text: "common>strkorr",
+        textName: "Parent Request"
+      }, {
+        text: "common>as4text",
+        textName: "Short Description"
+      }];
+      this.valueHelpBuild("common>/ownSet", arrFields);
     },
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;
       var aContexts = oEvent.getParameter("selectedContexts");
-      var selectedItem = aContexts[0].getModel().getProperty(aContexts[0].getPath());
+      var selectedItem = aContexts[0].getModel("common").getProperty(aContexts[0].getPath());
       var datosGral = this.datosGral.getData();
       if (aContexts && aContexts.length) {
         var field = this.getValueHelpToField(param);
@@ -185,6 +170,7 @@ sap.ui.define([
               resolve(that.displayResults(res.toError.results, ['Msg']));
             }
             if (res.toOutput.results && res.toOutput.results.length > 0) {
+              // FSCODE
               resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
             }
           },
@@ -255,6 +241,7 @@ sap.ui.define([
     mapToBackend: function (jsonObj) {
       var toMain = [];
       jsonObj.forEach((row) => {
+        // FSCODE
         toMain.push({
           vkorg: row[this.oHeaders[0]] || "",
           bukrs: row[this.oHeaders[1]] || "",

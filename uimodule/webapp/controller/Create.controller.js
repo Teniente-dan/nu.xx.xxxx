@@ -62,6 +62,7 @@ sap.ui.define([
       }
     },
     loadFragSpecific: function (param) {
+      // FSCODE
       switch (param) {
         case "in1":
           this.salesOrgValueHelp();
@@ -78,89 +79,40 @@ sap.ui.define([
       }
     },
     bukrsValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{common>Bukrs}"
-          }),
-          new sap.m.Text({
-            text: "{common>Butxt}"
-          }),
-          new sap.m.Text({
-            text: "{common>Ort01}"
-          }),
-          new sap.m.Text({
-            text: "{common>Waers}"
-          })
-
-        ]
-      });
-      this.byId('valueHelpField1').setText('Comp. Code');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Company Name');
-      this.byId("col3").setVisible(true);
-      this.byId('valueHelpField3').setText('City');
-      this.byId("col4").setVisible(true);
-      this.byId('valueHelpField4').setText('Currency');
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "common>/bukrsSet", tableSelectTemplate);
+      var arrFields = [{
+        text: "common>Bukrs",
+        textName: "Comp. Code"
+      }, {
+        text: "common>Butxt",
+        textName: "Company Name"
+      }, {
+        text: "common>Ort01",
+        textName: "City"
+      }, {
+        text: "common>Waers",
+        textName: "Currency"
+      } ];
+      this.valueHelpBuild("common>/bukrsSet", arrFields);
     },
     ownValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{strkorr}"
-          }),
-          new sap.m.Text({
-            text: "{as4text}"
-          })
-        ]
-      });
-      this.byId('valueHelpField1').setText('Parent Request');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Short Description');
-      this.byId("col3").setVisible(false);
-      this.byId("col4").setVisible(false);
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "/salesOwnSet", tableSelectTemplate);
+      var arrFields = [{
+        text: "common>strkorr",
+        textName: "Parent Request"
+      }, {
+        text: "common>as4text",
+        textName: "Short Description"
+      } ];
+      this.valueHelpBuild("common>/ownSet", arrFields);
     },
     salesOrgValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{Vkorg}"
-          }),
-          new sap.m.Text({
-            text: "{Vtext}"
-          })
-
-        ]
-      });
-      this.byId('valueHelpField1').setText('SOrg.');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Name');
-      this.byId("col3").setVisible(false);
-      this.byId("col4").setVisible(false);
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "/salesOrgSet", tableSelectTemplate);
+      var arrFields = [{
+        text: "Vkorg",
+        textName: "SOrg."
+      }, {
+        text: "Vtext",
+        textName: "Name"
+      } ];
+      this.valueHelpBuild("/salesOrgSet", arrFields);
     },
 
     handleValueItemPress: function (oEvent) {
@@ -180,6 +132,7 @@ sap.ui.define([
       oEvent.getSource().getBinding("items").filter([]);
     },
     getValueHelpToField: function (param) {
+      // FSCODE
       var fieldMap = {
         "in1": "Vkorg",
         "in2": "Bukrs",
@@ -191,6 +144,7 @@ sap.ui.define([
     onInputChange: function (oEvent, param) {
       var inVal = oEvent.getSource().getValue();
       switch (param) {
+        // FSCODE
         case "in1":
           this.valMainFieldOrg(inVal);
           break;
@@ -199,28 +153,24 @@ sap.ui.define([
       }
     },
     valMainFieldOrg: function (param) {
-      var mainField = this.appConfig.mainField;
       var url = `/Val${mainField}Set('${param}')`;
-      // var url = "/plantValPlantSet";
       var that = this;
       this.getModel().setUseBatch(false);
       return Promise.resolve(true);
       // return new Promise(function (resolve, reject) {
-      //   //   that.getModel().read(url, {
-      //   //     success: function (oData) {
-      //   //       // oData.message = ""
-      //   //       if (oData.message) {
-      //   //         reject(MessageBox.error(oData.message));
-      //   //       }
-      //   setTimeout(function () {
-      //     resolve(true);
-      //   }, 1000);
-      //   //     },
-      //   //     error: function (oError) {
-      //   //       MessageBox.error(oError.message);
-      //   //       reject(oError);
-      //   //     }
-      //   //   });
+      //   that.getModel().read(url, {
+      //     success: function (oData) {
+      //       // oData.message = ""
+      //       if (oData.message) {
+      //         reject(MessageBox.error(oData.message));
+      //       }
+      //       resolve(true);
+      //     },
+      //     error: function (oError) {
+      //       MessageBox.error(oError.message);
+      //       reject(oError);
+      //     }
+      //   });
       // });
     },
     valAllFields: function () {
@@ -290,6 +240,7 @@ sap.ui.define([
       var that = this;
       var oPayload = {
         actionKey: "CREATE",
+        // FSCODE
         toMain: [{
           vkorg: this.replaceSpaces(datosGral.in1),
           bukrs: datosGral.in2,
@@ -342,6 +293,7 @@ sap.ui.define([
       var sValue = evt.getParameter("value");
       var oBinding = evt.getParameter("itemsBinding");
       var filterProperty1;
+      // FSCODE
       switch (param) {
         case "in1":
           filterProperty1 = [new Filter("Vkorg", FilterOperator.Contains, sValue)];
@@ -360,7 +312,10 @@ sap.ui.define([
         default:
           break;
       }
-      oBinding.filter(filterProperty1);
+      oBinding.filter(new Filter({
+        filters: filterProperty1,
+        and: false
+      }));
     }
   });
 });

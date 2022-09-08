@@ -96,9 +96,12 @@ sap.ui.define([
           oMockServer.start();
 
           Log.info("Running the app with mock data");
+          /* ===========================================================
+          //For getEntity, it must match an automated or json provided entry!!!!!           
+          ============================================================= */
           // oMockServer.attachAfter(sap.ui.core.util.MockServer.HTTPMETHOD.GET, function (oCall, param) {
           //   oCall.mParameters.oFilteredData = "xxx";
-          // }, "plantValPlantSet");
+          // }, "valXXXXSet");
           oMockServer.attachAfter(sap.ui.core.util.MockServer.HTTPMETHOD.POST, function (oCall) {
             switch (oCall.mParameters.oEntity.actionKey) {
               case 'TEMPLATE':

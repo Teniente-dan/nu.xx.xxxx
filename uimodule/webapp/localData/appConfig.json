@@ -1,6 +1,5 @@
 {
     "specInputs":["in2"],
-    "mainField":"Vkorg",
     "valFields": ["in1", "in2"],
     "fragFlow": "nu.xx.xxxx.view.fragments.flowCreation",
     "fragValueHelp" : "nu.xx.xxxx.view.fragments.ValueHelpDialog",

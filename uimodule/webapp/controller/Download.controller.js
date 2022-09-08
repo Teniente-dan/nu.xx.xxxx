@@ -69,37 +69,23 @@ sap.ui.define([
           break;
       }
     },
-    f1ValueHelp: function () {
-      var tableSelectId = this.byId('TableSelectId');
-      tableSelectId.unbindAggregation("items");
-      var tableSelectTemplate = new sap.m.ColumnListItem({
-        cells: [
-          new sap.m.Text({
-            text: "{Vkorg}"
-          }),
-          new sap.m.Text({
-            text: "{Vtext}"
-          })
-
-        ]
-      });
-      this.byId('valueHelpField1').setText('SOrg.');
-      this.byId("col2").setVisible(true);
-      this.byId('valueHelpField2').setText('Name');
-      this.byId("col3").setVisible(false);
-      this.byId("col4").setVisible(false);
-      this.byId("col5").setVisible(false);
-      this.byId("col6").setVisible(false);
-      this.byId("col7").setVisible(false);
-      this.byId("col8").setVisible(false);
-      this.byId("col9").setVisible(false);
-      tableSelectId.bindAggregation("items", "/salesOrgSet", tableSelectTemplate);
+    f1ValueHelp: function () {      
+      var arrFields = [{
+          text: "common>Vkorg",
+          textName: "SOrg."
+        },
+        {
+          text: "common>Vtext",
+          textName: "Name"
+        }
+      ];
+      this.valueHelpBuild("common>/salesOrgSet", arrFields);
     },
 
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;
       var aContexts = oEvent.getParameter("selectedContexts");
-      var selectedItem = aContexts[0].getModel().getProperty(aContexts[0].getPath());
+      var selectedItem = aContexts[0].getModel("common").getProperty(aContexts[0].getPath());
       var datosGral = this.datosGral.getData();
       if (aContexts && aContexts.length) {
         var field = this.getValueHelpToField(param);
@@ -109,6 +95,7 @@ sap.ui.define([
       oEvent.getSource().getBinding("items").filter([]);
     },
     getValueHelpToField: function (param) {
+      // FSCODE
       var fieldMap = {
         "in1": "Vkorg",
         "in2": "Vkorg"
@@ -195,6 +182,7 @@ sap.ui.define([
       var sValue = evt.getParameter("value");
       var oBinding = evt.getParameter("itemsBinding");
       var filterProperty1;
+      // FSCODE
       switch (param) {
         case "in1":
         case "in2":

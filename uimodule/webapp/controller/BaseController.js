@@ -78,6 +78,26 @@ sap.ui.define(
       },
       replaceSpaces(val) {
         return val.replace(/^\s+|\s+$/g, "_");
+      },
+      valueHelpBuild: function (sSet, arrFields) {
+        var tableSelectId = this.byId('TableSelectId');
+        tableSelectId.unbindAggregation("items");
+        var tableSelectTemplate = new sap.m.ColumnListItem({
+          cells: arrFields.map(function (item) {
+            return new sap.m.Text({
+              text: `{${item.text}}`
+            });
+          })
+        });
+        for (let idx = 1; idx < 10; idx++) {
+          if (arrFields[idx - 1]) {
+            this.byId(`valueHelpField${idx}`).setText(arrFields[idx - 1].textName);
+            this.byId(`col${idx}`).setVisible(true);
+          } else {
+            this.byId(`col${idx}`).setVisible(false);
+          }
+        }
+        tableSelectId.bindAggregation("items", sSet, tableSelectTemplate);
       }
     });
   }
