@@ -170,8 +170,8 @@ sap.ui.define([], function () {
         textName: "Description"
       }];
       this.valueHelpBuild("common>/gsberSet", arrFields);
-    },  
-    
+    },
+
     vkorgValueHelp: function () {
       var arrFields = [{
         text: "common>Vkorg",
@@ -181,6 +181,17 @@ sap.ui.define([], function () {
         textName: "Name"
       }];
       this.valueHelpBuild("common>/vkorgSet", arrFields);
-    },     
+    },
+
+    ktoplValueHelp: function () {
+      var arrFields = [{
+        text: "common>Ktopl",
+        textName: "Chrt/Accts"
+      }, {
+        text: "common>Ktplt",
+        textName: "Chart of Accounts Description"
+      }];
+      this.valueHelpBuild("common>/ktoplSet", arrFields);
+    },
   };
 });
