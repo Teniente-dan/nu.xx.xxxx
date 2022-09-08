@@ -117,7 +117,7 @@ sap.ui.define([
       }
     },
     valMainFieldOrg: function (param) {
-      var url = `/Val${mainField}Set('${param}')`;
+      // var url = `/Val${mainField}Set('${param}')`;
       var that = this;
       this.getModel().setUseBatch(false);
       return Promise.resolve(true);
