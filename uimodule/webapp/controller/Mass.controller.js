@@ -262,7 +262,10 @@ sap.ui.define([
         default:
           break;
       }
-      oBinding.filter(filterProperty1);
+      oBinding.filter(new Filter({
+        filters: filterProperty1,
+        and: false
+      }));
     }
   });
 });
