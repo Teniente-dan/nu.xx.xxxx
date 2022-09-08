@@ -11,3 +11,5 @@
 8. replace specific service XML in localService/
 9. replace specific service URL in manifest under mainService
 10. search and replace yyyy with **name** of point 6.
+11. search for FSCODE it signals possible changes 
+11.1 use catalog snippets from common_valueHelp_catalogs
