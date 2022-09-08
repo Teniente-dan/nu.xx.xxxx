@@ -133,19 +133,54 @@ sap.ui.define([], function () {
     rcompValueHelp: function () {
       var arrFields = [{
         text: "common>Rcomp",
-        textName: "CCode"
+        textName: "Co."
       }, {
         text: "common>Name1",
-        textName: "Name 1"
+        textName: "Company Name"
       }, {
         text: "common>Name2",
-        textName: "Name 1"
+        textName: "Name of Company 2"
+      }, {
+        text: "common>Cntry",
+        textName: "C/R"
       }, {
         text: "common>Curr",
-        textName: "Currency"
+        textName: "Crcy"
       }];
       this.valueHelpBuild("common>/rcompSet", arrFields);
     },
 
+    currencyValueHelp: function () {
+      var arrFields = [{
+        text: "common>Waers",
+        textName: "Crcy"
+      }, {
+        text: "common>Ltext",
+        textName: "Long Text"
+      }];
+      this.valueHelpBuild("common>/currencySet", arrFields);
+    },
+
+    gsberValueHelp: function () {
+      var arrFields = [{
+        text: "common>Gsber",
+        textName: "BusA"
+      }, {
+        text: "common>Gtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/gsberSet", arrFields);
+    },  
+    
+    vkorgValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vkorg",
+        textName: "SOrg."
+      }, {
+        text: "common>Vtext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/vkorgSet", arrFields);
+    },     
   };
 });
