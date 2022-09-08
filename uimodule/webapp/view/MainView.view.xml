@@ -7,12 +7,16 @@
                 <content>
                     <HBox width="100%" justifyContent="Center">
                         <VBox width="50%">
-                            <Button text="Single Entry Upload" press="onPressSingle" type="Default" width="100%" class="sapUiMediumMarginBottom"/>
+                            <Button text="Single Entry Upload" press="onPressSingle" width="100%" class="sapUiMediumMarginBottom"/>
                             <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginBottom">
-                                <Button text="Mass Data Upload via Excel" press="onPressMass" type="Default" width="100%"/>
-                                <Button id="downButton" text="Download Excel Template" press="onPressDownloadTemplate" type="Default" width="100%"/>
+                                <VBox width="47%">
+                                    <Button text="Mass Data Upload via Excel" press="onPressMass" width="100%"/>
+                                </VBox>
+                                <VBox width="47%">
+                                    <Button id="downButton" text="Download Excel Template" press="onPressDownloadTemplate" width="100%"/>
+                                </VBox>
                             </HBox>
-                            <Button id="midBut" text="{i18n>MainViewView.DownloadExisting}" press="onPressDownloadPlant" type="Default" width="100%" class="sapUiMediumMarginBottom"/>
+                            <Button id="midBut" text="{i18n>MainViewView.DownloadExisting}" press="onPressDownloadPlant" width="100%" class="sapUiMediumMarginBottom"/>
                         </VBox>
                     </HBox>
                 </content>

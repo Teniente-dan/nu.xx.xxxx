@@ -47,9 +47,9 @@
 											<form:FormElement label="">
 												<form:fields>
 													<RadioButtonGroup >
-														<RadioButton activeHandling="true" editable="true" enabled="true" groupName="requestType" selected="{datosGral>/in14}" text="New TR Description" textAlign="Begin" textDirection="Inherit" useEntireWidth="false" valueState="None">
+														<RadioButton groupName="requestType" selected="{datosGral>/in14}" text="New TR Description">
 														</RadioButton>
-														<RadioButton activeHandling="true" editable="true" enabled="true" groupName="requestType" selected="{datosGral>/in15}" text="Own Request" textAlign="Begin" textDirection="Inherit" useEntireWidth="false" valueState="None">
+														<RadioButton groupName="requestType" selected="{datosGral>/in15}" text="Own Request">
 														</RadioButton>
 													</RadioButtonGroup>
 												</form:fields>
