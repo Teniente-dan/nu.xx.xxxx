@@ -89,22 +89,12 @@ sap.ui.define([
     loadFragSpecific: function (param) {
 
       switch (param) {
-        case "in17":
-          this.ownValueHelp();
+        case "in17":          
+          this.catalogs.ownValueHelp.bind(this)();
           break;
         default:
           break;
       }
-    },
-    ownValueHelp: function () {
-      var arrFields = [{
-        text: "common>strkorr",
-        textName: "Parent Request"
-      }, {
-        text: "common>as4text",
-        textName: "Short Description"
-      }];
-      this.valueHelpBuild("common>/ownSet", arrFields);
     },
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;

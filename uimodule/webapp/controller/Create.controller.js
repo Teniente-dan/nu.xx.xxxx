@@ -64,55 +64,19 @@ sap.ui.define([
     loadFragSpecific: function (param) {
       // FSCODE
       switch (param) {
-        case "in1":
-          this.salesOrgValueHelp();
+        case "in1":          
+          this.catalogs.salesOrgValueHelp.bind(this)();
           break;
-        case "in2":
-          this.bukrsValueHelp();
+        case "in2":          
+          this.catalogs.bukrsValueHelp.bind(this)();
           break;
         // ownRequest
-        case "in17":
-          this.ownValueHelp();
+        case "in17":          
+          this.catalogs.ownValueHelp.bind(this)();
           break;
         default:
           break;
       }
-    },
-    bukrsValueHelp: function () {
-      var arrFields = [{
-        text: "common>Bukrs",
-        textName: "Comp. Code"
-      }, {
-        text: "common>Butxt",
-        textName: "Company Name"
-      }, {
-        text: "common>Ort01",
-        textName: "City"
-      }, {
-        text: "common>Waers",
-        textName: "Currency"
-      } ];
-      this.valueHelpBuild("common>/bukrsSet", arrFields);
-    },
-    ownValueHelp: function () {
-      var arrFields = [{
-        text: "common>strkorr",
-        textName: "Parent Request"
-      }, {
-        text: "common>as4text",
-        textName: "Short Description"
-      } ];
-      this.valueHelpBuild("common>/ownSet", arrFields);
-    },
-    salesOrgValueHelp: function () {
-      var arrFields = [{
-        text: "Vkorg",
-        textName: "SOrg."
-      }, {
-        text: "Vtext",
-        textName: "Name"
-      } ];
-      this.valueHelpBuild("/salesOrgSet", arrFields);
     },
 
     handleValueItemPress: function (oEvent) {

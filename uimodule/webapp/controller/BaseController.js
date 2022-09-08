@@ -1,17 +1,17 @@
 /* eslint-disable no-var */
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "nu/xx/xxxx/model/formatter"],
+  ["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "nu/xx/xxxx/model/formatter", "nu/xx/xxxx/model/common_ValueHelp_Catalogs"],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    * @param {typeof sap.ui.core.routing.History} History
    * @param {typeof sap.ui.core.UIComponent} UIComponent
    */
-  function (Controller, History, UIComponent, formatter) {
+  function (Controller, History, UIComponent, formatter, catalogs) {
     "use strict";
 
     return Controller.extend("nu.xx.xxxx.controller.BaseController", {
       formatter: formatter,
-
+      catalogs: catalogs,
       /**
        * Convenience method for getting the view model by name in every controller of the application.
        * @public

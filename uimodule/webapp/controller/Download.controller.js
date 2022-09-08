@@ -65,21 +65,12 @@ sap.ui.define([
         case "in2":
           this.f1ValueHelp();
           break;
-        default:
-          break;
+          default:
+            break;
       }
     },
     f1ValueHelp: function () {      
-      var arrFields = [{
-          text: "common>Vkorg",
-          textName: "SOrg."
-        },
-        {
-          text: "common>Vtext",
-          textName: "Name"
-        }
-      ];
-      this.valueHelpBuild("common>/salesOrgSet", arrFields);
+      this.catalogs.salesOrgValueHelp.bind(this)();
     },
 
     handleValueItemPress: function (oEvent) {
