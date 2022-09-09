@@ -193,5 +193,16 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/ktoplSet", arrFields);
     },
+
+    fstvaValueHelp: function () {
+      var arrFields = [{
+        text: "common>Fstva",
+        textName: "FStV"
+      }, {
+        text: "common>Fstxt",
+        textName: "Field Status Name"
+      }];
+      this.valueHelpBuild("common>/fstvaSet", arrFields);
+    },    
   };
 });
