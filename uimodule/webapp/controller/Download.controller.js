@@ -125,9 +125,19 @@ sap.ui.define([
             if (res.toXLSX.results && res.toXLSX.results.length > 0) {
               resolve(res.toXLSX.results);
             }
+            reject("No data found");
           },
-          Error: function (err) {
-            reject(err);
+          error: function (err) {
+            if (err.responseText) {
+              var error = `${err.statusCode}:`;
+              JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
+                error = error ? `${error}\n${err.message}` : err.message;
+              });
+              MessageBox.error(error);
+            } else {
+              MessageBox.error(`${err.statusCode}: ${err.message}`);
+            }
+            reject();
           }
         });
       });

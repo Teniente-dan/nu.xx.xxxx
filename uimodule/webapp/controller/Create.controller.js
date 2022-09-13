@@ -206,8 +206,8 @@ sap.ui.define([
         actionKey: "CREATE",
         // FSCODE
         toMain: [{
-          vkorg: this.replaceSpaces(datosGral.in1),
-          bukrs: datosGral.in2,
+          vkorg: (this.replaceSpaces(datosGral.in1)||""), //.toString().substring(0, 4),
+          bukrs: (datosGral.in2||"").toString(),
           as4text: datosGral.in14 ? (datosGral.in16 || "") : "",
           strkorr: datosGral.in15 ? (datosGral.in17 || "") : "",
           r1: datosGral.in14 ? "X" : "",
@@ -225,8 +225,16 @@ sap.ui.define([
             resolve(true);
           },
           error: function (err) {
-            MessageBox.error(err.message);
-            reject(err);
+            if (err.responseText) {
+              var error = `${err.statusCode}:`;
+              JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
+                error = error ? `${error}\n${err.message}` : err.message;
+              });
+              MessageBox.error(error);
+            } else {
+              MessageBox.error(`${err.statusCode}: ${err.message}`);
+            }
+            reject();
           }
         });
       });

@@ -127,6 +127,11 @@ sap.ui.define([
             //   this.closeView();
             // }, 2000);
           })
+          .catch(function (err) {
+            if (err) {
+              MessageBox.error(err);
+            }
+          })          
           .finally(function () {
             this.oGlobalBusyDialog.close();
           }.bind(this));
@@ -163,10 +168,19 @@ sap.ui.define([
               // FSCODE
               resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
             }
+            reject(MessageBox.error("Empty response"));
           },
           error: function (err) {
-            MessageBox.error(err.message);
-            reject(err);
+            if (err.responseText) {
+              var error = `${err.statusCode}:`;
+              JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
+                error = error ? `${error}\n${err.message}` : err.message;
+              });
+              MessageBox.error(error);
+            } else {
+              MessageBox.error(`${err.statusCode}: ${err.message}`);
+            }
+            reject();
           }
         });
       });
@@ -233,8 +247,8 @@ sap.ui.define([
       jsonObj.forEach((row) => {
         // FSCODE
         toMain.push({
-          vkorg: row[this.oHeaders[0]] || "",
-          bukrs: row[this.oHeaders[1]] || "",
+          vkorg: (row[this.oHeaders[0]] || "").toString().substring(0, 6),
+          bukrs: (row[this.oHeaders[1]] || "").toString(),
           // vtext: row[this.oHeaders[1]] || "",
           // waers: row[this.oHeaders[2]] || "",
           // name1: row[this.oHeaders[3]] || "",

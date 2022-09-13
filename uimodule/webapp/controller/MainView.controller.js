@@ -38,8 +38,10 @@ sap.ui.define(
         this.getTemplateHeaders().then((oHeaders) => {
             this.getOwnerComponent().oXlsxUtils.getTemplate(undefined, oHeaders, this.appConfig.templateName);
           })
-          .catch(() => {
-            MessageBox.error("No Template found");
+          .catch((err) => {
+            if (err) {
+              MessageBox.error(err);
+            }
           })
           .finally(() => {
             this.byId("downButton").setBusy(false);
@@ -70,7 +72,16 @@ sap.ui.define(
               reject();
             },
             error: function (err) {
-              reject(err);
+              if (err.responseText) {
+                var error = `${err.statusCode}:`;
+                JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
+                  error = error ? `${error}\n${err.message}` : err.message;
+                });
+                MessageBox.error(error);
+              } else {
+                MessageBox.error(`${err.statusCode}: ${err.message}`);
+              }
+              reject();
             }
           });
         });
