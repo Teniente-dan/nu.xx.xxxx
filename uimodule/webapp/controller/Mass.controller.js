@@ -52,12 +52,12 @@ sap.ui.define([
                   oHeaders.push(res.toXLSX.results[0][key]);
                 }
               }
-              resolve(oHeaders);
+              return resolve(oHeaders);
             }
-            reject();
+            return reject();
           },
           error: function (err) {
-            reject(err);
+            return reject(err);
           }
         });
       });
@@ -159,19 +159,22 @@ sap.ui.define([
         that.getModel().create(url, oPayload, {
           success: function (res) {
             if (res.toReturn.results && res.toReturn.results.length > 0) {
-              resolve(that.displayResults(res.toReturn.results, ['message']));
+              return resolve(that.displayResults(res.toReturn.results, ['message']));
             }
             if (res.toError.results && res.toError.results.length > 0) {
-              resolve(that.displayResults(res.toError.results, ['Msg']));
+              return resolve(that.displayResults(res.toError.results, ['Msg']));
             }
             if (res.toOutput.results && res.toOutput.results.length > 0) {
               // FSCODE
-              resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
+              return resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
             }
-            reject(MessageBox.error("Empty response"));
+            return reject(MessageBox.error("Empty response"));
           },
           error: function (err) {
-            if (err.responseText) {
+            if (err.responseText.indexOf("<message>") > -1) {
+              var message = err.responseText.substring(err.responseText.indexOf("<message>") + 9, err.responseText.indexOf("</message>"));
+              MessageBox.error(message);
+            } else if (err.responseText) {
               var error = `${err.statusCode}:`;
               JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
                 error = error ? `${error}\n${err.message}` : err.message;
@@ -180,7 +183,7 @@ sap.ui.define([
             } else {
               MessageBox.error(`${err.statusCode}: ${err.message}`);
             }
-            reject();
+            return reject();
           }
         });
       });

@@ -120,15 +120,18 @@ sap.ui.define([
         that.getModel().create(url, oPayload, {
           success: function (res) {
             if (res.toReturn.results && res.toReturn.results.length > 0) {
-              reject(that.displayResults(res.toReturn.results));
+              return reject(that.displayResults(res.toReturn.results));
             }
             if (res.toXLSX.results && res.toXLSX.results.length > 0) {
-              resolve(res.toXLSX.results);
+              return resolve(res.toXLSX.results);
             }
-            reject("No data found");
+            return reject("No data found");
           },
           error: function (err) {
-            if (err.responseText) {
+            if (err.responseText.indexOf("<message>") > -1) {
+              var message = err.responseText.substring(err.responseText.indexOf("<message>") + 9, err.responseText.indexOf("</message>"));
+              MessageBox.error(message);
+            } else if (err.responseText) {
               var error = `${err.statusCode}:`;
               JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
                 error = error ? `${error}\n${err.message}` : err.message;

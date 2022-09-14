@@ -188,13 +188,13 @@ sap.ui.define([
       return new Promise(function (resolve, reject) {
         this.valMainFieldOrg(datosGral.in1).then(function (result) {
             if (result && this.valAllFields()) {
-              resolve(this.sendToBackForCreate());
+              return resolve(this.sendToBackForCreate());
             } else {
-              reject(false);
+              return reject(false);
             }
           }.bind(this))
           .catch(function (oError) {
-            reject(oError);
+            return reject(oError);
           });
       }.bind(this));
     },
@@ -220,12 +220,15 @@ sap.ui.define([
         that.getModel().create(url, oPayload, {
           success: function (res) {
             if (res.toReturn.results) {
-              resolve(that.displayResults(res.toReturn.results));
+              return resolve(that.displayResults(res.toReturn.results));
             }
-            resolve(true);
+            return resolve(true);
           },
           error: function (err) {
-            if (err.responseText) {
+            if (err.responseText.indexOf("<message>") > -1) {
+              var message = err.responseText.substring(err.responseText.indexOf("<message>") + 9, err.responseText.indexOf("</message>"));
+              MessageBox.error(message);
+            } else if (err.responseText) {
               var error = `${err.statusCode}:`;
               JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
                 error = error ? `${error}\n${err.message}` : err.message;
@@ -234,7 +237,7 @@ sap.ui.define([
             } else {
               MessageBox.error(`${err.statusCode}: ${err.message}`);
             }
-            reject();
+            return reject();
           }
         });
       });
