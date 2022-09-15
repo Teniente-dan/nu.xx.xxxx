@@ -1,17 +1,30 @@
 /* eslint-disable no-var */
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "nu/xx/xxxx/model/formatter", "nu/xx/xxxx/model/common_ValueHelp_Catalogs"],
+  ["sap/ui/core/mvc/Controller",
+    "sap/ui/core/routing/History",
+    "sap/ui/core/UIComponent",
+    "nu/sd/defStrLc/model/formatter",
+    "nu/sd/defStrLc/model/common_ValueHelp_Catalogs",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/Filter"
+  ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    * @param {typeof sap.ui.core.routing.History} History
    * @param {typeof sap.ui.core.UIComponent} UIComponent
    */
-  function (Controller, History, UIComponent, formatter, catalogs) {
+  function (Controller,
+    History,
+    UIComponent,
+    formatter,
+    common_ValueHelp_Catalogs,
+    FilterOperator,
+    Filter) {
     "use strict";
 
     return Controller.extend("nu.xx.xxxx.controller.BaseController", {
       formatter: formatter,
-      catalogs: catalogs,
+      catalogs: common_ValueHelp_Catalogs,
       /**
        * Convenience method for getting the view model by name in every controller of the application.
        * @public
@@ -98,7 +111,18 @@ sap.ui.define(
           }
         }
         tableSelectId.bindAggregation("items", sSet, tableSelectTemplate);
-      }
+      },
+      applySpecFilter: function (arrFilter) {
+        var oBinding = this.byId('TableSelectId').getBinding("items");
+        var filterProperty1 = [];
+        arrFilter.filter(x => x.value).forEach((filter) => {
+          filterProperty1.push(new Filter(filter.field, FilterOperator.EQ, filter.value));
+        });
+        oBinding.filter(new Filter({
+          filters: filterProperty1,
+          and: false
+        }));
+      },
     });
   }
 );

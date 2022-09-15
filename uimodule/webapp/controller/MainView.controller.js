@@ -8,7 +8,7 @@ sap.ui.define(
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    * @param {typeof sap.m.MessageBox} MessageBox 
- */
+   */
   function (Controller, MessageBox) {
     "use strict";
 

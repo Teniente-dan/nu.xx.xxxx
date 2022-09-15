@@ -65,17 +65,17 @@ sap.ui.define([
         case "in1":
         case "in2":
           this.f1ValueHelp();
+          // this.applyBaseFilter("in3");          
           break;
-          default:
-            break;
+        default:
+          break;
       }
     },
-    f1ValueHelp: function () { 
+    f1ValueHelp: function () {
       // ----------------------------------------------------------------------------------------------FSCODE
       // ----------------------------------------------------------------------------------------------------           
       this.catalogs.salesOrgValueHelp.bind(this)();
     },
-
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;
       var aContexts = oEvent.getParameter("selectedContexts");
@@ -83,7 +83,22 @@ sap.ui.define([
       var datosGral = this.datosGral.getData();
       if (aContexts && aContexts.length) {
         var field = this.getValueHelpToField(param);
-        datosGral[param] = selectedItem[field];
+        if (typeof (field) === 'object') {
+          for (const key in field) {
+            if (Array.isArray(field[key])) {
+              var mutable = field[key][1];
+              if (mutable) {
+                datosGral[key] = selectedItem[field[key][0]];
+              } else {
+                datosGral[key] = datosGral[key] ? datosGral[key] : selectedItem[field[key][0]];
+              }
+            } else {
+              datosGral[key] = selectedItem[field[key]];
+            }
+          }
+        } else {
+          datosGral[param] = selectedItem[field];
+        }
       }
       this.datosGral.setData(datosGral);
       oEvent.getSource().getBinding("items").filter([]);
@@ -93,7 +108,11 @@ sap.ui.define([
       // ----------------------------------------------------------------------------------------------------
       var fieldMap = {
         "in1": "Vkorg",
-        "in2": "Vkorg"
+        "in2": "Vkorg",
+        "in3": {
+          "in1": ["Werks", false],
+          "in3": "Lgort"
+        },
       };
       return fieldMap[param];
     },
@@ -204,6 +223,35 @@ sap.ui.define([
         filters: filterProperty1,
         and: false
       }));
-    }
+    },
+    applyBaseFilter: function (param) {
+      var oFilter;
+      var gralData = this.datosGral.getData();
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
+      switch (param) {
+        case "in1":
+        case "in2":
+          break;
+        case "in3":
+        case "in4":
+          var vals = [gralData.in1, gralData.in2];
+          if (vals.some(Boolean)) {
+            this.applySpecFilter([{
+                field: "Werks",
+                value: gralData.in1
+              },
+              {
+                field: "Werks",
+                value: gralData.in2
+              }
+            ]);
+          }
+          break;
+        default:
+          break;
+      }
+      return oFilter;
+    },
   });
 });

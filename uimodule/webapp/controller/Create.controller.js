@@ -65,14 +65,15 @@ sap.ui.define([
       // ----------------------------------------------------------------------------------------------FSCODE
       // ----------------------------------------------------------------------------------------------------
       switch (param) {
-        case "in1":          
+        case "in1":
           this.catalogs.salesOrgValueHelp.bind(this)();
           break;
-        case "in2":          
+        case "in2":
           this.catalogs.bukrsValueHelp.bind(this)();
+          // this.applyBaseFilter("in2");
           break;
-        // ownRequest
-        case "in17":          
+          // ownRequest
+        case "in17":
           this.catalogs.ownValueHelp.bind(this)();
           break;
         default:
@@ -83,15 +84,31 @@ sap.ui.define([
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;
       var aContexts = oEvent.getParameter("selectedContexts");
+      var selectedItem;
       if (this.specInputs.includes(param)) {
-        var selectedItem = aContexts[0].getModel().getProperty(aContexts[0].getPath());
+        selectedItem = aContexts[0].getModel().getProperty(aContexts[0].getPath());
       } else {
-        var selectedItem = aContexts[0].getModel('common').getProperty(aContexts[0].getPath());
+        selectedItem = aContexts[0].getModel('common').getProperty(aContexts[0].getPath());
       }
       var datosGral = this.datosGral.getData();
       if (aContexts && aContexts.length) {
         var field = this.getValueHelpToField(param);
-        datosGral[param] = selectedItem[field];
+        if (typeof (field) === 'object') {
+          for (const key in field) {
+            if (Array.isArray(field[key])) {
+              var mutable = field[key][1];
+              if (mutable) {
+                datosGral[key] = selectedItem[field[key][0]];
+              } else {
+                datosGral[key] = datosGral[key] ? datosGral[key] : selectedItem[field[key][0]];
+              }
+            } else {
+              datosGral[key] = selectedItem[field[key]];
+            }
+          }
+        } else {
+          datosGral[param] = selectedItem[field];
+        }
       }
       this.datosGral.setData(datosGral);
       oEvent.getSource().getBinding("items").filter([]);
@@ -101,7 +118,10 @@ sap.ui.define([
       // ----------------------------------------------------------------------------------------------------
       var fieldMap = {
         "in1": "Vkorg",
-        "in2": "Bukrs",
+        "in2": {
+          "in1": "Werks",
+          "in2": "Lgort"
+        },
         // own request
         "in17": "strkorr"
       };
@@ -110,8 +130,8 @@ sap.ui.define([
     onInputChange: function (oEvent, param) {
       var inVal = oEvent.getSource().getValue();
       switch (param) {
-      // ----------------------------------------------------------------------------------------------FSCODE
-      // ----------------------------------------------------------------------------------------------------
+        // ----------------------------------------------------------------------------------------------FSCODE
+        // ----------------------------------------------------------------------------------------------------
         case "in1":
           this.valMainFieldOrg(inVal);
           break;
@@ -178,12 +198,12 @@ sap.ui.define([
       this.oGlobalBusyDialog.open();
       setTimeout(() => {
         this.createFlow()
-        .catch((err) => {
-          console.log(`%c${err}`, 'font-weight: bold; background-color: lightblue;font-size: large;')
-        })
-        .finally(() => {
-          this.oGlobalBusyDialog.close();
-        });
+          .catch((err) => {
+            console.log(`%c${err}`, 'font-weight: bold; background-color: lightblue;font-size: large;')
+          })
+          .finally(() => {
+            this.oGlobalBusyDialog.close();
+          });
       }, 1);
     },
     createFlow: function () {
@@ -207,11 +227,11 @@ sap.ui.define([
       var that = this;
       var oPayload = {
         actionKey: "CREATE",
-      // ----------------------------------------------------------------------------------------------FSCODE
-      // ----------------------------------------------------------------------------------------------------
+        // ----------------------------------------------------------------------------------------------FSCODE
+        // ----------------------------------------------------------------------------------------------------
         toMain: [{
-          vkorg: (this.replaceSpaces(datosGral.in1)||""), //.toString().substring(0, 4),
-          bukrs: (datosGral.in2||"").toString(),
+          vkorg: (this.replaceSpaces(datosGral.in1) || ""), //.toString().substring(0, 4),
+          bukrs: (datosGral.in2 || "").toString(),
           as4text: datosGral.in14 ? (datosGral.in16 || "") : "",
           strkorr: datosGral.in15 ? (datosGral.in17 || "") : "",
           r1: datosGral.in14 ? "X" : "",
@@ -285,7 +305,7 @@ sap.ui.define([
             new Filter("Waers", FilterOperator.Contains, sValue)
           ];
           break;
-        // own request
+          // own request
         case "in17":
           filterProperty1 = [new Filter("strkorr", FilterOperator.Contains, sValue)];
           break;
@@ -296,6 +316,27 @@ sap.ui.define([
         filters: filterProperty1,
         and: false
       }));
+    },
+    applyBaseFilter: function (param) {
+      var oFilter;
+      var gralData = this.datosGral.getData();
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
+      switch (param) {
+        case "in1":
+          break;
+        case "in2":
+          if (gralData.in1) {
+            this.applySpecFilter([{
+              field: "Werks",
+              value: gralData.in1
+            }]);
+          }
+          break;
+        default:
+          break;
+      }
+      return oFilter;
     }
   });
 });
