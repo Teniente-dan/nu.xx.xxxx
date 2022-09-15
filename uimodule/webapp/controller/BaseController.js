@@ -3,8 +3,8 @@ sap.ui.define(
   ["sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/ui/core/UIComponent",
-    "nu/sd/defStrLc/model/formatter",
-    "nu/sd/defStrLc/model/common_ValueHelp_Catalogs",
+    "nu/xx/xxxx/model/formatter",
+    "nu/xx/xxxx/model/common_ValueHelp_Catalogs",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/Filter"
   ],
