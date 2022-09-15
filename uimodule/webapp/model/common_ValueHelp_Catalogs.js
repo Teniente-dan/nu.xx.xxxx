@@ -215,5 +215,31 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/ekorgSet", arrFields);
     },    
+    
+    werksValueHelp: function () {
+      var arrFields = [{
+        text: "common>Werks",
+        textName: "Plnt"
+      }, {
+        text: "common>Name1",
+        textName: "Name"
+      }, {
+        text: "common>Sort2",
+        textName: "Search Term 2"
+      }, {
+        text: "common>Sort1",
+        textName: "Search Term 1"
+      }, {
+        text: "common>PostCode1",
+        textName: "Postl Code"
+      }, {
+        text: "common>City1",
+        textName: "City"
+      }, {
+        text: "common>Name2",
+        textName: "Name 2"
+      }];
+      this.valueHelpBuild("common>/werksSet", arrFields);
+    },       
   };
 });
