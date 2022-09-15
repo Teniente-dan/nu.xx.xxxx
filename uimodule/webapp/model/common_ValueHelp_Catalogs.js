@@ -203,6 +203,17 @@ sap.ui.define([], function () {
         textName: "Field Status Name"
       }];
       this.valueHelpBuild("common>/fstvaSet", arrFields);
+    },  
+    
+    ekorgValueHelp: function () {
+      var arrFields = [{
+        text: "common>Ekorg",
+        textName: "POrg."
+      }, {
+        text: "common>Ekotx",
+        textName: "Purch. Org. Descr."
+      }];
+      this.valueHelpBuild("common>/ekorgSet", arrFields);
     },    
   };
 });

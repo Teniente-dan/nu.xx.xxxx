@@ -62,7 +62,8 @@ sap.ui.define([
       }
     },
     loadFragSpecific: function (param) {
-      // FSCODE
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
       switch (param) {
         case "in1":          
           this.catalogs.salesOrgValueHelp.bind(this)();
@@ -96,7 +97,8 @@ sap.ui.define([
       oEvent.getSource().getBinding("items").filter([]);
     },
     getValueHelpToField: function (param) {
-      // FSCODE
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
       var fieldMap = {
         "in1": "Vkorg",
         "in2": "Bukrs",
@@ -108,7 +110,8 @@ sap.ui.define([
     onInputChange: function (oEvent, param) {
       var inVal = oEvent.getSource().getValue();
       switch (param) {
-        // FSCODE
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
         case "in1":
           this.valMainFieldOrg(inVal);
           break;
@@ -204,7 +207,8 @@ sap.ui.define([
       var that = this;
       var oPayload = {
         actionKey: "CREATE",
-        // FSCODE
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
         toMain: [{
           vkorg: (this.replaceSpaces(datosGral.in1)||""), //.toString().substring(0, 4),
           bukrs: (datosGral.in2||"").toString(),
@@ -268,7 +272,8 @@ sap.ui.define([
       var sValue = evt.getParameter("value");
       var oBinding = evt.getParameter("itemsBinding");
       var filterProperty1;
-      // FSCODE
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
       switch (param) {
         case "in1":
           filterProperty1 = [new Filter("Vkorg", FilterOperator.Contains, sValue)];

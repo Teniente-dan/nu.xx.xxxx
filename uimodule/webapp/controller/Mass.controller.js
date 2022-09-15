@@ -165,7 +165,8 @@ sap.ui.define([
               return resolve(that.displayResults(res.toError.results, ['Msg']));
             }
             if (res.toOutput.results && res.toOutput.results.length > 0) {
-              // FSCODE
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
               return resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
             }
             return reject(MessageBox.error("Empty response"));
@@ -248,7 +249,8 @@ sap.ui.define([
     mapToBackend: function (jsonObj) {
       var toMain = [];
       jsonObj.forEach((row) => {
-        // FSCODE
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
         toMain.push({
           vkorg: (row[this.oHeaders[0]] || "").toString().substring(0, 6),
           bukrs: (row[this.oHeaders[1]] || "").toString(),
