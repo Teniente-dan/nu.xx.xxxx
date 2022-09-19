@@ -59,6 +59,7 @@ sap.ui.define([
       }
     },
     loadFragSpecific: function (param) {
+      console.trace(`loadFragSpecific: ${JSON.stringify(param)}`);
       // ----------------------------------------------------------------------------------------------FSCODE
       // ----------------------------------------------------------------------------------------------------
       switch (param) {
@@ -116,32 +117,57 @@ sap.ui.define([
       };
       return fieldMap[param];
     },
+    inputToRange: function (param1, param2, field) {
+      // sort array of strings
+      var sRange = [param1 || "", param2 || ""].sort();
+      if (sRange[0] === "") {
+        sRange.shift();
+      }
+      return {
+        Sign: (field || "").toUpperCase() || "I",
+        Option: sRange[1] ? "BT" : "EQ",
+        Low: sRange[0],
+        High: sRange[1] ? sRange[1] : ""
+      };
+    },
     sendToBackForCreate: function () {
       var datosGral = this.datosGral.getData();
       var url = "/actionSet";
       var that = this;
-      datosGral.in1 = datosGral.in1 ? datosGral.in1 : "";
-      datosGral.in2 = datosGral.in2 ? datosGral.in2 : "";
-      //sort array of strings
-      var range = [datosGral.in1, datosGral.in2].sort();
-      if (range[0] === "") {
-        range.shift();
-      }
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------   
+      var ranges = [{
+        param1: datosGral.in1,
+        param2: datosGral.in2,
+        // },
+        // {
+        //   param1: datosGral.in1,
+        //   param2: datosGral.in2,
+        //   field: "Ekorg"
+        // },{
+        //   param1: datosGral.in3,
+        //   param2: datosGral.in4,
+        //   field: "Bukrs"
+      }].reduce(function (acc, item) {
+        var range = that.inputToRange(item.param1, item.param2, item.field);
+        if (range.Low) {
+          acc.push(range);
+        }
+        return acc;
+      }, []);
+
       var oPayload = {
         actionKey: "DOWNLOAD",
-        toRange: [{
-          Sign: "I",
-          Option: range[1] ? "BT" : "EQ",
-          Low: range[0],
-          High: range[1] ? range[1] : ""
-        }],
+        toRange: ranges,
         toXLSX: [],
         toReturn: []
       };
       this.getModel().setUseBatch(false);
+      console.trace(`DOWNLOAD: ${JSON.stringify(oPayload)}`);
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {
+            console.trace(`DOWNLOADSucc: ${JSON.stringify(res)}`);
             if (res.toReturn.results && res.toReturn.results.length > 0) {
               return reject(that.displayResults(res.toReturn.results));
             }
@@ -151,6 +177,7 @@ sap.ui.define([
             return reject("No data found");
           },
           error: function (err) {
+            console.trace(`DOWNLOADErr: ${JSON.stringify(err)}`);
             if (err.responseText.indexOf("<message>") > -1) {
               var message = err.responseText.substring(err.responseText.indexOf("<message>") + 9, err.responseText.indexOf("</message>"));
               MessageBox.error(message);

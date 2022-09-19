@@ -42,9 +42,11 @@ sap.ui.define([
         toXLSX: []
       };
       this.getModel().setUseBatch(false);
+      console.trace(`TEMPLATE_MASS: ${JSON.stringify(oPayload)}`);
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {
+            console.trace(`TEMPLATE_MASS_SUCC: ${JSON.stringify(res)}`);
             if (res.toXLSX.results && res.toXLSX.results.length > 0) {
               var oHeaders = [];
               for (const key in res.toXLSX.results[0]) {
@@ -57,6 +59,7 @@ sap.ui.define([
             return reject();
           },
           error: function (err) {
+            console.trace(`TEMPLATE_MASS_ERR: ${JSON.stringify(err)}`);
             return reject(err);
           }
         });
@@ -87,7 +90,7 @@ sap.ui.define([
       }
     },
     loadFragSpecific: function (param) {
-
+      console.trace(`loadFrafSpecific: ${JSON.stringify(param)}`);
       switch (param) {
         case "in17":
           this.catalogs.ownValueHelp.bind(this)();
@@ -155,9 +158,11 @@ sap.ui.define([
         toError: [],
       };
       this.getModel().setUseBatch(false);
+      console.trace(`UPLOAD: ${JSON.stringify(oPayload)}`);
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {
+            console.trace(`UPLOAD_SUCC: ${JSON.stringify(res)}`);
             if (res.toReturn.results && res.toReturn.results.length > 0) {
               return resolve(that.displayResults(res.toReturn.results, ['message']));
             }
@@ -172,6 +177,7 @@ sap.ui.define([
             return reject(MessageBox.error("Empty response"));
           },
           error: function (err) {
+            console.trace(`UPLOAD_ERR: ${JSON.stringify(err)}`);
             if (err.responseText.indexOf("<message>") > -1) {
               var message = err.responseText.substring(err.responseText.indexOf("<message>") + 9, err.responseText.indexOf("</message>"));
               MessageBox.error(message);

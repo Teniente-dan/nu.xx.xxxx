@@ -62,6 +62,7 @@ sap.ui.define([
       }
     },
     loadFragSpecific: function (param) {
+      console.trace(`loadFrafSpecific: ${JSON.stringify(param)}`);
       // ----------------------------------------------------------------------------------------------FSCODE
       // ----------------------------------------------------------------------------------------------------
       switch (param) {
@@ -240,15 +241,18 @@ sap.ui.define([
         toReturn: []
       };
       this.getModel().setUseBatch(false);
+      console.trace(`CREATE: ${JSON.stringify(oPayload)}`);
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {
+            console.trace(`CREATESucc: ${JSON.stringify(res)}`);
             if (res.toReturn.results) {
               return resolve(that.displayResults(res.toReturn.results));
             }
             return resolve(true);
           },
           error: function (err) {
+            console.trace(`CREATEErr: ${JSON.stringify(err)}`);
             if (err.responseText.indexOf("<message>") > -1) {
               var message = err.responseText.substring(err.responseText.indexOf("<message>") + 9, err.responseText.indexOf("</message>"));
               MessageBox.error(message);

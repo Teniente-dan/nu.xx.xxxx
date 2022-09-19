@@ -57,9 +57,11 @@ sap.ui.define(
           actionKey: "TEMPLATE",
           toXLSX: []
         };
+        console.trace(`TEMPLATE: ${JSON.stringify(oPayload)}`);
         return new Promise(function (resolve, reject) {
           that.getModel().create(url, oPayload, {
             success: function (res) {
+              console.trace(`TEMPLATESucc: ${JSON.stringify(res)}`);
               if (res.toXLSX.results && res.toXLSX.results.length > 0) {
                 var oHeaders = {};
                 for (const key in res.toXLSX.results[0]) {
@@ -72,6 +74,7 @@ sap.ui.define(
               return reject();
             },
             error: function (err) {
+              console.trace(`TEMPLATEErr: ${JSON.stringify(err)}`);
               if (err.responseText.indexOf("<message>") > -1) {
                 var message = err.responseText.substring(err.responseText.indexOf("<message>") + 9, err.responseText.indexOf("</message>"));
                 MessageBox.error(message);
