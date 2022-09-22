@@ -123,6 +123,9 @@ sap.ui.define(
           and: false
         }));
       },
+      get18: function () {
+        return this.getOwnerComponent().getModel("i18n").getResourceBundle();
+      },      
     });
   }
 );
