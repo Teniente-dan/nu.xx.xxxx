@@ -80,7 +80,7 @@ sap.ui.define([
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;
       var aContexts = oEvent.getParameter("selectedContexts");
-      var selectedItem = aContexts[0].getModel("common").getProperty(aContexts[0].getPath());
+      var selectedItem = aContexts[0].getModel().getProperty(aContexts[0].getPath());
       var datosGral = this.datosGral.getData();
       if (aContexts && aContexts.length) {
         var field = this.getValueHelpToField(param);

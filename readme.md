@@ -13,4 +13,5 @@
 10. replace specific service URL in manifest under mainService
 11. search and replace zzzz with **name** of point 6.
 12. search for FSCODE it signals possible changes 
-13. use catalog snippets from common_valueHelp_catalogs
+13. ***Stage Changes and init commit*** for better tracking of common improvements
+14. use catalog snippets from common_valueHelp_catalogs

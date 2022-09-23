@@ -255,5 +255,16 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/lgortSet", arrFields);
     },
+
+    vkgrpValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vkgrp",
+        textName: "SGrp"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/vkgrpSet", arrFields);
+    },
   };
 });

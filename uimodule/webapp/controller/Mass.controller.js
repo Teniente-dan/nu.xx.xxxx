@@ -102,7 +102,7 @@ sap.ui.define([
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;
       var aContexts = oEvent.getParameter("selectedContexts");
-      var selectedItem = aContexts[0].getModel("common").getProperty(aContexts[0].getPath());
+      var selectedItem = aContexts[0].getModel().getProperty(aContexts[0].getPath());
       var datosGral = this.datosGral.getData();
       if (aContexts && aContexts.length) {
         var field = this.getValueHelpToField(param);
@@ -147,6 +147,8 @@ sap.ui.define([
       var oPayload = {
         actionKey: "UPLOAD",
         toMain: arrToMain.map((item) => {
+          // ----------------------------------------------------------------------------------------------FSCODE
+          // ----------------------------------------------------------------------------------------------------
           item.r1 = datosGral.in14 ? "X" : "";
           item.as4text = (datosGral.in14 ? (datosGral.in16 || "") : "").substring(0, 30);
           item.r2 = datosGral.in15 ? "X" : "";
@@ -214,7 +216,7 @@ sap.ui.define([
             state: "Error"
           };
         })
-        this.getOwnerComponent().oFlowFrag.open(oResults, "Sales Org Creation Results", this.getView());
+        this.getOwnerComponent().oFlowFrag.open(oResults, "Creation Results", this.getView());
 
       }
     },
