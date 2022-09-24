@@ -258,9 +258,13 @@ sap.ui.define([
               MessageBox.error(message);
             } else if (err.responseText) {
               var error = `${err.statusCode}:`;
-              JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
-                error = error ? `${error}\n${err.message}` : err.message;
-              });
+              try {
+                JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
+                  error = error ? `${error}\n${err.message}` : err.message;
+                });
+              } catch (e) {
+                error = `${err.statusCode}: ${err.responseText}`;
+              }
               MessageBox.error(error);
             } else {
               MessageBox.error(`${err.statusCode}: ${err.message}`);

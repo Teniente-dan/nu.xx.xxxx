@@ -84,9 +84,11 @@ sap.ui.define([
           var sErrorParam = oOptions.errorType || oUriParameters.get("errorType"),
             iErrorCode = sErrorParam === "badRequest" ? 400 : 500;
           if (sErrorParam) {
-            aRequests.forEach(function (aEntry) {
-              fnResponse(iErrorCode, sErrorParam, aEntry);
-            });
+            // cancel all OData requests in array
+            // aRequests.filter(x=>x.method === "POST" && x.path.source.includes("action"))
+            // .forEach(function (aEntry) {
+            //   fnResponse(iErrorCode, sErrorParam, aEntry);
+            // });
           }
 
           // custom mock behaviour may be added here
@@ -96,6 +98,24 @@ sap.ui.define([
           oMockServer.start();
 
           Log.info("Running the app with mock data");
+
+          // validate request properties
+          const valEntityProperties = (oCall, sEntityName) => {
+            var wrongProperties;
+            try {
+              const oEntityProperties = Object.keys(JSON.parse(oCall.mParameters.oXhr.requestBody)[`to${sEntityName.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())}`][0]);
+              const oEntityPropertiesExpected = oCall.getSource()._mEntityTypes[sEntityName.toLowerCase()].properties.map(x => x.name);
+              wrongProperties = oEntityProperties.every(x => oEntityPropertiesExpected.includes(x));
+            } catch (e) {
+              wrongProperties = false;
+            }
+            if (!wrongProperties) {
+              oCall.mParameters.oXhr.respond(400, {
+                "Content-Type": "text/plain;charset=utf-8"
+              }, "Bad Request: Wrong properties");
+            }
+          };
+
           /* ===========================================================
           //For getEntity, it must match an automated or json provided entry!!!!!           
           ============================================================= */
@@ -114,68 +134,72 @@ sap.ui.define([
                 oCall.mParameters.oEntity.toXLSX = toXLSX;
                 break;
               case 'CREATE':
+                valEntityProperties(oCall, 'MAIN');
                 var toReturn = {
                   results: [{
-                    message: "S&&chindo one"
-                  },
-                  // {
-                  //   message: "pura madre1"
-                  // },
-                  // {
-                  //   message: "pura madre2"
-                  // }
-                ]
+                      message: "S&&chindo one"
+                    },
+                    // {
+                    //   message: "pura madre1"
+                    // },
+                    // {
+                    //   message: "pura madre2"
+                    // }
+                  ]
                 };
                 oCall.mParameters.oEntity.toReturn = toReturn;
                 break;
-                case 'DOWNLOAD':
-                  // var toReturn = {
-                  //   results: [{
-                  //     message: "S&&chindo one"
-                  //   },
-                  var toXLSX = {
-                    results: [{
+              case 'DOWNLOAD':
+                // var toReturn = {
+                //   results: [{
+                //     message: "S&&chindo one"
+                //   },
+                var toXLSX = {
+                  results: [{
                       vkorg: "vkorgHEADER",
                       bukrs: "bukrsHEADER",
                     },
                     {
                       vkorg: "vkorg VAL",
                       bukrs: "bukrs VAL",
-                    }]
-                  };
-                  // oCall.mParameters.oEntity.toReturn = toReturn;
-                  oCall.mParameters.oEntity.toXLSX = toXLSX;
-                  break;
-                  case 'UPLOAD':
-                    // var toReturn = {
-                    //   results: [{
-                    //     "message": "&&Uploaded successfully"
-                    //   },
-                    //   {
-                    //     "message": "perro successfully",
-                    //   }]
-                    // };
-                    // oCall.mParameters.oEntity.toReturn = toReturn;
-                    // var toError = {
-                    //   results: [{
-                    //     "Msg": "&&Uploaded successfully"
-                    //   },
-                    //   {
-                    //     "Msg": "perro successfully",
-                    //     "Plant": "Plant VAL1"
-                    //   }]
-                    // };
-                    // oCall.mParameters.oEntity.toError = toError;
-                    var toOutput = {
-                      results: [{
-                        "Msg": "&&Uploaded successfully"
-                      },
-                      {
-                        "Msg": "perro successfully"
-                      }]
-                    };
-                    oCall.mParameters.oEntity.toOutput = toOutput;
-                    break;
+                    }
+                  ]
+                };
+                // oCall.mParameters.oEntity.toReturn = toReturn;
+                oCall.mParameters.oEntity.toXLSX = toXLSX;
+                break;
+              case 'UPLOAD':
+                valEntityProperties(oCall, 'MAIN');
+                // var toReturn = {
+                //   results: [{
+                //     "message": "&&Uploaded successfully"
+                //   },
+                //   {
+                //     "message": "perro successfully",
+                //   }]
+                // };
+                // oCall.mParameters.oEntity.toReturn = toReturn;
+                // var toError = {
+                //   results: [{
+                //     "Msg": "&&Uploaded successfully"
+                //   },
+                //   {
+                //     "Msg": "perro successfully",
+                //     "Plant": "Plant VAL1"
+                //   }]
+                // };
+                // oCall.mParameters.oEntity.toError = toError;
+                var toOutput = {
+                  results: [{
+                      "Msg": "&&Uploaded successfully"
+                    },
+                    {
+                      "Msg": "perro successfully"
+                    }
+                  ]
+                };
+                oCall.mParameters.oEntity.toOutput = toOutput;
+                break;
               default:
                 break;
             }

@@ -24,7 +24,7 @@
 										<form:formElements>
 											<form:FormElement label="Upload File">
 												<form:fields>
-													<unified:FileUploader fileType="xlsx" iconOnly="true" icon="sap-icon://attachment" uploadComplete="onHandleUploadComplete" uploadOnChange="true" uploadStart="onHandleUploadStart" change="onHandleUploadStart" class="sapUiTinyMarginEnd" busy="{datosGral>/atta}" width="100%"/>
+													<unified:FileUploader value="{datosGral>/in1}" id="fileuploader" fileType="xlsx" iconOnly="true" icon="sap-icon://attachment" uploadComplete="onHandleUploadComplete" uploadOnChange="true" uploadStart="onHandleUploadStart" change="onHandleUploadStart" class="sapUiTinyMarginEnd" busy="{datosGral>/atta}" width="100%"/>
 												</form:fields>
 											</form:FormElement>
 											<form:FormElement label="">

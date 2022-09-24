@@ -12,7 +12,9 @@ sap.ui.define([
   var aMockservers = [];
 
   // initialize the mock server
-  aMockservers.push(mockserver.init(), mockserverBase.init());
+  aMockservers.push(mockserver.init({
+    errorType: "badRequest"
+  }), mockserverBase.init());
 
   Promise.all(aMockservers).catch(function (oError) {
     MessageBox.error(oError.message);

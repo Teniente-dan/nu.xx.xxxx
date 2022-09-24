@@ -19,6 +19,7 @@ sap.ui.define([
   "use strict";
 
   return BaseController.extend("nu.xx.xxxx.controller.Mass", {
+    dontClear: false,
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
       this.oRouter.getRoute("massView").attachPatternMatched(this.onPageLoaded, this);
@@ -119,6 +120,9 @@ sap.ui.define([
     },
     onUpload: function (oEvent) {
       var datosGral = this.datosGral.getData();
+      if (!datosGral.in1) {
+        return MessageBox.error("Please select a file");
+      }
       if (!this.oGlobalBusyDialog) {
         this.oGlobalBusyDialog = new sap.m.BusyDialog();
       }
@@ -185,9 +189,13 @@ sap.ui.define([
               MessageBox.error(message);
             } else if (err.responseText) {
               var error = `${err.statusCode}:`;
-              JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
-                error = error ? `${error}\n${err.message}` : err.message;
-              });
+              try {
+                JSON.parse(err.responseText).error.innererror.errordetails.forEach((err) => {
+                  error = error ? `${error}\n${err.message}` : err.message;
+                });
+              } catch (e) {
+                error = `${err.statusCode}: ${err.responseText}`;
+              }
               MessageBox.error(error);
             } else {
               MessageBox.error(`${err.statusCode}: ${err.message}`);
@@ -215,7 +223,10 @@ sap.ui.define([
             C1: value,
             state: "Error"
           };
-        })
+        });
+        if (!this.dontClear) {
+          this.byId("fileuploader").clear();
+        }
         this.getOwnerComponent().oFlowFrag.open(oResults, "Creation Results", this.getView());
 
       }
