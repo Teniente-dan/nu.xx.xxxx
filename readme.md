@@ -12,6 +12,6 @@
 9. replace specific service XML in localService/
 10. replace specific service URL in manifest under mainService
 11. search and replace zzzz with **name** of point 6.
-12. search for FSCODE it signals possible changes 
-13. ***Stage Changes and init commit*** for better tracking of common improvements
+12. ***Stage Changes and init commit*** for better tracking of common improvements
+13. search for FSCODE it signals possible changes 
 14. use catalog snippets from common_valueHelp_catalogs
