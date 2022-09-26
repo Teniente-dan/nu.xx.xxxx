@@ -125,7 +125,24 @@ sap.ui.define(
       },
       get18: function () {
         return this.getOwnerComponent().getModel("i18n").getResourceBundle();
-      },      
+      },
+      valHeader: function (XLSXoHeader, oHeaders) {
+        var oHeader = Object.values(oHeaders);
+        var oHeaderXLSX = Object.keys(XLSXoHeader);
+        var error = `File is not valid. Please verify the template`;
+        oHeader.every((key) => {
+          if (oHeaderXLSX.indexOf(key) === -1) {
+            throw new Error(error);
+          }
+          return true;
+        });
+        oHeaderXLSX.every((key) => {
+          if (oHeader.indexOf(key) === -1) {
+            throw new Error(error);
+          }
+          return true;
+        });
+      },
     });
   }
 );

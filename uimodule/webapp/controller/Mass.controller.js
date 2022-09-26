@@ -251,10 +251,13 @@ sap.ui.define([
           this.getOwnerComponent().oXlsxUtils.readTemplate(this.templateFile, true)
             .then(
               (jsonObj) => {
-                this.toMain = this.mapToBackend(jsonObj);
-                console.log('%c', 'font-weight: bold; background-color: lightblue;font-size: large;')
+                if (this.valHeader(jsonObj[0], this.oHeaders)) {
+                  this.toMain = this.mapToBackend(jsonObj);
+                }
+                console.log('%c', 'font-weight: bold; background-color: lightblue;font-size: large;');
               })
             .catch((error) => {
+              this.byId("fileuploader").clear();
               MessageBox.error(error.responseText || error.message);
             })
             .finally(() => {
