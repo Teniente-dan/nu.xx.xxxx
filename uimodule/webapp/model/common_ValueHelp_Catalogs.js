@@ -266,5 +266,16 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/vkgrpSet", arrFields);
     },
+
+    vtwegValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vtweg",
+        textName: "DChl"
+      }, {
+        text: "common>Vtext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/vtwegSet", arrFields);
+    },    
   };
 });

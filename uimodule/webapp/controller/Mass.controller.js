@@ -154,9 +154,9 @@ sap.ui.define([
           // ----------------------------------------------------------------------------------------------FSCODE
           // ----------------------------------------------------------------------------------------------------
           item.r1 = datosGral.in14 ? "X" : "";
-          item.as4text = (datosGral.in14 ? (datosGral.in16 || "") : "").substring(0, 30);
+          item.as4text = (datosGral.in14 ? (datosGral.in16 || "") : "").substring(0, 30); //DESCRIPTION
           item.r2 = datosGral.in15 ? "X" : "";
-          item.strkorr = datosGral.in15 ? (datosGral.in17 || "") : "";
+          item.strkorr = datosGral.in15 ? (datosGral.in17 || "") : ""; //OWN REQUEST
           return item;
         }),
         toReturn: [],

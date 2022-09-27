@@ -130,18 +130,17 @@ sap.ui.define(
         var oHeader = Object.values(oHeaders);
         var oHeaderXLSX = Object.keys(XLSXoHeader);
         var error = `File is not valid. Please verify the template`;
-        oHeader.every((key) => {
+        oHeader.forEach((key) => {
           if (oHeaderXLSX.indexOf(key) === -1) {
             throw new Error(error);
           }
-          return true;
         });
-        oHeaderXLSX.every((key) => {
+        oHeaderXLSX.forEach((key) => {
           if (oHeader.indexOf(key) === -1) {
             throw new Error(error);
           }
-          return true;
         });
+        return true;
       },
     });
   }

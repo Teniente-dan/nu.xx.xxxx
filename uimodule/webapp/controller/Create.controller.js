@@ -232,9 +232,9 @@ sap.ui.define([
         // ----------------------------------------------------------------------------------------------------
         toMain: [{
           vkorg: (this.replaceSpaces(datosGral.in1) || ""), //.toString().substring(0, 4),
-          bukrs: (datosGral.in2 || "").toString(),
-          as4text: datosGral.in14 ? (datosGral.in16 || "") : "",
-          strkorr: datosGral.in15 ? (datosGral.in17 || "") : "",
+          bukrs: (datosGral.in2 || "").toString(),          
+          as4text: datosGral.in14 ? (datosGral.in16 || "") : "", //DESCRIPTION
+          strkorr: datosGral.in15 ? (datosGral.in17 || "") : "", //OWN REQUEST
           r1: datosGral.in14 ? "X" : "",
           r2: datosGral.in15 ? "X" : "",
         }],
