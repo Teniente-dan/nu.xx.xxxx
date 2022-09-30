@@ -110,7 +110,7 @@ sap.ui.define([], function () {
         text: "common>Vtext",
         textName: "Name"
       }];
-      this.valueHelpBuild("common>/salesOrgSet", arrFields);
+      this.valueHelpBuild("common>/vkorgSet", arrFields);
     },
 
     bukrsValueHelp: function () {
@@ -276,6 +276,17 @@ sap.ui.define([], function () {
         textName: "Name"
       }];
       this.valueHelpBuild("common>/vtwegSet", arrFields);
-    },    
+    },   
+    
+    spartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Spart",
+        textName: "Dv"
+      }, {
+        text: "common>Vtext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/spartSet", arrFields);
+    },     
   };
 });
