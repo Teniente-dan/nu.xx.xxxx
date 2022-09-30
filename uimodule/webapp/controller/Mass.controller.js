@@ -240,7 +240,7 @@ sap.ui.define([
      Managed Upload
     ============================================================= */
     onHandleUploadStart: function (oEvent) {
-      this.datosGral.setProperty("/atta", true);
+      // this.datosGral.setProperty("/atta", true);
       this.templateFile = oEvent.getParameter("files")[0];
     },
     onHandleUploadComplete: function (oEvent) {
@@ -261,7 +261,7 @@ sap.ui.define([
               MessageBox.error(error.responseText || error.message);
             })
             .finally(() => {
-              this.datosGral.setProperty("/atta", false);
+              // this.datosGral.setProperty("/atta", false);
             });
         })
         .catch(() => {
