@@ -19,7 +19,7 @@ sap.ui.define([
   "use strict";
 
   return BaseController.extend("nu.xx.xxxx.controller.Mass", {
-    dontClear: false,
+    dontClear: false, //-----UPDATE
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
       this.oRouter.getRoute("massView").attachPatternMatched(this.onPageLoaded, this);
@@ -215,7 +215,7 @@ sap.ui.define([
           var okFlow = value.split("&&");
           if (okFlow.length > 1) {
             return {
-              C1: okFlow[0] + " " + okFlow[1],
+              C1: okFlow[1], //-----UPDATE
               state: "Success"
             };
           }
@@ -224,6 +224,7 @@ sap.ui.define([
             state: "Error"
           };
         });
+        //-----UPDATE
         if (!this.dontClear) {
           this.byId("fileuploader").clear();
         }
@@ -250,6 +251,7 @@ sap.ui.define([
         .then(() => {
           this.getOwnerComponent().oXlsxUtils.readTemplate(this.templateFile, true)
             .then(
+              //-----UPDATE
               (jsonObj) => {
                 if (this.valHeader(jsonObj[0], this.oHeaders)) {
                   this.toMain = this.mapToBackend(jsonObj);
@@ -257,7 +259,7 @@ sap.ui.define([
                 console.log('%c', 'font-weight: bold; background-color: lightblue;font-size: large;');
               })
             .catch((error) => {
-              this.byId("fileuploader").clear();
+              this.byId("fileuploader").clear(); //-----UPDATE
               MessageBox.error(error.responseText || error.message);
             })
             .finally(() => {
