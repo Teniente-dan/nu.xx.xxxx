@@ -12,7 +12,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/ownRequestSet", arrFields);
     },
 
-    //title
+    // title
     titleValueHelp: function () {
       var arrFields = [{
         text: "common>TitleMedi",
@@ -21,7 +21,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/titleSet", arrFields);
     },
 
-    //factory calendar
+    // factory calendar
     factoryValueHelp: function () {
       var arrFields = [{
         text: "common>Ident",
@@ -33,7 +33,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/calendarSet", arrFields);
     },
 
-    //language
+    // language
     languageValueHelp: function () {
       var arrFields = [{
         text: "common>Spras",
@@ -45,7 +45,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/languageSet", arrFields);
     },
 
-    //region
+    // region
     regionValueHelp: function () {
       var arrFields = [{
         text: "common>Land1",
@@ -60,7 +60,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/regionSet", arrFields);
     },
 
-    //street
+    // street
     streetValueHelp: function () {
       var arrFields = [{
         text: "common>CityName",
@@ -93,7 +93,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/streetSet", arrFields);
     },
 
-    //Country/Region
+    // Country/Region
     countryValueHelp: function () {
       var arrFields = [{
         text: "common>Land1",
@@ -108,7 +108,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/countrySet", arrFields);
     },
 
-    //company code
+    // company code
     bukrsValueHelp: function () {
       var arrFields = [{
         text: "common>Bukrs",
@@ -157,7 +157,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/currencySet", arrFields);
     },
 
-    //business area
+    // business area
     gsberValueHelp: function () {
       var arrFields = [{
         text: "common>Gsber",
@@ -169,7 +169,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/gsberSet", arrFields);
     },
 
-    //sales organization
+    // sales organization
     vkorgValueHelp: function () {
       var arrFields = [{
         text: "common>Vkorg",
@@ -181,7 +181,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vkorgSet", arrFields);
     },
 
-    //chart of accounts
+    // chart of accounts
     ktoplValueHelp: function () {
       var arrFields = [{
         text: "common>Ktopl",
@@ -204,7 +204,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/fstvaSet", arrFields);
     },
 
-    //purchase organization
+    // purchase organization
     ekorgValueHelp: function () {
       var arrFields = [{
         text: "common>Ekorg",
@@ -216,7 +216,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/ekorgSet", arrFields);
     },
 
-    //plant
+    // plant
     werksValueHelp: function () {
       var arrFields = [{
         text: "common>Werks",
@@ -243,7 +243,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/werksSet", arrFields);
     },
 
-    //storage location
+    // storage location
     lgortValueHelp: function () {
       var arrFields = [{
         text: "common>Werks",
@@ -269,7 +269,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vkgrpSet", arrFields);
     },
 
-    //distribution channel    
+    // distribution channel    
     vtwegValueHelp: function () {
       var arrFields = [{
         text: "common>Vtweg",
@@ -281,7 +281,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vtwegSet", arrFields);
     },
 
-    //division    
+    // division    
     spartValueHelp: function () {
       var arrFields = [{
         text: "common>Spart",
@@ -292,5 +292,17 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/spartSet", arrFields);
     },
+
+    // sales office
+    vkburValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vkbur",
+        textName: "SOff"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/vkburSet", arrFields);
+    }
   };
 });

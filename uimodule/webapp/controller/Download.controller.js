@@ -75,7 +75,7 @@ sap.ui.define([
     f1ValueHelp: function () {
       // ----------------------------------------------------------------------------------------------FSCODE
       // ----------------------------------------------------------------------------------------------------           
-      this.catalogs.salesOrgValueHelp.bind(this)();
+      this.catalogs.vkorgValueHelp.bind(this)();
     },
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;

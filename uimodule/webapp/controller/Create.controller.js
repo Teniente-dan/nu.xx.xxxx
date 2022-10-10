@@ -67,7 +67,7 @@ sap.ui.define([
       // ----------------------------------------------------------------------------------------------------
       switch (param) {
         case "in1":
-          this.catalogs.salesOrgValueHelp.bind(this)();
+          this.catalogs.vkorgValueHelp.bind(this)();
           break;
         case "in2":
           this.catalogs.bukrsValueHelp.bind(this)();
