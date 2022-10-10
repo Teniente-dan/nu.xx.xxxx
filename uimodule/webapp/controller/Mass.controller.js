@@ -18,7 +18,7 @@ sap.ui.define([
 ) {
   "use strict";
 
-  return BaseController.extend("nu.xx.xxxx.controller.Mass", {
+  return BaseController.extend("nu.<%= module %>.<%= appname %>.controller.Mass", {
     dontClear: false, //-----UPDATE
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);

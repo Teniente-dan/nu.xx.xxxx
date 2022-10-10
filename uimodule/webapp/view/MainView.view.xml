@@ -1,4 +1,4 @@
-<mvc:View controllerName="nu.xx.xxxx.controller.MainView"
+<mvc:View controllerName="nu.<%= module %>.<%= appname %>.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m" displayBlock="true" height="100%" busyIndicatorDelay="0">
     <Page id="page" title="{i18n>title}">

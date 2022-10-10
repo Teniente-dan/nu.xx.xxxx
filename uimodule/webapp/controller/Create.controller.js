@@ -20,7 +20,7 @@ sap.ui.define([
 ) {
   "use strict";
 
-  return BaseController.extend("nu.xx.xxxx.controller.Create", {
+  return BaseController.extend("nu.<%= module %>.<%= appname %>.controller.Create", {
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
       this.oRouter.getRoute("createView").attachPatternMatched(this.onPageLoaded, this);

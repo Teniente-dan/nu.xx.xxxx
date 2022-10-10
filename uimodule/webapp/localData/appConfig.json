@@ -1,8 +1,8 @@
 {
     "specInputs":["in2"],
     "valFields": ["in1", "in2"],
-    "fragFlow": "nu.xx.xxxx.view.fragments.flowCreation",
-    "fragValueHelp" : "nu.xx.xxxx.view.fragments.ValueHelpDialog",
+    "fragFlow": "nu.<%= module %>.<%= appname %>.view.fragments.flowCreation",
+    "fragValueHelp" : "nu.<%= module %>.<%= appname %>.view.fragments.ValueHelpDialog",
     "downloadFileName": "Assign Sales Data",
     "templateName": "Assign Sales Template"
 }

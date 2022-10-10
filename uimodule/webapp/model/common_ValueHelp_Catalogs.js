@@ -1,14 +1,6 @@
 sap.ui.define([], function () {
   "use strict";
   return {
-    titleValueHelp: function () {
-      var arrFields = [{
-        text: "common>TitleMedi",
-        textName: "Title"
-      }];
-      this.valueHelpBuild("common>/titleSet", arrFields);
-    },
-
     ownValueHelp: function () {
       var arrFields = [{
         text: "common>strkorr",
@@ -20,6 +12,16 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/ownRequestSet", arrFields);
     },
 
+    //title
+    titleValueHelp: function () {
+      var arrFields = [{
+        text: "common>TitleMedi",
+        textName: "Title"
+      }];
+      this.valueHelpBuild("common>/titleSet", arrFields);
+    },
+
+    //factory calendar
     factoryValueHelp: function () {
       var arrFields = [{
         text: "common>Ident",
@@ -31,6 +33,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/calendarSet", arrFields);
     },
 
+    //language
     languageValueHelp: function () {
       var arrFields = [{
         text: "common>Spras",
@@ -42,6 +45,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/languageSet", arrFields);
     },
 
+    //region
     regionValueHelp: function () {
       var arrFields = [{
         text: "common>Land1",
@@ -56,6 +60,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/regionSet", arrFields);
     },
 
+    //street
     streetValueHelp: function () {
       var arrFields = [{
         text: "common>CityName",
@@ -88,6 +93,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/streetSet", arrFields);
     },
 
+    //Country/Region
     countryValueHelp: function () {
       var arrFields = [{
         text: "common>Land1",
@@ -102,17 +108,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/countrySet", arrFields);
     },
 
-    salesOrgValueHelp: function () {
-      var arrFields = [{
-        text: "common>Vkorg",
-        textName: "SOrg."
-      }, {
-        text: "common>Vtext",
-        textName: "Name"
-      }];
-      this.valueHelpBuild("common>/vkorgSet", arrFields);
-    },
-
+    //company code
     bukrsValueHelp: function () {
       var arrFields = [{
         text: "common>Bukrs",
@@ -161,6 +157,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/currencySet", arrFields);
     },
 
+    //business area
     gsberValueHelp: function () {
       var arrFields = [{
         text: "common>Gsber",
@@ -172,6 +169,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/gsberSet", arrFields);
     },
 
+    //sales organization
     vkorgValueHelp: function () {
       var arrFields = [{
         text: "common>Vkorg",
@@ -183,6 +181,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vkorgSet", arrFields);
     },
 
+    //chart of accounts
     ktoplValueHelp: function () {
       var arrFields = [{
         text: "common>Ktopl",
@@ -205,6 +204,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/fstvaSet", arrFields);
     },
 
+    //purchase organization
     ekorgValueHelp: function () {
       var arrFields = [{
         text: "common>Ekorg",
@@ -216,6 +216,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/ekorgSet", arrFields);
     },
 
+    //plant
     werksValueHelp: function () {
       var arrFields = [{
         text: "common>Werks",
@@ -242,6 +243,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/werksSet", arrFields);
     },
 
+    //storage location
     lgortValueHelp: function () {
       var arrFields = [{
         text: "common>Werks",
@@ -267,6 +269,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vkgrpSet", arrFields);
     },
 
+    //distribution channel    
     vtwegValueHelp: function () {
       var arrFields = [{
         text: "common>Vtweg",
@@ -276,8 +279,9 @@ sap.ui.define([], function () {
         textName: "Name"
       }];
       this.valueHelpBuild("common>/vtwegSet", arrFields);
-    },   
-    
+    },
+
+    //division    
     spartValueHelp: function () {
       var arrFields = [{
         text: "common>Spart",
@@ -287,6 +291,6 @@ sap.ui.define([], function () {
         textName: "Name"
       }];
       this.valueHelpBuild("common>/spartSet", arrFields);
-    },     
+    },
   };
 });

@@ -44,9 +44,9 @@
             },
             applications: {
                 "nusdassignSales-tile": {
-                    title: "Title of nu.xx.xxxx",
-                    description: "Description of nu.xx.xxxx",
-                    additionalInformation: "SAPUI5.Component=nu.xx.xxxx",
+                    title: "Title of nu.<%= module %>.<%= appname %>",
+                    description: "Description of nu.<%= module %>.<%= appname %>",
+                    additionalInformation: "SAPUI5.Component=nu.<%= module %>.<%= appname %>",
                     applicationType: "URL",
                     url: "../"
                 }
@@ -64,7 +64,7 @@
         data-sap-ui-theme="sap_fiori_3"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-language="en"
-        data-sap-ui-resourceroots='{"nu.xx.xxxx": "../"}'
+        data-sap-ui-resourceroots='{"nu.<%= module %>.<%= appname %>": "../"}'
         data-sap-ui-frameOptions="allow"> // NON-SECURE setting for testing environment
         </script>
 </head>
