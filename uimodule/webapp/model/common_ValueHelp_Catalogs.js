@@ -258,6 +258,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/lgortSet", arrFields);
     },
 
+    // sales group
     vkgrpValueHelp: function () {
       var arrFields = [{
         text: "common>Vkgrp",
