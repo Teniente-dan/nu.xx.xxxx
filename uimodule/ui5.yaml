@@ -1,6 +1,6 @@
 specVersion: "2.2"
 metadata:
-  name: zzzz_uimodule
+  name: <%= appname %>_uimodule
 type: application
 resources:
   configuration:

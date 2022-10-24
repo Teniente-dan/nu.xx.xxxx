@@ -1,7 +1,7 @@
 {
   "_version": "1.42.0",
   "sap.app": {
-    "id": "nu.xx.xxxx",
+    "id": "nu.<%= module %>.<%= appname %>",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -16,11 +16,11 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZNU_ASSIGN_SALES_ORG_SRV/",
+        "uri": "/sap/opu/odata/sap/<%= odata %>/",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0",
-          "localUri": "localService/ZNU_ASSIGN_SALES_ORG_SRV.xml"
+          "localUri": "localService/<%= odata %>.xml"
         }
       },
       "commonService": {
@@ -70,7 +70,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "nu.xx.xxxx.i18n.i18n"
+          "bundleName": "nu.<%= module %>.<%= appname %>.i18n.i18n"
         }
       },
       "": {
@@ -109,7 +109,7 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "nu.xx.xxxx.view",
+        "viewPath": "nu.<%= module %>.<%= appname %>.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false
@@ -174,7 +174,7 @@
       }
     },
     "rootView": {
-      "viewName": "nu.xx.xxxx.view.App",
+      "viewName": "nu.<%= module %>.<%= appname %>.view.App",
       "type": "XML",
       "async": true,
       "id": "App"

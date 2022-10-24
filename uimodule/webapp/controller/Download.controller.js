@@ -18,7 +18,7 @@ sap.ui.define([
 ) {
   "use strict";
 
-  return BaseController.extend("nu.xx.xxxx.controller.Download", {
+  return BaseController.extend("nu.<%= module %>.<%= appname %>.controller.Download", {
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
       this.oRouter.getRoute("downloadView").attachPatternMatched(this.onPageLoaded, this);
@@ -75,7 +75,7 @@ sap.ui.define([
     f1ValueHelp: function () {
       // ----------------------------------------------------------------------------------------------FSCODE
       // ----------------------------------------------------------------------------------------------------           
-      this.catalogs.salesOrgValueHelp.bind(this)();
+      this.catalogs.vkorgValueHelp.bind(this)();
     },
     handleValueItemPress: function (oEvent) {
       var param = this._oDialog.param;

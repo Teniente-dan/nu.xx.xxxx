@@ -18,7 +18,7 @@ sap.ui.define([
 ) {
   "use strict";
 
-  return BaseController.extend("nu.xx.xxxx.controller.Mass", {
+  return BaseController.extend("nu.<%= module %>.<%= appname %>.controller.Mass", {
     dontClear: false, //-----UPDATE
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -213,9 +213,9 @@ sap.ui.define([
             return result[property];
           }).join(" ");
           var okFlow = value.split("&&");
-          if (okFlow.length > 1) {
+          if (okFlow.length > 1 || value.includes("succ") || value.includes("Succ")) { //-----UPDATE
             return {
-              C1: okFlow[1], //-----UPDATE
+              C1: okFlow.length > 1 ? okFlow[1] : value, //-----UPDATE
               state: "Success"
             };
           }

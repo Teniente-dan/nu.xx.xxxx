@@ -1,6 +1,6 @@
 {
   "generator-template-ui5-project": {
-    "projectname": "zzzz",
+    "projectname": "<%= appname %>",
     "namespaceUI5": "nu.sd",
     "enableFPM": false,
     "platform": "Static webserver",

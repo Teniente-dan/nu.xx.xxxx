@@ -3,8 +3,8 @@ sap.ui.define(
   ["sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/ui/core/UIComponent",
-    "nu/xx/xxxx/model/formatter",
-    "nu/xx/xxxx/model/common_ValueHelp_Catalogs",
+    "nu/<%= module %>/<%= appname %>/model/formatter",
+    "nu/<%= module %>/<%= appname %>/model/common_ValueHelp_Catalogs",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/Filter"
   ],
@@ -22,7 +22,7 @@ sap.ui.define(
     Filter) {
     "use strict";
 
-    return Controller.extend("nu.xx.xxxx.controller.BaseController", {
+    return Controller.extend("nu.<%= module %>.<%= appname %>.controller.BaseController", {
       formatter: formatter,
       catalogs: common_ValueHelp_Catalogs,
       /**

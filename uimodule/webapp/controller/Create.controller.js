@@ -20,7 +20,7 @@ sap.ui.define([
 ) {
   "use strict";
 
-  return BaseController.extend("nu.xx.xxxx.controller.Create", {
+  return BaseController.extend("nu.<%= module %>.<%= appname %>.controller.Create", {
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
       this.oRouter.getRoute("createView").attachPatternMatched(this.onPageLoaded, this);
@@ -67,7 +67,7 @@ sap.ui.define([
       // ----------------------------------------------------------------------------------------------------
       switch (param) {
         case "in1":
-          this.catalogs.salesOrgValueHelp.bind(this)();
+          this.catalogs.vkorgValueHelp.bind(this)();
           break;
         case "in2":
           this.catalogs.bukrsValueHelp.bind(this)();
@@ -277,8 +277,8 @@ sap.ui.define([
     displayResults: function (arrResults) {
       if (arrResults.length > 0) {
         var okFlow = arrResults[0].message.split("&&");
-        if (okFlow.length > 1) {
-          MessageBox.success(okFlow[1], {
+        if (okFlow.length > 1 || arrResults[0].message.includes("succ") || arrResults[0].message.includes("Succ")) { //-----UPDATE
+          MessageBox.success(okFlow.length > 1 ? okFlow[1]: arrResults[0].message, { //-----UPDATE
             onClose: function () {
               this.closeView();
             }.bind(this)
