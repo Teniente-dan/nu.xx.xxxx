@@ -240,6 +240,7 @@ sap.ui.define([
         }],
         toReturn: []
       };
+      console.warn(`oPayload: ${JSON.stringify(oPayload.toMain)}`);
       this.getModel().setUseBatch(false);
       console.trace(`CREATE: ${JSON.stringify(oPayload)}`);
       return new Promise(function (resolve, reject) {

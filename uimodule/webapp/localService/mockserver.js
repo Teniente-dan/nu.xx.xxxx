@@ -23,6 +23,8 @@ sap.ui.define([
      */
     init: function (oOptionsParameter) {
       var oOptions = oOptionsParameter || {};
+      var sManifestUrl = sap.ui.require.toUrl(`${_sAppPath  }localService/mockFields.json`);
+      var mockFields = new JSONModel(sManifestUrl);
 
       return new Promise(function (fnResolve, fnReject) {
         var sManifestUrl = sap.ui.require.toUrl(_sAppPath + "manifest.json"),
@@ -125,19 +127,20 @@ sap.ui.define([
           oMockServer.attachAfter(sap.ui.core.util.MockServer.HTTPMETHOD.POST, function (oCall) {
             switch (oCall.mParameters.oEntity.actionKey) {
               case 'TEMPLATE':
-                var toXLSX = {
-                  results: [{
-                    vkorg: "vkorgHEADER",
-                    bukrs: "bukrsHEADER",
-                  }]
-                };
+                var toXLSX = mockFields.getData();
+                // {
+                //   results: [{
+                //     vkorg: "vkorgHEADER",
+                //     bukrs: "bukrsHEADER",
+                //   }]
+                // };
                 oCall.mParameters.oEntity.toXLSX = toXLSX;
                 break;
               case 'CREATE':
                 valEntityProperties(oCall, 'MAIN');
                 var toReturn = {
                   results: [{
-                      message: "S&&chindo one"
+                      message: "S&&chido one"
                     },
                     // {
                     //   message: "pura madre1"

@@ -163,6 +163,7 @@ sap.ui.define([
         toOutput: [],
         toError: [],
       };
+      console.warn(`oPayload: ${JSON.stringify(oPayload.toMain)}`);
       this.getModel().setUseBatch(false);
       console.trace(`UPLOAD: ${JSON.stringify(oPayload)}`);
       return new Promise(function (resolve, reject) {

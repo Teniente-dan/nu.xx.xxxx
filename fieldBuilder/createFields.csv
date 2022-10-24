@@ -1,0 +1,4 @@
+id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass
+in1,Ktopl,Ktopl 1,x,x,,x,,
+in2,Ktoks,Ktoks 1,x,x,,x,,
+in17,strkorr,strkorr 1,x,,,,,x
