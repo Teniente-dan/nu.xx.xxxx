@@ -146,6 +146,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/rcompSet", arrFields);
     },
 
+    // currency
     currencyValueHelp: function () {
       var arrFields = [{
         text: "common>Waers",
@@ -304,6 +305,36 @@ sap.ui.define([], function () {
         textName: "Description"
       }];
       this.valueHelpBuild("common>/vkburSet", arrFields);
-    }
+    },
+
+    // account group
+    ktoksValueHelp: function () {
+      var arrFields = [{
+        text: "common>Ktopl",
+        textName: "Chrt/Accts"
+      }, {
+        text: "common>Ktoks",
+        textName: "AcGp"
+      }, {
+        text: "common>Txt30",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/ktoksSet", arrFields);
+    },
+
+    // from to g/l account
+    vonnrValueHelp: function () {
+      var arrFields = [{
+        text: "common>Saknr",
+        textName: "G/L Acct"
+      }, {
+        text: "common>Ktopl",
+        textName: "Chrt/Accts"
+      }, {
+        text: "common>Txt50",
+        textName: "Long Text"
+      }];
+      this.valueHelpBuild("common>/vonnrSet", arrFields);
+    }    
   };
 });
