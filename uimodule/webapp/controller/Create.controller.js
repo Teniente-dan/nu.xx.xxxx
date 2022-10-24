@@ -19,7 +19,7 @@ sap.ui.define([
   FilterOperator
 ) {
   "use strict";
-
+  //-----UPDATE
   return BaseController.extend("nu.<%= module %>.<%= appname %>.controller.Create", {
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -305,7 +305,9 @@ sap.ui.define([
       // ----------------------------------------------------------------------------------------------------
       switch (param) {
         case "in1":
-          filterProperty1 = [new Filter("Vkorg", FilterOperator.Contains, sValue)];
+          filterProperty1 = [
+            new Filter("Vkorg", FilterOperator.Contains, sValue)
+          ];
           break;
         case "in2":
           filterProperty1 = [

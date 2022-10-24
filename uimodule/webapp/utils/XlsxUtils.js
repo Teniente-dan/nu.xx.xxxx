@@ -18,7 +18,7 @@ sap.ui.define(
        Descargar Template
       ============================================================= */
       getTemplate: function (oXlsxTemp, oTitle) {
-        var data = [{}];
+        var data = [];
         data.push(oXlsxTemp);
         const worksheet = XLSX.utils.json_to_sheet(data);
         const workbook = {
