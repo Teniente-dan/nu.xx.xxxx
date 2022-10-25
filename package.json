@@ -16,10 +16,10 @@
     "serve:uimodule": "ui5 serve --config=uimodule/ui5.yaml",
     "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist --include-task=generateManifestBundle",
 
-    "testoBasic": "wdio run wdio.basic.conf.js -- --headless",
-    "testoSpec": "wdio run wdio.spec.conf.js -- --headless",
-    "testox": "npm run testoBasic && npm run testoSpec",
-    "testow": "wdio run wdio.wip.conf.js -- --watch"
+    "testoBasic": "npm run buildf && wdio run wdio.basic.conf.js -- --headless",
+    "testoSpec": "npm run buildf && wdio run wdio.spec.conf.js -- --headless",
+    "testox": "npm run buildf && npm run testoBasic && npm run testoSpec",
+    "testow": "npm run buildf && wdio run wdio.wip.conf.js -- --watch"
   },
   "devDependencies": {
     "shx": "^0.3.3",
