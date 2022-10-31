@@ -232,7 +232,7 @@ sap.ui.define([
         // ----------------------------------------------------------------------------------------------------
         toMain: [{
           vkorg: (this.replaceSpaces(datosGral.in1) || ""), //.toString().substring(0, 4),
-          bukrs: (datosGral.in2 || "").toString(),          
+          bukrs: (datosGral.in2 || "").toString(),
           as4text: datosGral.in14 ? (datosGral.in16 || "") : "", //DESCRIPTION
           strkorr: datosGral.in15 ? (datosGral.in17 || "") : "", //OWN REQUEST
           r1: datosGral.in14 ? "X" : "",
@@ -276,17 +276,20 @@ sap.ui.define([
       });
     },
     displayResults: function (arrResults) {
+      // ----------------------------------------------------------------------------------------------FSCODE
+      // ----------------------------------------------------------------------------------------------------
+      var message = "Message";
       if (arrResults.length > 0) {
-        var okFlow = arrResults[0].message.split("&&");
-        if (okFlow.length > 1 || arrResults[0].message.includes("succ") || arrResults[0].message.includes("Succ")) { //-----UPDATE
-          MessageBox.success(okFlow.length > 1 ? okFlow[1]: arrResults[0].message, { //-----UPDATE
+        var okFlow = arrResults[0][message].split("&&");
+        if (okFlow.length > 1 || arrResults[0][message].includes("succ") || arrResults[0][message].includes("Succ")) { //-----UPDATE
+          MessageBox.success(okFlow.length > 1 ? okFlow[1] : arrResults[0][message], { //-----UPDATE
             onClose: function () {
               this.closeView();
             }.bind(this)
           });
         } else {
           var oResults = arrResults.map((result) => {
-            return result.message;
+            return result[message];
           }).join("\n");
           MessageBox.error(oResults);
         }

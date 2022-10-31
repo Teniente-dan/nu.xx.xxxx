@@ -25,7 +25,8 @@ const getFieldConfig = async () => {
           retFieldId: row[1],
           retValue: row[2],
           setValue: row[5],
-          duplicate: row[7]
+          duplicate: row[7],
+          checkbox: row[9],
         });
       }
     });
@@ -44,6 +45,8 @@ const buildTemplate = async () => {
   csv.forEach((row) => {
     if (row.retFieldId) {
       line[`${row.retFieldId}${row.duplicate||""}`] = row.retValue;
+    } else if (row.checkbox) {
+      line[`${row.retValue}${row.duplicate||""}`] = row.setValue;      
     } else {
       line[`${row.setValue}${row.duplicate||""}`] = row.retValue;
     }

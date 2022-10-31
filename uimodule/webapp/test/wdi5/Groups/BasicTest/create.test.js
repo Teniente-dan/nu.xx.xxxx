@@ -60,7 +60,7 @@ describe("Create view:", async () => {
     await dialog[1].close();
 
     const allInputs = await browser.allControls(inputSelector);
-    await expect(allInputs.length).toBe(fieldConfig.length);
+    await expect(allInputs.length).toBe(fieldConfig.filter(x=>x.mandatory).length);
     for (const input of allInputs) {
       for (const configId of fieldConfig) {
         const ui5Id = input._domId?.match(/in\d*$/)[0];
@@ -99,6 +99,21 @@ describe("Create view:", async () => {
 
     const selectorBuilder = (arrConfig) => {
       return arrConfig.map((config) => {
+        if (config.checkbox) {
+          return {
+            forceSelect: true,
+            selector: {
+              controlType: "sap.m.CheckBox",
+              id: config.id,
+              viewName: CreateView._viewName
+            },
+            checkbox: true,
+            ui5Id: config.id,
+            setValue: config.setValue,
+            expectedValue: config.retValue
+          };
+        }
+
         if (!config.valueHelp) {
           return {
             forceSelect: true,
@@ -150,16 +165,25 @@ describe("Create view:", async () => {
     const assertInput = async (selector) => {
       const input = await browser.asControl(selector);
       let focusInput = {};
-      if (selector.setValue) {
-        await input.setValue(selector.setValue);
+      let focusVal = {};
+
+      if (selector.checkbox) {
+        await input.setSelected(selector.setValue ? true : false);
         focusInput = input;
+        const checkVal = await input.getSelected();
+        focusVal = checkVal ? "x" : "";
       } else {
-        await input.press();
-        const tableItem = await browser.asControl(tableItemSelector);
-        await tableItem.press();
-        focusInput = await browser.asControl(selector.focusSelector);
+        if (selector.setValue) {
+          await input.setValue(selector.setValue);
+          focusInput = input;
+        } else {
+          await input.press();
+          const tableItem = await browser.asControl(tableItemSelector);
+          await tableItem.press();
+          focusInput = await browser.asControl(selector.focusSelector);
+        }
+        focusVal = await focusInput.getValue();
       }
-      const focusVal = await focusInput.getValue();
       await expect(`${selector.ui5Id}-${focusVal}`).toEqual(`${selector.ui5Id}-${selector.expectedValue}`);
     };
 

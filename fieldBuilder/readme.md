@@ -10,6 +10,7 @@ in1,Ktopl,Ktopl 1,x,x,,x,,
 | in1 | Ktopl      | Ktopl 1  | x         | x         |          | x          |           |             |
 |-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|
 
+
 2. Without Search helps: builder identifies them because valuehelp is empty and sets setValue for input
 
 id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass
@@ -20,6 +21,7 @@ in2,,in2Komok,,x,in2Komok,x,,
 |-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|
 | in2 |            | in2Komok |           | x         | in2Komok | x          |           |             |
 |-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|
+
 
 3. Exclude Mass marks does fields that wont count for Mass Upload
 
@@ -49,5 +51,17 @@ in6,Saknr,Saknr 1,x,x,,x,2,
 |-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|
 | in6 | Saknr      | Saknr 1  | x         | x         |          | x          |         2 |             |
 |-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|
+
+
+5. Checkbox, setValue if true (x) or false (); and same in retValue
+
+id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass,checkbox
+in3,Xkale,x,,,x,x,,,x
+
+|-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|----------|
+| id  | retFieldId | retValue | valueHelp | mandatory | setValue | tempHeader | duplicate | excludeMass | checkbox |
+|-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|----------|
+| in3 | Xkale      | x        |           |           | x        | x          |           |             | x        |
+|-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|----------|
 
 

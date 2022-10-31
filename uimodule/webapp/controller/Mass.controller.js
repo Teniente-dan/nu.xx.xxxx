@@ -171,9 +171,13 @@ sap.ui.define([
           success: function (res) {
             console.trace(`UPLOAD_SUCC: ${JSON.stringify(res)}`);
             if (res.toReturn.results && res.toReturn.results.length > 0) {
+              // ----------------------------------------------------------------------------------------------FSCODE
+              // ----------------------------------------------------------------------------------------------------
               return resolve(that.displayResults(res.toReturn.results, ['message']));
             }
             if (res.toError.results && res.toError.results.length > 0) {
+              // ----------------------------------------------------------------------------------------------FSCODE
+              // ----------------------------------------------------------------------------------------------------
               return resolve(that.displayResults(res.toError.results, ['Msg']));
             }
             if (res.toOutput.results && res.toOutput.results.length > 0) {

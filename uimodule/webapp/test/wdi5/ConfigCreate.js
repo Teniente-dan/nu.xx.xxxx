@@ -32,6 +32,7 @@ class Config {
           mandatory: !!row[4],
           setValue: row[5],
           excludeMass: row[8],
+          checkbox: row[9],
         });
       });
     var end = new Promise(function (resolve, reject) {
