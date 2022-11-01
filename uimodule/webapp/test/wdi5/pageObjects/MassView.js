@@ -2,24 +2,55 @@
 const Page = require("./Page");
 
 class MassView extends Page {
-    async open() {
-        await super.open(`#/mass`);
-    }
+  constructor() {
+    super();
+    this._viewName = "nu.<%= module %>.<%= appname %>.view.Mass";
+    this.navMassButtonText = "Mass";
+  }
+  async open() {
+    await super.open(`#/mass`);
+  }
+  async getNavMassButton() {
+    const massButtonSelector = {
+      forceSelect: true,
+      selector: {
+        controlType: "sap.m.Button",
+        interaction: "press",
+        properties: {
+          text: new RegExp(/.*Mass*/gm)
+        }
+      }
+    };
+    return await browser.asControl(massButtonSelector);
+  }
 
-    _viewName = "nu.<%= module %>.<%= appname %>.view.Mass"
+  async getFileUploader() {
+    const fileUploaderSelector = {
+      forceSelect: true,
+      selector: {
+        id: "fileuploader",
+        viewName: this._viewName,
+      }
+    };
+    return await browser.asControl(fileUploaderSelector);
+  }
 
-    // async getCheckbox() {
-    //     const cbSelector1 = {
-    //         wdio_ui5_key: "cbSelector1",
-    //         selector: {
-    //             id: "idCheckbox",
-    //             viewName: this._viewName,
-    //             controlType: "sap.m.CheckBox"
-    //         }
-    //     }
+  async getUploadButton() {
+    const buttonSelector = {
+      selector: {
+        controlType: "sap.m.Button",
+        interaction: "press",
+        properties: {
+          text: "Upload"
+        }
+      }
+    };
+    return await browser.asControl(buttonSelector);
+  }
 
-    //     return await browser.asControl(cbSelector1)
-    // }
+  async getNavMassPage() {
+    return await browser.asControl(this._getNavPage(this._viewName));
+  }
 }
 
-module.exports = new MassView()
+module.exports = new MassView();

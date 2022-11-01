@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
-    "buildf": "node ./fieldBuilder/fieldBuilder.js",
-    "testo": "npm run buildf && ui5 serve --config=uimodule/ui5.yaml --open 'test/mockServer.html'",
+    "build:fields": "node ./fieldBuilder/script/fieldBuilder.js",
+    "build:mockres": "node ./fieldBuilder/script/mockserverResponseBuilder.js",
+    "buildj": "npm run build:fields && npm run build:mockres",
+    "testo": "npm run buildj && ui5 serve --config=uimodule/ui5.yaml --open 'test/mockServer.html'",
     "buildo": "run-s  build:uimodule && npm run prepDist || npm run prepDist || npm run prepDist",
     "prepDist": "del-cli --force **/dist/controller **/dist/libs **/dist/model **/dist/resources **/dist/utils **/dist/view **/dist/Component.js **/dist/Component-dbg.js **/dist/index.html",
     "test": "run-s lint karma",
@@ -16,10 +18,9 @@
     "serve:uimodule": "ui5 serve --config=uimodule/ui5.yaml",
     "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist --include-task=generateManifestBundle",
 
-    "testoBasic": "npm run buildf && wdio run wdio.basic.conf.js -- --headless",
-    "testoSpec": "npm run buildf && wdio run wdio.spec.conf.js -- --headless",
-    "testox": "npm run buildf && npm run testoBasic && npm run testoSpec",
-    "testow": "npm run buildf && wdio run wdio.wip.conf.js -- --watch"
+    "testoBasic": "npm run buildj && wdio run wdio.basic.conf.js -- --headless",
+    "testoSpec": "npm run buildj && wdio run wdio.spec.conf.js -- --headless",
+    "testow": "npm run buildj && wdio run wdio.wip.conf.js -- --watch"
   },
   "devDependencies": {
     "shx": "^0.3.3",
@@ -43,7 +44,12 @@
     "chromedriver": "^106.0.1",
     "wdio-chromedriver-service": "^8.0.0",
     "wdio-ui5-service": "^0.9.13",
-    "csv": "^6.2.1"
+    "csv": "^6.2.1",
+
+    "@types/jest": "^29.2.0",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^18.11.8",
+    "@wdio/types": "^7.25.1"    
   },
   "ui5": {
     "dependencies": [

@@ -1,4 +1,7 @@
-id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass
-in1,Ktopl,Ktopl 1,x,x,,x,,
-in2,Ktoks,Ktoks 1,x,x,,x,,
-in17,strkorr,strkorr 1,x,,,,,x
+id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass,type
+in1,Preiv,Periv 1,x,x,,Preiv,,,input
+in2,Ltext,in2Ltext,,x,in2Ltext,Ltext,,,input
+in3,Xkale,x,,,x,Xkale,,,checkbox
+in4,Anzbp,in4Anzbp,,x,in4Anzbp,Anzbp,,,input
+in5,Anxsp,in5Anzsp,,x,in5Anzsp,Anxsp,,,input
+in17,strkorr,strkorr 1,x,x,,,,x,input

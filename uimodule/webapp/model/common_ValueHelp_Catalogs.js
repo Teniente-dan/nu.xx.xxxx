@@ -392,5 +392,20 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/rfproSet", arrFields);
     },
+
+    // order type --> Auart
+    auartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Auart",
+        textName: "Type"
+      }, {
+        text: "common>Autyp",
+        textName: "Cat"
+      }, {
+        text: "common>Txt",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/auartSet", arrFields);
+    },
   };
 });

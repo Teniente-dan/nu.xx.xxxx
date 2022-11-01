@@ -1,24 +1,28 @@
-const Page = require("./Page")
-
+/* jshint esversion: 11 */
+const Page = require("./Page");
 class DownloadView extends Page {
-    async open() {
-        await super.open(`#/download`)
-    }
+  constructor() {
+    super();
+    this._viewName = "nu.<%= module %>.<%= appname %>.view.Download";
+    this.navDownloadButtonText = "Download";
+  }
 
-    _viewName = "nu.<%= module %>.<%= appname %>.view.Download"
+  async init() {
+    this.DownConfig = await this._getCsvConfig('./fieldBuilder/downloadFields.csv');
+  }
 
-    // async getCheckbox() {
-    //     const cbSelector1 = {
-    //         wdio_ui5_key: "cbSelector1",
-    //         selector: {
-    //             id: "idCheckbox",
-    //             viewName: this._viewName,
-    //             controlType: "sap.m.CheckBox"
-    //         }
-    //     }
+  async open() {
+    await super.open(`#/download`);
+  }
 
-    //     return await browser.asControl(cbSelector1)
-    // }
+  downloadSelectorBuilder() {
+    return this._selectorBuilder( this.DownConfig, this._viewName );
+  }
+
+  async getNavDownloadPage() {
+    return await browser.asControl(this._getNavPage(this._viewName));
+  }
+
 }
 
-module.exports = new DownloadView()
+module.exports = new DownloadView();

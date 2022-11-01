@@ -1,24 +1,105 @@
-const Page = require("./Page")
-
+/* jshint esversion: 11 */
+const Page = require("./Page");
+const responses = require('../../../localService/mockResponses.json');
 class CreateView extends Page {
-    async open() {
-        await super.open(`#/create`)
+  constructor() {
+    super();
+    this._viewName = "nu.<%= module %>.<%= appname %>.view.Create";
+    this.navCreateButtonText = "Single";
+    const resMess = Object.values(responses.toReturn.results[0])[0];
+    this.successCreateResponse = resMess.split("&&")?.[1] || resMess;
+  }
+
+  async init() {
+    this.CreateConfig = await this._getCsvConfig('./fieldBuilder/createFields.csv');
+  }
+
+  async open() {
+    await super.open(`#/create`);
+  }
+
+  async getCreateButton() {
+    const buttonSelector = {
+      selector: {
+        controlType: "sap.m.Button",
+        interaction: "press",
+        properties: {
+          text: "Create"
+        }
+      }
+    };
+    return await browser.asControl(buttonSelector);
+  }
+
+  async getAllInputs() {
+    const inputSelector = {
+      selector: {
+        controlType: "sap.m.Input",
+        interaction: "focus"
+      }
+    };
+
+    return await browser.allControls(inputSelector);
+  }
+
+  async getAllDialogs() {
+    const dialogSelector = {
+      selector: {
+        controlType: "sap.m.Dialog",
+        interaction: "root"
+      }
+    };
+    return await browser.allControls(dialogSelector);
+  }
+
+  async getRadioButton() {
+    const radioSelector = {
+      selector: {
+        controlType: "sap.m.RadioButton",
+        bindingPath: {
+          path: "",
+          propertyPath: "/in15",
+          modelName: "datosGral"
+        }
+      }
     }
+    return await browser.asControl(radioSelector);
+  }
 
-    _viewName = "nu.<%= module %>.<%= appname %>.view.Create"
+  async getOkDialogSelector() {
+    const okDialogSelector = {
+      selector: {
+        controlType: "sap.m.Dialog",
+        properties: {
+          state: "None"
+        }
+      },
+    };
+    return await browser.allControls(okDialogSelector);
+  }
 
-    // async getCheckbox() {
-    //     const cbSelector1 = {
-    //         wdio_ui5_key: "cbSelector1",
-    //         selector: {
-    //             id: "idCheckbox",
-    //             viewName: this._viewName,
-    //             controlType: "sap.m.CheckBox"
-    //         }
-    //     }
+  async getNavCreateSingleButton() {
+    const createButtonSelector = {
+      forceSelect: true,
+      selector: {
+        controlType: "sap.m.Button",
+        interaction: "press",
+        properties: {
+          text: new RegExp(/.*Single*/gm)
+        }
+      }
+    };
+    return await browser.asControl(createButtonSelector);
+  }
 
-    //     return await browser.asControl(cbSelector1)
-    // }
+  async getNavCreateSinglePage() {
+    return await browser.asControl(this._getNavPage(this._viewName));
+  }
+
+  createSelectorBuilder() {
+    return this._selectorBuilder(this.CreateConfig, this._viewName);
+  }
 }
 
-module.exports = new CreateView()
+
+module.exports = new CreateView();

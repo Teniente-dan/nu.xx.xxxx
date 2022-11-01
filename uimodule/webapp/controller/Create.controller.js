@@ -278,7 +278,7 @@ sap.ui.define([
     displayResults: function (arrResults) {
       // ----------------------------------------------------------------------------------------------FSCODE
       // ----------------------------------------------------------------------------------------------------
-      var message = "Message";
+      var message = "message";
       if (arrResults.length > 0) {
         var okFlow = arrResults[0][message].split("&&");
         if (okFlow.length > 1 || arrResults[0][message].includes("succ") || arrResults[0][message].includes("Succ")) { //-----UPDATE

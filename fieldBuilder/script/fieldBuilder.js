@@ -20,13 +20,14 @@ const getFieldConfig = async () => {
       from_line: 2
     }))
     .on("data", function (row) {
-      if (row[6]) {
+      if (row[6]) { // template header
         csv.push({
           retFieldId: row[1],
           retValue: row[2],
+          valueHelp: row[3],
           setValue: row[5],
           duplicate: row[7],
-          checkbox: row[9],
+          type: row[9],
         });
       }
     });
@@ -43,18 +44,21 @@ const buildTemplate = async () => {
   };
   const line = {};
   csv.forEach((row) => {
-    if (row.retFieldId) {
-      line[`${row.retFieldId}${row.duplicate||""}`] = row.retValue;
-    } else if (row.checkbox) {
-      line[`${row.retValue}${row.duplicate||""}`] = row.setValue;      
-    } else {
-      line[`${row.setValue}${row.duplicate||""}`] = row.retValue;
+    switch (row.type) {
+      case "checkbox":
+        line[`${row.retFieldId}${row.duplicate||""}`] = row.setValue;
+        break;
+      case "input":
+        line[`${row.retFieldId}${row.duplicate||""}`] = row.valueHelp ? row.retValue : row.setValue;
+        break;
+      default:
+        break;
     }
   });
   const header = {};
   for (const key in line) {
     if (Object.hasOwnProperty.call(line, key)) {
-      header[key] = `${key}`;
+      header[key] = `${key} Header`;
     }
   }
   template.results.push(header);

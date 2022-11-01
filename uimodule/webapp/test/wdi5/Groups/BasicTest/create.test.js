@@ -5,51 +5,24 @@ const {
   wdi5
 } = require("wdio-ui5-service");
 const CreateView = require("../../pageObjects/CreateView");
-const Config = require("../../ConfigCreate");
 let fieldConfig;
-// eslint-disable-next-line no-undef
+
 describe("Create view:", async () => {
   before(async () => {
     await CreateView.open();
-    fieldConfig = await Config.getConfig();
+    await CreateView.init();
+    fieldConfig = CreateView.CreateConfig;
   });
-  // const fieldConfig;
+
   it("should load the create page", async () => {
-    const pageSelector = {
-      selector: {
-        controlType: "sap.m.Page",
-        interaction: "root"
-      }
-    };
-    const page = await browser.asControl(pageSelector);
+    await CreateView.getPage();
   });
 
   it("should send create request and return 'Please fill all fields with valid inputs' then validate mandatory", async () => {
-    const buttonSelector = {
-      selector: {
-        controlType: "sap.m.Button",
-        interaction: "press",
-        properties: {
-          text: "Create"
-        }
-      }
-    };
-    const button = await browser.asControl(buttonSelector);
+    const button = await CreateView.getCreateButton();
     await button.press();
-    const inputSelector = {
-      selector: {
-        controlType: "sap.m.Input",
-        interaction: "focus"
-      }
-    };
 
-    const dialogSelector = {
-      selector: {
-        controlType: "sap.m.Dialog",
-        interaction: "root"
-      }
-    };
-    const dialog = await browser.allControls(dialogSelector);
+    const dialog = await CreateView.getAllDialogs();
     let dialogContent = await dialog[0].getContent();
     let dialogText = await dialogContent[0].getText();
     await expect(dialogText).toEqual("Please fill all fields with valid inputs");
@@ -59,11 +32,11 @@ describe("Create view:", async () => {
     await expect(dialogText).toEqual("Please enter a TR Description");
     await dialog[1].close();
 
-    const allInputs = await browser.allControls(inputSelector);
-    await expect(allInputs.length).toBe(fieldConfig.filter(x=>x.mandatory).length);
+    const allInputs = await CreateView.getAllInputs();
+    await expect(allInputs.length).toBe(fieldConfig.length); // verify why filter for mandatory was applied??
     for (const input of allInputs) {
       for (const configId of fieldConfig) {
-        const ui5Id = input._domId?.match(/in\d*$/)[0];
+        const ui5Id = input._domId && input._domId.match(/in\d*$/)[0];
         if (ui5Id === configId.id) {
           const valueState = await input.getProperty("valueState");
           if (configId.mandatory) {
@@ -82,76 +55,10 @@ describe("Create view:", async () => {
   });
 
   it("should retrive and set data form search helps and free input fields", async () => {
-    const radioSelector = {
-      selector: {
-        controlType: "sap.m.RadioButton",
-        bindingPath: {
-          path: "",
-          propertyPath: "/in15",
-          modelName: "datosGral"
-        }
-      }
-    }
-    const radio = await browser.asControl(radioSelector);
+    const radio = await CreateView.getRadioButton();
     await radio.press();
 
-    // const fieldConfig = fieldConfig;
-
-    const selectorBuilder = (arrConfig) => {
-      return arrConfig.map((config) => {
-        if (config.checkbox) {
-          return {
-            forceSelect: true,
-            selector: {
-              controlType: "sap.m.CheckBox",
-              id: config.id,
-              viewName: CreateView._viewName
-            },
-            checkbox: true,
-            ui5Id: config.id,
-            setValue: config.setValue,
-            expectedValue: config.retValue
-          };
-        }
-
-        if (!config.valueHelp) {
-          return {
-            forceSelect: true,
-            selector: {
-              controlType: "sap.m.Input",
-              interaction: "focus",
-              id: config.id,
-              viewName: CreateView._viewName
-            },
-            ui5Id: config.id,
-            setValue: config.setValue,
-            expectedValue: config.retValue
-          };
-        }
-        return {
-          forceSelect: true,
-          selector: {
-            controlType: "sap.m.Input",
-            interaction: "press",
-            id: config.id,
-            viewName: CreateView._viewName,
-          },
-          ui5Id: config.id,
-          focusSelector: {
-            forceSelect: true,
-            selector: {
-              controlType: "sap.m.Input",
-              interaction: "focus",
-              id: config.id,
-              viewName: CreateView._viewName
-            }
-          },
-          expectedValue: config.retValue,
-        };
-      });
-    };
-
-    const selectorsPress = selectorBuilder(fieldConfig);
+    const selectorsPress = CreateView.createSelectorBuilder();
 
     const tableItemSelector = {
       forceSelect: true,
@@ -172,7 +79,9 @@ describe("Create view:", async () => {
         focusInput = input;
         const checkVal = await input.getSelected();
         focusVal = checkVal ? "x" : "";
-      } else {
+      }
+
+      if (selector.input) {
         if (selector.setValue) {
           await input.setValue(selector.setValue);
           focusInput = input;
@@ -193,36 +102,19 @@ describe("Create view:", async () => {
 
   });
 
-  it("should send create request and return chido one; and validate all fields", async () => {
-    const buttonSelector = {
-      selector: {
-        controlType: "sap.m.Button",
-        interaction: "press",
-        properties: {
-          text: "Create"
-        }
-      }
-    };
-    const button = await browser.asControl(buttonSelector);
+  it(`should send create request and return success message ${CreateView.successCreateResponse}; and validate all fields`, async () => {
+    const button = await CreateView.getCreateButton();
     await button.press();
 
-    const okDialogSelector = {
-      selector: {
-        controlType: "sap.m.Dialog",
-        properties: {
-          state: "None"
-        }
-      },
-    };
-    const dialogs = await browser.allControls(okDialogSelector);
+    const dialogs = await CreateView.getOkDialogSelector();
     const okDialog = dialogs.filter(x => x._domId.includes("success"))?.[0];
     const okDialogContent = await okDialog.getContent();
     const okDialogText = await okDialogContent[0].getText();
-    await expect(okDialogText).toEqual("chido one");
+    await expect(okDialogText).toEqual(CreateView.successCreateResponse);
 
-    const test3 = await browser.getLogs("browser");
-    const testo = test3.filter((log) => log.level === "WARNING").filter((log) => log.message.includes("oPayload"));
-    const request = Object.values(JSON.parse(testo[0].message.match(/(?<=oPayload:).*\]/gm)[0].replaceAll("\\", ""))[0]).map(x => x.toUpperCase());
+    const logs = await browser.getLogs("browser");
+    const requestLog = logs.filter((log) => log.level === "WARNING").filter((log) => log.message.includes("oPayload"));
+    const request = Object.values(JSON.parse(requestLog[0].message.match(/(?<=oPayload:).*\]/gm)[0].replaceAll("\\", ""))[0]).map(x => x.toUpperCase());
     const valsExpected = fieldConfig.map((config) => config.retValue.toUpperCase());
     // find all elements of valsExpected in request
     const allFound = valsExpected.every((val) => request.includes(val));

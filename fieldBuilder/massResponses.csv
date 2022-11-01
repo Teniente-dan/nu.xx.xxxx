@@ -1,0 +1,18 @@
+#### Single Recording,
+toReturn,RES_BLOCK
+message,
+S&&chido one,
+,
+#### Validation,
+toError,RES_BLOCK
+Msg,Plant
+Vale Caca,PT01
+Vale Popo,PT02
+,
+#### Multi Recording,
+toOutput,RES_BLOCK
+Msg,
+&&Uploaded,
+perro successfully,
+,
+END,RES_BLOCK

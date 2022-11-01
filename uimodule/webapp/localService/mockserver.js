@@ -23,8 +23,10 @@ sap.ui.define([
      */
     init: function (oOptionsParameter) {
       var oOptions = oOptionsParameter || {};
-      var sManifestUrl = sap.ui.require.toUrl(`${_sAppPath  }localService/mockFields.json`);
-      var mockFields = new JSONModel(sManifestUrl);
+      var sMockFieldsUrl = sap.ui.require.toUrl(`${_sAppPath  }localService/mockFields.json`);
+      var mockFields = new JSONModel(sMockFieldsUrl);
+      var sMockResponsesUrl = sap.ui.require.toUrl(`${_sAppPath  }localService/mockResponses.json`);
+      var mockResponses = new JSONModel(sMockResponsesUrl);
 
       return new Promise(function (fnResolve, fnReject) {
         var sManifestUrl = sap.ui.require.toUrl(_sAppPath + "manifest.json"),
@@ -138,18 +140,19 @@ sap.ui.define([
                 break;
               case 'CREATE':
                 valEntityProperties(oCall, 'MAIN');
-                var toReturn = {
-                  results: [{
-                      message: "S&&chido one"
-                    },
-                    // {
-                    //   message: "pura madre1"
-                    // },
-                    // {
-                    //   message: "pura madre2"
-                    // }
-                  ]
-                };
+                var toReturn = mockResponses.getData().toReturn;
+                // {
+                //   results: [{
+                //       message: "S&&chido one"
+                //     },
+                //     // {
+                //     //   message: "pura madre1"
+                //     // },
+                //     // {
+                //     //   message: "pura madre2"
+                //     // }
+                //   ]
+                // };
                 oCall.mParameters.oEntity.toReturn = toReturn;
                 break;
               case 'DOWNLOAD':
@@ -157,17 +160,18 @@ sap.ui.define([
                 //   results: [{
                 //     message: "S&&chindo one"
                 //   },
-                var toXLSX = {
-                  results: [{
-                      vkorg: "vkorgHEADER",
-                      bukrs: "bukrsHEADER",
-                    },
-                    {
-                      vkorg: "vkorg VAL",
-                      bukrs: "bukrs VAL",
-                    }
-                  ]
-                };
+                // var toXLSX = {
+                //   results: [{
+                //       vkorg: "vkorgHEADER",
+                //       bukrs: "bukrsHEADER",
+                //     },
+                //     {
+                //       vkorg: "vkorg VAL",
+                //       bukrs: "bukrs VAL",
+                //     }
+                //   ]
+                // };
+                toXLSX = mockFields.getData();
                 // oCall.mParameters.oEntity.toReturn = toReturn;
                 oCall.mParameters.oEntity.toXLSX = toXLSX;
                 break;
@@ -192,15 +196,16 @@ sap.ui.define([
                 //   }]
                 // };
                 // oCall.mParameters.oEntity.toError = toError;
-                var toOutput = {
-                  results: [{
-                      "Msg": "&&Uploaded successfully"
-                    },
-                    {
-                      "Msg": "perro successfully"
-                    }
-                  ]
-                };
+                var toOutput = mockResponses.getData().toOutput;
+                // {
+                //   results: [{
+                //       "Msg": "&&Uploaded successfully"
+                //     },
+                //     {
+                //       "Msg": "perro successfully"
+                //     }
+                //   ]
+                // };
                 oCall.mParameters.oEntity.toOutput = toOutput;
                 break;
               default:

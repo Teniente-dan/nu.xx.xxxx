@@ -1,24 +1,59 @@
-const Page = require("./Page")
+/* jshint esversion: 11 */
+const Page = require("./Page");
+const templateConfig = require('../../../../../fieldBuilder/template.json');
 
 class MainView extends Page {
-    async open() {
-        await super.open(`#/create`)
-    }
+  constructor() {
+    super();
+    this._viewName = "nu.<%= module %>.<%= appname %>.view.MainView";
+    // template Download
+    this.fileID = templateConfig.fileID;
+    this.templateName = `${this.fileID}_export_${new Date().toISOString().slice(0, 10).replace(/-/g, "")}.xlsx`;
+  }
+  async open() {
+    await super.open(`#/create`);
+  }
 
-    _viewName = "nu.<%= module %>.<%= appname %>.view.MainView"
+  async getBackButton() {
+    const backButtonSelector = {
+      forceSelect: true,
+      selector: {
+        controlType: "sap.m.Button",
+        interaction: "press",
+        properties: {
+          type: "Back"
+        },
+      }
+    };
+    return await browser.asControl(backButtonSelector);
+  }
 
-    // async getCheckbox() {
-    //     const cbSelector1 = {
-    //         wdio_ui5_key: "cbSelector1",
-    //         selector: {
-    //             id: "idCheckbox",
-    //             viewName: this._viewName,
-    //             controlType: "sap.m.CheckBox"
-    //         }
-    //     }
+  async getNavDownloadButton() {
+    const downloadButtonSelector = {
+      forceSelect: true,
+      selector: {
+        controlType: "sap.m.Button",
+        interaction: "press",
+        id: "midBut",
+        viewName: this._viewName
+      }
+    };
+    return await browser.asControl(downloadButtonSelector);
+  }
 
-    //     return await browser.asControl(cbSelector1)
-    // }
+  async getDownloadTemplateButton() {
+    const templateButtonSelector = {
+      forceSelect: true,
+      selector: {
+        controlType: "sap.m.Button",
+        interaction: "press",
+        properties: {
+          text: new RegExp(/.*Template*/gm)
+        }
+      }
+    };
+    return await browser.asControl(templateButtonSelector);
+  }
 }
 
-module.exports = new MainView()
+module.exports = new MainView();

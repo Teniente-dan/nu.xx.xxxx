@@ -64,13 +64,9 @@ sap.ui.define(
               console.trace(`TEMPLATESucc: ${JSON.stringify(res)}`);
               if (res.toXLSX.results && res.toXLSX.results.length > 0) {
                 var oHeaders = {};
-                if (window.location.href.includes("localhost")) {
-                  oHeaders = res.toXLSX.results[1];
-                } else {
-                  for (const key in res.toXLSX.results[0]) {
-                    if (key !== "__metadata") {
-                      oHeaders[res.toXLSX.results[0][key]] = "";
-                    }
+                for (const key in res.toXLSX.results[0]) {
+                  if (key !== "__metadata") {
+                    oHeaders[res.toXLSX.results[0][key]] = window.location.href.includes("localhost") ? res.toXLSX.results[1][key] : "";
                   }
                 }
                 return resolve(oHeaders);

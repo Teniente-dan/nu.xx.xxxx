@@ -9,109 +9,40 @@ const CreateView = require("../../pageObjects/CreateView");
 const MassView = require("../../pageObjects/MassView");
 const DownloadView = require("../../pageObjects/DownloadView");
 
-// eslint-disable-next-line no-undef
 describe("Main view:", async () => {
-  // eslint-disable-next-line no-undef
-  const backButtonSelector = {
-    forceSelect: true,
-    selector: {
-      controlType: "sap.m.Button",
-      interaction: "press",
-      properties: {
-        type: "Back"
-      },
-    }
-  };
   it("should navigate To and Back from Create View", async () => {
-    const createButtonSelector = {
-      forceSelect: true,
-      selector: {
-        controlType: "sap.m.Button",
-        interaction: "press",
-        properties: {
-          text: new RegExp(/.*Single*/gm)
-        }
-      }
-    };
-    const createPageSelector = {
-      forceSelect: true,
-      selector: {
-        controlType: "sap.m.Page",
-        interaction: "root",
-        viewName: CreateView._viewName
-      }
-    };
-
-    const createButton = await browser.asControl(createButtonSelector);
+    const createButton = await CreateView.getNavCreateSingleButton();
     await createButton.press();
-    const createPage = await browser.asControl(createPageSelector);
+    const createPage = await CreateView.getNavCreateSinglePage();
     const content = await createPage.getContent();
     await expect(content.length).toBe(1);
-    const backButton = await browser.asControl(backButtonSelector);
+    const backButton = await MainView.getBackButton();
     await backButton.press();
-    const createButtonRet = await browser.asControl(createButtonSelector);
-    await expect(await createButtonRet.getProperty('text')).toContain("Single");
+    const createButtonRet = await CreateView.getNavCreateSingleButton();
+    await expect(await createButtonRet.getProperty('text')).toContain(CreateView.navCreateButtonText);
   });
 
   it("should navigate To and Back from Mass View", async () => {
-    const massButtonSelector = {
-      forceSelect: true,
-      selector: {
-        controlType: "sap.m.Button",
-        interaction: "press",
-        properties: {
-          text: new RegExp(/.*Mass*/gm)
-        }
-      }
-    };
-    const massPageSelector = {
-      forceSelect: true,
-      selector: {
-        controlType: "sap.m.Page",
-        interaction: "root",
-        viewName: MassView._viewName
-      }
-    };
-
-    const massButton = await browser.asControl(massButtonSelector);
+    const massButton = await MassView.getNavMassButton();
     await massButton.press();
-    const massPage = await browser.asControl(massPageSelector);
+    const massPage = await MassView.getNavMassPage();
     const content = await massPage.getContent();
     await expect(content.length).toBe(1);
-    const backButton = await browser.asControl(backButtonSelector);
+    const backButton = await MainView.getBackButton();
     await backButton.press();
-    const massButtonRet = await browser.asControl(massButtonSelector);
-    await expect(await massButtonRet.getProperty('text')).toContain("Mass");
+    const massButtonRet = await MassView.getNavMassButton();
+    await expect(await massButtonRet.getProperty('text')).toContain(MassView.navMassButtonText);
   });
 
   it("should navigate To and Back from Download View", async () => {
-    const downloadButtonSelector = {
-      forceSelect: true,
-      selector: {
-        controlType: "sap.m.Button",
-        interaction: "press",
-        id: "midBut",
-        viewName: MainView._viewName
-      }
-    };
-
-    const downloadPageSelector = {
-      forceSelect: true,
-      selector: {
-        controlType: "sap.m.Page",
-        interaction: "root",
-        viewName: DownloadView._viewName
-      }
-    };
-
-    const downloadButton = await browser.asControl(downloadButtonSelector);
+    const downloadButton = await MainView.getNavDownloadButton();
     await downloadButton.press();
-    const downloadPage = await browser.asControl(downloadPageSelector);
+    const downloadPage = await DownloadView.getNavDownloadPage();
     const content = await downloadPage.getContent();
     await expect(content.length).toBe(1);
-    const backButton = await browser.asControl(backButtonSelector);
+    const backButton = await MainView.getBackButton();
     await backButton.press();
-    const downloadButtonRet = await browser.asControl(downloadButtonSelector);
-    await expect(await downloadButtonRet.getProperty('text')).toContain("Download");
+    const downloadButtonRet = await MainView.getNavDownloadButton();
+    await expect(await downloadButtonRet.getProperty('text')).toContain(DownloadView.navDownloadButtonText);
   });
 });
