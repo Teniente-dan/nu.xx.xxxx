@@ -107,7 +107,10 @@ describe("Create view:", async () => {
     await button.press();
 
     const dialogs = await CreateView.getOkDialogSelector();
-    const okDialog = dialogs.filter(x => x._domId.includes("success"))?.[0];
+    let okDialog = dialogs.filter(x => x._domId.includes("success"))?.[0];
+    if (!okDialog && dialogs.length > 0) {
+      okDialog = dialogs[0];
+    }
     const okDialogContent = await okDialog.getContent();
     const okDialogText = await okDialogContent[0].getText();
     await expect(okDialogText).toEqual(CreateView.successCreateResponse);

@@ -407,5 +407,17 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/auartSet", arrFields);
     },
+
+    // posting Period Variant --> Opvar
+    opvarValueHelp: function () {
+      var arrFields = [{
+        text: "common>Opvar",
+        textName: "Var."
+      }, {
+        text: "common>Opvtx",
+        textName: "Posting Period Variant Name"
+      }];
+      this.valueHelpBuild("common>/opvarSet", arrFields);
+    }
   };
 });
