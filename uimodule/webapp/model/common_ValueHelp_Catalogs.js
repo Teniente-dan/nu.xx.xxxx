@@ -418,6 +418,48 @@ sap.ui.define([], function () {
         textName: "Posting Period Variant Name"
       }];
       this.valueHelpBuild("common>/opvarSet", arrFields);
+    },
+
+    // control Key --> Steus
+    steusValueHelp: function () {
+      var arrFields = [{
+        text: "common>Steus",
+        textName: "Ctrl"
+      }, {
+        text: "common>Txt",
+        textName: "Control Key Description"
+      }];
+      this.valueHelpBuild("common>/steusSet", arrFields);
+    },
+    // profile group --> grprfGrup, Name
+    grprfGrupValueHelp: function () {
+      var arrFields = [{
+        text: "common>PrfGruppe",
+        textName: "Group"
+      }, {
+        text: "common>PrfName",
+        textName: "Name"
+      }, {
+        text: "common>PrfIndex",
+        textName: "Index"
+      }, {
+        text: "common>Ktext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/grprfGrupSet", arrFields);
+    },
+
+    // change record type --> issueType
+    recordTypeValueHelp: function () {
+      var arrFields = [{
+        text: "common>IssueType",
+        textName: "Record Typ"
+      }, {
+        text: "common>Description",
+        textName: "Record Type Description"
+      }];
+      this.valueHelpBuild("common>/recordTypeSet", arrFields);
     }
+
   };
 });
