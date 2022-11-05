@@ -51,6 +51,9 @@ const buildTemplate = async () => {
       case "input":
         line[`${row.retFieldId}${row.duplicate||""}`] = row.valueHelp ? row.retValue : row.setValue;
         break;
+      case "select":
+        line[`${row.retFieldId}${row.duplicate||""}`] = row.retValue;
+        break
       default:
         break;
     }

@@ -36,8 +36,14 @@ describe("Create view:", async () => {
     await expect(allInputs.length).toBe(fieldConfig.length); // verify why filter for mandatory was applied??
     for (const input of allInputs) {
       for (const configId of fieldConfig) {
-        const ui5Id = input._domId && input._domId.match(/in\d*$/)[0];
+        let ui5Id;
+        try {
+          ui5Id = input._domId && input._domId.match(/in\d*$/)[0];
+        } catch (error) {
+          ui5Id = input._domId && input._domId.match(/(in\d*)(.vhi)$/)[1];
+        }
         if (ui5Id === configId.id) {
+          console.log(ui5Id);
           const valueState = await input.getProperty("valueState");
           if (configId.mandatory) {
             await expect(`${ui5Id}-${valueState}`).toBe(`${ui5Id}-Error`);
@@ -63,9 +69,16 @@ describe("Create view:", async () => {
     const tableItemSelector = {
       forceSelect: true,
       selector: {
-        id: new RegExp(/.*__item.-__clone*/gm), // "__item2-__clone0", // item 1
+        id: new RegExp(/.*__item.*-__clone*/gm), // "__item2-__clone0", // item 1
         controlType: "sap.m.ColumnListItem",
         interaction: "press"
+      }
+    };
+
+    const listItemSelector = {
+      forceSelect: true,
+      selector: {
+        id: new RegExp(/.*__item.*-0/gm), // "__item2-__clone0", // item 1
       }
     };
 
@@ -93,10 +106,20 @@ describe("Create view:", async () => {
         }
         focusVal = await focusInput.getValue();
       }
+
+      if (selector.select) {
+        await input.press();
+        const listItem = await browser.asControl(listItemSelector);
+        await listItem.press();
+        focusVal = await input.getSelectedKey();
+      }
       await expect(`${selector.ui5Id}-${focusVal}`).toEqual(`${selector.ui5Id}-${selector.expectedValue}`);
     };
 
     for (const selector of selectorsPress) {
+      // if (selector.ui5Id === "in23") {
+      //   continue;
+      // }      
       await assertInput(selector);
     }
 

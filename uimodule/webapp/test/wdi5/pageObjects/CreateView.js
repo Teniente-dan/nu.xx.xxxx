@@ -33,6 +33,7 @@ class CreateView extends Page {
 
   async getAllInputs() {
     const inputSelector = {
+      forceSelect: true,      
       selector: {
         controlType: "sap.m.Input",
         interaction: "focus"
@@ -99,6 +100,20 @@ class CreateView extends Page {
   createSelectorBuilder() {
     return this._selectorBuilder(this.CreateConfig, this._viewName);
   }
+
+  // async getRadioButtonOperation() {
+  //   const radioSelector = {
+  //     selector: {
+  //       controlType: "sap.m.RadioButton",
+  //       bindingPath: {
+  //         path: "",
+  //         propertyPath: "/in3",
+  //         modelName: "datosGral"
+  //       }
+  //     }
+  //   };
+  //   return await browser.asControl(radioSelector);
+  // }
 }
 
 

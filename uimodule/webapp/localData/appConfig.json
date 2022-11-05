@@ -3,6 +3,6 @@
     "valFields": ["in1", "in2"],
     "fragFlow": "nu.<%= module %>.<%= appname %>.view.fragments.flowCreation",
     "fragValueHelp" : "nu.<%= module %>.<%= appname %>.view.fragments.ValueHelpDialog",
-    "downloadFileName": "Assign Sales Data",
-    "templateName": "Assign Sales Template"
+    "downloadFileName": "<%= templateName %> Data",
+    "templateName": "<%= templateName %> Template"
 }

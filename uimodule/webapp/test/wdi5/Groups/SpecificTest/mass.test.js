@@ -13,6 +13,8 @@ let fieldConfig;
 // eslint-disable-next-line no-undef
 describe("Upload File:", async () => {
   before(async () => {
+    const templateButton = await MainView.getDownloadTemplateButton();
+    await templateButton.press();
     await MassView.open();
     await CreateView.init();
     fieldConfig = CreateView.CreateConfig;

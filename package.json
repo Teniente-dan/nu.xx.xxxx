@@ -8,7 +8,7 @@
     "buildj": "npm run build:fields && npm run build:mockres",
     "testo": "npm run buildj && ui5 serve --config=uimodule/ui5.yaml --open 'test/mockServer.html'",
     "buildo": "run-s  build:uimodule && npm run prepDist || npm run prepDist || npm run prepDist",
-    "prepDist": "del-cli --force **/dist/controller **/dist/libs **/dist/model **/dist/resources **/dist/utils **/dist/view **/dist/Component.js **/dist/Component-dbg.js **/dist/index.html",
+    "prepDist": "del-cli --force **/dist/<%= module %>.<%= appname %>/controller **/dist/<%= module %>.<%= appname %>/libs **/dist/<%= module %>.<%= appname %>/model **/dist/<%= module %>.<%= appname %>/resources **/dist/<%= module %>.<%= appname %>/utils **/dist/<%= module %>.<%= appname %>/view **/dist/<%= module %>.<%= appname %>/Component.js **/dist/<%= module %>.<%= appname %>/Component-dbg.js **/dist/<%= module %>.<%= appname %>/index.html",
     "test": "run-s lint karma",
     "karma-ci": "karma start karma-ci.conf.js",
     "clearCoverage": "shx rm -rf coverage",
@@ -16,7 +16,7 @@
     "lint": "eslint ./**/webapp/**/*.js && prettier --plugin-search-dir=. --check ./**/webapp/**/*.{js,xml}",
     "lint-fix": "eslint ./**/webapp/**/*.js --fix && prettier --plugin-search-dir=. --write ./**/webapp/**/*.{js,xml} --no-error-on-unmatched-pattern",
     "serve:uimodule": "ui5 serve --config=uimodule/ui5.yaml",
-    "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist --include-task=generateManifestBundle",
+    "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist/<%= module %>.<%= appname %> --include-task=generateManifestBundle",
 
     "testoBasic": "npm run buildj && wdio run wdio.basic.conf.js -- --headless",
     "testoSpec": "npm run buildj && wdio run wdio.spec.conf.js -- --headless",

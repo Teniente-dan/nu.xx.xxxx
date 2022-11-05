@@ -63,3 +63,13 @@ in3,Xkale,x,,,x,Xkale,,,checkbox
 | in3 | Xkale      | x        |           |           | x        | Xkale      |           |             | checkbox |
 |-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|----------|
 
+6. Select, retValue is fisrt val on select list; setvalue empty, type select
+
+id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass,type
+in28,CHRULE,Chrule 1,,x,,CHRULE,,,select
+
+|------|------------|----------|-----------|-----------|----------|------------|-----------|-------------|--------|
+| id   | retFieldId | retValue | valueHelp | mandatory | setValue | tempHeader | duplicate | excludeMass | type   |
+|------|------------|----------|-----------|-----------|----------|------------|-----------|-------------|--------|
+| in28 | CHRULE     | Chrule 1 |           | x         |          | CHRULE     |           |             | select |
+|------|------------|----------|-----------|-----------|----------|------------|-----------|-------------|--------|
