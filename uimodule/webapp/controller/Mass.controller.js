@@ -166,6 +166,11 @@ sap.ui.define([
       console.warn(`oPayload: ${JSON.stringify(oPayload.toMain)}`);
       this.getModel().setUseBatch(false);
       console.trace(`UPLOAD: ${JSON.stringify(oPayload)}`);
+      if (window.location.href.includes("localhost")) {
+        this.getModel().setHeaders({
+          "testCase": 0,
+        });
+      }      
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {

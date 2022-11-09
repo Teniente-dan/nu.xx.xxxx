@@ -213,9 +213,8 @@ sap.ui.define([
         this.valMainFieldOrg(datosGral.in1).then(function (result) {
             if (result && this.valAllFields()) {
               return resolve(this.sendToBackForCreate());
-            } else {
-              return reject(false);
-            }
+            } 
+            return reject(false);
           }.bind(this))
           .catch(function (oError) {
             return reject(oError);
@@ -243,6 +242,11 @@ sap.ui.define([
       console.warn(`oPayload: ${JSON.stringify(oPayload.toMain)}`);
       this.getModel().setUseBatch(false);
       console.trace(`CREATE: ${JSON.stringify(oPayload)}`);
+      if (window.location.href.includes("localhost")) {
+        this.getModel().setHeaders({
+          "testCase": 0
+        });
+      }      
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {

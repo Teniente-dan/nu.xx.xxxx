@@ -3,7 +3,13 @@ toReturn,RES_BLOCK
 message,
 S&&chido one,
 ,
-#### Validation,
+#### Single Recording Error,
+toReturnError,RES_BLOCK
+message,
+pura madre,
+pura madre 2,
+,
+#### Multi Recording Error,
 toError,RES_BLOCK
 Msg,Plant
 Vale Caca,PT01

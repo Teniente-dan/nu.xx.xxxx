@@ -459,7 +459,18 @@ sap.ui.define([], function () {
         textName: "Record Type Description"
       }];
       this.valueHelpBuild("common>/recordTypeSet", arrFields);
-    }
+    },
 
+    // document type --> blart
+    blartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Blart",
+        textName: "Type"
+      }, {
+        text: "common>Ltext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/blartSet", arrFields);
+    },
   };
 });

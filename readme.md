@@ -15,3 +15,13 @@
 12. ***Stage Changes and init commit*** for better tracking of common improvements
 13. search for FSCODE it signals possible changes 
 14. use catalog snippets from common_valueHelp_catalogs
+
+
+# NOTES
+1. sap.ui.getCore().byId('container-mainConfig---createView--CreateButton')
+
+## REMARKS
+1. WDI5 test
+2. multimockserver
+3. generator based -> 'generator-nucleus'
+4. npm scripting to prepare json files using node (read CSV, write to directory)
