@@ -431,7 +431,7 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/steusSet", arrFields);
     },
-    // profile group --> grprfGrup, Name
+    // profile group --> GrprfGrup, Name
     grprfGrupValueHelp: function () {
       var arrFields = [{
         text: "common>PrfGruppe",
@@ -449,7 +449,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/grprfGrupSet", arrFields);
     },
 
-    // change record type --> issueType
+    // change record type --> IssueType
     recordTypeValueHelp: function () {
       var arrFields = [{
         text: "common>IssueType",
@@ -461,7 +461,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/recordTypeSet", arrFields);
     },
 
-    // document type --> blart
+    // document type --> Blart
     blartValueHelp: function () {
       var arrFields = [{
         text: "common>Blart",
@@ -472,5 +472,35 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/blartSet", arrFields);
     },
+
+    // purchasing group --> Ekgrp
+    ekgrpValueHelp: function () {
+      var arrFields = [{
+        text: "common>Ekgrp",
+        textName: "PGr"
+      }, {
+        text: "common>Eknam",
+        textName: "Description"
+      }, {
+        text: "common>Ektel",
+        textName: "Telephone"
+      }, {
+        text: "common>Telfx",
+        textName: "Fax Number"
+      }];
+      this.valueHelpBuild("common>/ekgrpSet", arrFields);
+    },
+
+    // posting period variant to buk --> Opvar
+    bukOpvarValueHelp: function () {
+      var arrFields = [{
+        text: "common>Opvar",
+        textName: "Var."
+      }, {
+        text: "common>Opvtx",
+        textName: "Posting Period Variant Name"
+      }];
+      this.valueHelpBuild("common>/bukOpvarSet", arrFields);
+    }
   };
 });
