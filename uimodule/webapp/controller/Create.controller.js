@@ -285,7 +285,7 @@ sap.ui.define([
       var message = "message";
       if (arrResults.length > 0) {
         var okFlow = arrResults[0][message].split("&&");
-        if (okFlow.length > 1 || arrResults[0][message].includes("succ") || arrResults[0][message].includes("Succ")) { //-----UPDATE
+        if (okFlow.length > 1 || new RegExp(/\s[Ss]([uU][cC].*[sS]*)\w+/g).test(arrResults[0][message])) { //-----UPDATE
           MessageBox.success(okFlow.length > 1 ? okFlow[1] : arrResults[0][message], { //-----UPDATE
             onClose: function () {
               this.closeView();

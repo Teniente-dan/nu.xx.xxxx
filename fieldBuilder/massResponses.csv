@@ -20,5 +20,10 @@ toOutput,RES_BLOCK
 Msg,
 &&Uploaded,
 perro successfully,
+PERRO SUCESS,
 ,
+#### Multi RecordingStats,
+toOutputStats,RES_BLOCK
+succ,total
+2,3
 END,RES_BLOCK

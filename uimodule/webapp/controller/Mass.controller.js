@@ -218,12 +218,12 @@ sap.ui.define([
     displayResults: function (arrResults, arrProperty) {
       if (arrResults.length > 0) {
         var oResults = arrResults.map((result) => {
-          //join value of array into string
+          // join value of array into string
           var value = arrProperty.map((property) => {
             return result[property];
           }).join(" ");
           var okFlow = value.split("&&");
-          if (okFlow.length > 1 || value.includes("succ") || value.includes("Succ")) { //-----UPDATE
+          if (okFlow.length > 1 || new RegExp(/\s[Ss]([uU][cC].*[sS]*)\w+/g).test( value)) { //-----UPDATE
             return {
               C1: okFlow.length > 1 ? okFlow[1] : value, //-----UPDATE
               state: "Success"
