@@ -175,21 +175,30 @@ sap.ui.define([
         that.getModel().create(url, oPayload, {
           success: function (res) {
             console.trace(`UPLOAD_SUCC: ${JSON.stringify(res)}`);
-            if (res.toReturn.results && res.toReturn.results.length > 0) {
-              // ----------------------------------------------------------------------------------------------FSCODE
-              // ----------------------------------------------------------------------------------------------------
-              return resolve(that.displayResults(res.toReturn.results, ['message']));
+            var toDisplay = [
+              ...res.toReturn.results,
+              ...res.toError.results,
+              ...res.toOutput.results
+            ];
+            if (toDisplay && toDisplay.length > 0) {
+              var mapFields = [
+                // ----------------------------------------------------------------------------------------------FSCODE
+                // ----------------------------------------------------------------------------------------------------
+                "message", // toReturn
+                "Msg", // toError
+                'Sorg', 'Msg' // toOutput
+              ];
+              return resolve(that.displayResults(toDisplay, [...new Set(mapFields)]));
             }
-            if (res.toError.results && res.toError.results.length > 0) {
-              // ----------------------------------------------------------------------------------------------FSCODE
-              // ----------------------------------------------------------------------------------------------------
-              return resolve(that.displayResults(res.toError.results, ['Msg']));
-            }
-            if (res.toOutput.results && res.toOutput.results.length > 0) {
-              // ----------------------------------------------------------------------------------------------FSCODE
-              // ----------------------------------------------------------------------------------------------------
-              return resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
-            }
+            // if (res.toReturn.results && res.toReturn.results.length > 0) {
+            //   return resolve(that.displayResults(res.toReturn.results, ['message']));
+            // }
+            // if (res.toError.results && res.toError.results.length > 0) {
+            //   return resolve(that.displayResults(res.toError.results, ['Msg']));
+            // }
+            // if (res.toOutput.results && res.toOutput.results.length > 0) {
+            //   return resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
+            // }
             return reject(MessageBox.error("Empty response"));
           },
           error: function (err) {
