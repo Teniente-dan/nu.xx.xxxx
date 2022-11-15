@@ -23,7 +23,7 @@ const getFieldConfig = async () => {
       from_line: 1
     }))
     .on("data", function (row) {
-      if (!row[0].startsWith("#")) { // comments
+      if (!row[0].startsWith("!")) { // comments
         if (row[1] === "RES_BLOCK") {
           if (blockLines && currentBlock) {
             csv[currentBlock].push(...blockLines);

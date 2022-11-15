@@ -143,14 +143,14 @@ sap.ui.define([
                 break;
               case 'UPLOAD':
                 valEntityProperties(oCall, 'MAIN');
-                switch (testCase) {
-                  case 1:
-                    oCall.mParameters.oEntity.toOutput = mockResponses.getData().toError;
-                    break;
-                  default:
-                    oCall.mParameters.oEntity.toOutput = mockResponses.getData().toOutput;
-                    break;
-                }
+                // switch (testCase) {
+                //   case 1:
+                //     break;
+                //   default:
+                //     break;
+                // }
+                oCall.mParameters.oEntity.toError = mockResponses.getData().toError;
+                oCall.mParameters.oEntity.toOutput = mockResponses.getData().toOutput;
                 break;
               default:
                 break;

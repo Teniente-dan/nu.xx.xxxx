@@ -1,28 +1,28 @@
-#### Single Recording,
+!Single Recording,
 toReturn,RES_BLOCK
 message,
 S&&chido one,
 ,
-#### Single Recording Error,
+!Single Recording Error,
 toReturnError,RES_BLOCK
 message,
 pura madre,
 pura madre 2,
 ,
-#### Multi Recording Error,
+!Multi Recording Error,
 toError,RES_BLOCK
 Msg,Plant
 Vale Caca,PT01
 Vale Popo,PT02
 ,
-#### Multi Recording,
+!Multi Recording,
 toOutput,RES_BLOCK
 Msg,
 &&Uploaded,
 perro successfully,
 PERRO SUCESS,
 ,
-#### Multi RecordingStats,
+!Multi RecordingStats,
 toOutputStats,RES_BLOCK
 succ,total
 2,3

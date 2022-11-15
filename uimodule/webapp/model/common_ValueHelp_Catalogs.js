@@ -1,3 +1,4 @@
+// from D:\Nucleus\0ODATAs\ZNU_CONFIG_SRV.xml
 sap.ui.define([], function () {
   "use strict";
   return {
@@ -369,7 +370,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/togruSet", arrFields);
     },
 
-    // FV --> Periv
+    // FV (Fiscal year variant) 
     perivValueHelp: function () {
       var arrFields = [{
         text: "common>Periv",
@@ -501,6 +502,166 @@ sap.ui.define([], function () {
         textName: "Posting Period Variant Name"
       }];
       this.valueHelpBuild("common>/bukOpvarSet", arrFields);
-    }
+    },
+
+    // credit control area --> Kkber
+    kkberValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kkber",
+        textName: "CCar"
+      }, {
+        text: "common>Kkbtx",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/kkberSet", arrFields);
+    },
+
+    // credit update --> Stafo
+    stafoValueHelp: function () {
+      var arrFields = [{
+        text: "common>Stafo",
+        textName: "Update"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/stafoSet", arrFields);
+    },
+
+    // production supervisor --> Fevor
+    fevorValueHelp: function () {
+      var arrFields = [{
+        text: "common>Werks",
+        textName: "Plant"
+      }, {
+        text: "common>Fevor",
+        textName: "ProdS"
+      }, {
+        text: "common>Txt",
+        textName: "Production Supervisor Name"
+      }];
+      this.valueHelpBuild("common>/fevorSet", arrFields);
+    },
+
+    // SD document category --> Vbtypl
+    vbtyplValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vbtypl",
+        textName: "Doc.Cat."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/vbtyplSet", arrFields);
+    },
+
+    // default order type --> Auart
+    auartTvakValueHelp: function () {
+      var arrFields = [{
+        text: "common>Auart",
+        textName: "SaTy"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/auartTvakSet", arrFields);
+    },
+
+    // SD order requierement type --> Voerf to Aufer
+    voerfValueHelp: function () {
+      var arrFields = [{
+        text: "common>Voerf",
+        textName: "Ord.Reqd"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/voerfSet", arrFields);
+    },
+
+    // screen sequence group --> Bigrp
+    bigrpValueHelp: function () {
+      var arrFields = [{
+        text: "common>Objekt",
+        textName: "Object"
+      }, {
+        text: "common>Bifgr",
+        textName: "ScSG"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/bigrpSet", arrFields);
+    },
+
+    // display Range --> Umfng
+    umfngValueHelp: function () {
+      var arrFields = [{
+        text: "common>Umfng",
+        textName: "Display Range"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/umfngSet", arrFields);
+    },
+
+    // SD delivery type --> Lfart
+    lfartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Lfart",
+        textName: "DlvTy"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/lfartSet", arrFields);
+    },
+
+    // MM material group --> Matkl
+    matklValueHelp: function () {
+      var arrFields = [{
+        text: "common>Matkl",
+        textName: "Matl Group"
+      }, {
+        text: "common>Wgbez",
+        textName: "Material Group Desc."
+      }, {
+        text: "common>Wgbez60",
+        textName: "Description 2 for the Material Group"
+      }, {
+        text: "common>Spras",
+        textName: "Language"
+      }];
+      this.valueHelpBuild("common>/matklSet", arrFields);
+    },
+
+    // MM unit of weight --> Msehi
+    geweiValueHelp: function () {
+      var arrFields = [{
+        text: "common>Mseh3",
+        textName: "Commercial"
+      }, {
+        text: "common>Msehi",
+        textName: "MU"
+      }, {
+        text: "common>Msehl",
+        textName: "Measurement unit text"
+      }, {
+        text: "common>Txdim",
+        textName: "Dimension text"
+      }];
+      this.valueHelpBuild("common>/geweiSet", arrFields);
+    },
+
+    // MM field reference --> Flref
+    flrefValueHelp: function () {
+      var arrFields = [{
+        text: "common>Flref",
+        textName: "Field"
+      }];
+      this.valueHelpBuild("common>/flrefSet", arrFields);
+    },
+
   };
 });

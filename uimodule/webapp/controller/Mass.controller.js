@@ -175,11 +175,16 @@ sap.ui.define([
         that.getModel().create(url, oPayload, {
           success: function (res) {
             console.trace(`UPLOAD_SUCC: ${JSON.stringify(res)}`);
-            var toDisplay = [
-              ...res.toReturn.results,
-              ...res.toError.results,
-              ...res.toOutput.results
-            ];
+            var toDisplay = [];
+            if (res.toReturn.results) {
+              toDisplay.push(...res.toReturn.results);
+            }
+            if (res.toError.results) {
+              toDisplay.push(...res.toError.results);
+            }
+            if (res.toOutput.results) {
+              toDisplay.push(...res.toOutput.results);
+            }
             if (toDisplay && toDisplay.length > 0) {
               var mapFields = [
                 // ----------------------------------------------------------------------------------------------FSCODE
@@ -190,15 +195,6 @@ sap.ui.define([
               ];
               return resolve(that.displayResults(toDisplay, [...new Set(mapFields)]));
             }
-            // if (res.toReturn.results && res.toReturn.results.length > 0) {
-            //   return resolve(that.displayResults(res.toReturn.results, ['message']));
-            // }
-            // if (res.toError.results && res.toError.results.length > 0) {
-            //   return resolve(that.displayResults(res.toError.results, ['Msg']));
-            // }
-            // if (res.toOutput.results && res.toOutput.results.length > 0) {
-            //   return resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
-            // }
             return reject(MessageBox.error("Empty response"));
           },
           error: function (err) {

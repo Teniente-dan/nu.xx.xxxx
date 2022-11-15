@@ -126,8 +126,10 @@ describe("Create view:", async () => {
   });
 
   it(`should send create request and return success message ${CreateView.successCreateResponse}; and validate all fields`, async () => {
+    await browser.screenshot("before create");
     const button = await CreateView.getCreateButton();
     await button.press();
+    await browser.screenshot("after create");
 
     const dialogs = await CreateView.getOkDialogSelector();
     let okDialog = dialogs.filter(x => x._domId.includes("success"))?.[0];
