@@ -17,16 +17,9 @@ sap.ui.define(
       /* ===========================================================
        Descargar Template
       ============================================================= */
-      getTemplate: function (xlsxHeaders, oXlsxTemp, oTitle) {
-        var headers = xlsxHeaders;
-        var data = [{}];
-        if (xlsxHeaders) {
-          for (let idx = 0; idx < headers.length; idx++) {
-            data[0][headers[idx]] = "dato" + (idx + 1);
-          }
-        } else {
-          data.push(oXlsxTemp);
-        }
+      getTemplate: function (oXlsxTemp, oTitle) {
+        var data = [];
+        data.push(oXlsxTemp);
         const worksheet = XLSX.utils.json_to_sheet(data);
         const workbook = {
           Sheets: {
@@ -50,7 +43,7 @@ sap.ui.define(
         });
         saveAs(
           data,
-          filename + "_export_" + new Date().getTime() + EXCEL_EXTENSION
+          filename + "_export_" + new Date().toISOString().slice(0,10).replace(/-/g,"") + EXCEL_EXTENSION
         );
       },
 
@@ -91,7 +84,9 @@ sap.ui.define(
         })
       },
       onDownloadAsExcel: function (data, sTitle) {
-        const worksheet = XLSX.utils.json_to_sheet(data, {skipHeader: 1});
+        const worksheet = XLSX.utils.json_to_sheet(data, {
+          skipHeader: 1
+        });
         const workbook = {
           Sheets: {
             data: worksheet,

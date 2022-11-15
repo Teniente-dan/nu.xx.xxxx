@@ -5,10 +5,13 @@
     "checkJs": true,
     "allowJs": true,
     "types": [
-      "@sapui5/ts-types"
+      "@sapui5/ts-types",
+      "jest",
+      "mocha",
+      "node"
     ],
     "lib": [
-      "es2015"
+      "es2022"
     ]
   }
 }

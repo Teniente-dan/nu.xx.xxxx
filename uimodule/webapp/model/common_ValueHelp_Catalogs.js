@@ -1,6 +1,8 @@
+// from D:\Nucleus\0ODATAs\ZNU_CONFIG_SRV.xml
 sap.ui.define([], function () {
   "use strict";
   return {
+    // own Request --> strkorr
     ownValueHelp: function () {
       var arrFields = [{
         text: "common>strkorr",
@@ -21,7 +23,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/titleSet", arrFields);
     },
 
-    // factory calendar
+    // factory calendar --> Ident
     factoryValueHelp: function () {
       var arrFields = [{
         text: "common>Ident",
@@ -33,7 +35,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/calendarSet", arrFields);
     },
 
-    // language
+    // language --> Spras
     languageValueHelp: function () {
       var arrFields = [{
         text: "common>Spras",
@@ -93,7 +95,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/streetSet", arrFields);
     },
 
-    // Country/Region
+    // Country/Region --> Land1
     countryValueHelp: function () {
       var arrFields = [{
         text: "common>Land1",
@@ -108,7 +110,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/countrySet", arrFields);
     },
 
-    // company code
+    // company code --> bukrs
     bukrsValueHelp: function () {
       var arrFields = [{
         text: "common>Bukrs",
@@ -126,6 +128,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/bukrsSet", arrFields);
     },
 
+    // company as entity --> rcomp
     rcompValueHelp: function () {
       var arrFields = [{
         text: "common>Rcomp",
@@ -146,7 +149,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/rcompSet", arrFields);
     },
 
-    // currency
+    // currency --> Waers
     currencyValueHelp: function () {
       var arrFields = [{
         text: "common>Waers",
@@ -182,7 +185,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vkorgSet", arrFields);
     },
 
-    // chart of accounts
+    // chart of accounts --> Ktopl
     ktoplValueHelp: function () {
       var arrFields = [{
         text: "common>Ktopl",
@@ -205,7 +208,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/fstvaSet", arrFields);
     },
 
-    // purchase organization
+    // purchase organization --> Ekorg
     ekorgValueHelp: function () {
       var arrFields = [{
         text: "common>Ekorg",
@@ -217,7 +220,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/ekorgSet", arrFields);
     },
 
-    // plant
+    // plant --> Werks
     werksValueHelp: function () {
       var arrFields = [{
         text: "common>Werks",
@@ -244,7 +247,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/werksSet", arrFields);
     },
 
-    // storage location
+    // storage location --> Lgort
     lgortValueHelp: function () {
       var arrFields = [{
         text: "common>Werks",
@@ -259,7 +262,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/lgortSet", arrFields);
     },
 
-    // sales group
+    // sales group --> Vkgrp
     vkgrpValueHelp: function () {
       var arrFields = [{
         text: "common>Vkgrp",
@@ -271,7 +274,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vkgrpSet", arrFields);
     },
 
-    // distribution channel    
+    // distribution channel --> Vtweg
     vtwegValueHelp: function () {
       var arrFields = [{
         text: "common>Vtweg",
@@ -283,7 +286,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vtwegSet", arrFields);
     },
 
-    // division    
+    // division --> Spart
     spartValueHelp: function () {
       var arrFields = [{
         text: "common>Spart",
@@ -295,7 +298,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/spartSet", arrFields);
     },
 
-    // sales office
+    // sales office --> Soff
     vkburValueHelp: function () {
       var arrFields = [{
         text: "common>Vkbur",
@@ -307,7 +310,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vkburSet", arrFields);
     },
 
-    // account group
+    // account group --> Ktoks
     ktoksValueHelp: function () {
       var arrFields = [{
         text: "common>Ktopl",
@@ -322,7 +325,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/ktoksSet", arrFields);
     },
 
-    // from to g/l account
+    // from to g/l account --> Saknr
     vonnrValueHelp: function () {
       var arrFields = [{
         text: "common>Saknr",
@@ -335,6 +338,330 @@ sap.ui.define([], function () {
         textName: "Long Text"
       }];
       this.valueHelpBuild("common>/vonnrSet", arrFields);
-    }    
+    },
+
+    // account --> Saknr
+    kontsValueHelp: function () {
+      var arrFields = [{
+        text: "common>Saknr",
+        textName: "G/L Acct"
+      }, {
+        text: "common>Txt50",
+        textName: "Long Text"
+      }, {
+        text: "common>Ktopl",
+        textName: "Chrt/Accts"
+      }];
+      this.valueHelpBuild("common>/kontsSet", arrFields);
+    },
+
+    // tolerance group --> Togru  
+    togruValueHelp: function () {
+      var arrFields = [{
+        text: "common>Bukrs",
+        textName: "CoCd"
+      }, {
+        text: "common>Togru",
+        textName: "Tol.group"
+      }, {
+        text: "common>Txt30",
+        textName: "Name of Tolerance Group"
+      }];
+      this.valueHelpBuild("common>/togruSet", arrFields);
+    },
+
+    // FV (Fiscal year variant) 
+    perivValueHelp: function () {
+      var arrFields = [{
+        text: "common>Periv",
+        textName: "FV"
+      }, {
+        text: "common>Ltext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/perivSet", arrFields);
+    },
+
+    // tolerance group for financial accounting --> Rfpro
+    rfproValueHelp: function () {
+      var arrFields = [{
+        text: "common>Rfpro",
+        textName: "Grp"
+      }, {
+        text: "common>Bukrs",
+        textName: "CoCd"
+      }];
+      this.valueHelpBuild("common>/rfproSet", arrFields);
+    },
+
+    // order type --> Auart
+    auartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Auart",
+        textName: "Type"
+      }, {
+        text: "common>Autyp",
+        textName: "Cat"
+      }, {
+        text: "common>Txt",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/auartSet", arrFields);
+    },
+
+    // posting Period Variant --> Opvar
+    opvarValueHelp: function () {
+      var arrFields = [{
+        text: "common>Opvar",
+        textName: "Var."
+      }, {
+        text: "common>Opvtx",
+        textName: "Posting Period Variant Name"
+      }];
+      this.valueHelpBuild("common>/opvarSet", arrFields);
+    },
+
+    // control Key --> Steus
+    steusValueHelp: function () {
+      var arrFields = [{
+        text: "common>Steus",
+        textName: "Ctrl"
+      }, {
+        text: "common>Txt",
+        textName: "Control Key Description"
+      }];
+      this.valueHelpBuild("common>/steusSet", arrFields);
+    },
+    // profile group --> GrprfGrup, Name
+    grprfGrupValueHelp: function () {
+      var arrFields = [{
+        text: "common>PrfGruppe",
+        textName: "Group"
+      }, {
+        text: "common>PrfName",
+        textName: "Name"
+      }, {
+        text: "common>PrfIndex",
+        textName: "Index"
+      }, {
+        text: "common>Ktext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/grprfGrupSet", arrFields);
+    },
+
+    // change record type --> IssueType
+    recordTypeValueHelp: function () {
+      var arrFields = [{
+        text: "common>IssueType",
+        textName: "Record Typ"
+      }, {
+        text: "common>Description",
+        textName: "Record Type Description"
+      }];
+      this.valueHelpBuild("common>/recordTypeSet", arrFields);
+    },
+
+    // document type --> Blart
+    blartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Blart",
+        textName: "Type"
+      }, {
+        text: "common>Ltext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/blartSet", arrFields);
+    },
+
+    // purchasing group --> Ekgrp
+    ekgrpValueHelp: function () {
+      var arrFields = [{
+        text: "common>Ekgrp",
+        textName: "PGr"
+      }, {
+        text: "common>Eknam",
+        textName: "Description"
+      }, {
+        text: "common>Ektel",
+        textName: "Telephone"
+      }, {
+        text: "common>Telfx",
+        textName: "Fax Number"
+      }];
+      this.valueHelpBuild("common>/ekgrpSet", arrFields);
+    },
+
+    // posting period variant to buk --> Opvar
+    bukOpvarValueHelp: function () {
+      var arrFields = [{
+        text: "common>Opvar",
+        textName: "Var."
+      }, {
+        text: "common>Opvtx",
+        textName: "Posting Period Variant Name"
+      }];
+      this.valueHelpBuild("common>/bukOpvarSet", arrFields);
+    },
+
+    // credit control area --> Kkber
+    kkberValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kkber",
+        textName: "CCar"
+      }, {
+        text: "common>Kkbtx",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/kkberSet", arrFields);
+    },
+
+    // credit update --> Stafo
+    stafoValueHelp: function () {
+      var arrFields = [{
+        text: "common>Stafo",
+        textName: "Update"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/stafoSet", arrFields);
+    },
+
+    // production supervisor --> Fevor
+    fevorValueHelp: function () {
+      var arrFields = [{
+        text: "common>Werks",
+        textName: "Plant"
+      }, {
+        text: "common>Fevor",
+        textName: "ProdS"
+      }, {
+        text: "common>Txt",
+        textName: "Production Supervisor Name"
+      }];
+      this.valueHelpBuild("common>/fevorSet", arrFields);
+    },
+
+    // SD document category --> Vbtypl
+    vbtyplValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vbtypl",
+        textName: "Doc.Cat."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/vbtyplSet", arrFields);
+    },
+
+    // default order type --> Auart
+    auartTvakValueHelp: function () {
+      var arrFields = [{
+        text: "common>Auart",
+        textName: "SaTy"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/auartTvakSet", arrFields);
+    },
+
+    // SD order requierement type --> Voerf to Aufer
+    voerfValueHelp: function () {
+      var arrFields = [{
+        text: "common>Voerf",
+        textName: "Ord.Reqd"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/voerfSet", arrFields);
+    },
+
+    // screen sequence group --> Bigrp
+    bigrpValueHelp: function () {
+      var arrFields = [{
+        text: "common>Objekt",
+        textName: "Object"
+      }, {
+        text: "common>Bifgr",
+        textName: "ScSG"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/bigrpSet", arrFields);
+    },
+
+    // display Range --> Umfng
+    umfngValueHelp: function () {
+      var arrFields = [{
+        text: "common>Umfng",
+        textName: "Display Range"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/umfngSet", arrFields);
+    },
+
+    // SD delivery type --> Lfart
+    lfartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Lfart",
+        textName: "DlvTy"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/lfartSet", arrFields);
+    },
+
+    // MM material group --> Matkl
+    matklValueHelp: function () {
+      var arrFields = [{
+        text: "common>Matkl",
+        textName: "Matl Group"
+      }, {
+        text: "common>Wgbez",
+        textName: "Material Group Desc."
+      }, {
+        text: "common>Wgbez60",
+        textName: "Description 2 for the Material Group"
+      }, {
+        text: "common>Spras",
+        textName: "Language"
+      }];
+      this.valueHelpBuild("common>/matklSet", arrFields);
+    },
+
+    // MM unit of weight --> Msehi
+    geweiValueHelp: function () {
+      var arrFields = [{
+        text: "common>Mseh3",
+        textName: "Commercial"
+      }, {
+        text: "common>Msehi",
+        textName: "MU"
+      }, {
+        text: "common>Msehl",
+        textName: "Measurement unit text"
+      }, {
+        text: "common>Txdim",
+        textName: "Dimension text"
+      }];
+      this.valueHelpBuild("common>/geweiSet", arrFields);
+    },
+
+    // MM field reference --> Flref
+    flrefValueHelp: function () {
+      var arrFields = [{
+        text: "common>Flref",
+        textName: "Field"
+      }];
+      this.valueHelpBuild("common>/flrefSet", arrFields);
+    },
+
   };
 });

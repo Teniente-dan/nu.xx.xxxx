@@ -36,7 +36,7 @@ sap.ui.define(
         //directly download the template file
         this.byId("downButton").setBusy(true);
         this.getTemplateHeaders().then((oHeaders) => {
-            this.getOwnerComponent().oXlsxUtils.getTemplate(undefined, oHeaders, this.appConfig.templateName);
+            this.getOwnerComponent().oXlsxUtils.getTemplate(oHeaders, this.appConfig.templateName);
           })
           .catch((err) => {
             if (err) {
@@ -66,7 +66,7 @@ sap.ui.define(
                 var oHeaders = {};
                 for (const key in res.toXLSX.results[0]) {
                   if (key !== "__metadata") {
-                    oHeaders[res.toXLSX.results[0][key]] = "";
+                    oHeaders[res.toXLSX.results[0][key]] = window.location.href.includes("localhost") ? res.toXLSX.results[1][key] : "";
                   }
                 }
                 return resolve(oHeaders);

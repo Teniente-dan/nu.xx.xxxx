@@ -1,0 +1,3 @@
+id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass,type
+in1,Periv,Periv 1,x,,,,,,input
+in2,Periv,Periv 1,x,,,,,,input

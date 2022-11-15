@@ -163,22 +163,37 @@ sap.ui.define([
         toOutput: [],
         toError: [],
       };
+      console.warn(`oPayload: ${JSON.stringify(oPayload.toMain)}`);
       this.getModel().setUseBatch(false);
       console.trace(`UPLOAD: ${JSON.stringify(oPayload)}`);
+      if (window.location.href.includes("localhost")) {
+        this.getModel().setHeaders({
+          "testCase": 0,
+        });
+      }      
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {
             console.trace(`UPLOAD_SUCC: ${JSON.stringify(res)}`);
-            if (res.toReturn.results && res.toReturn.results.length > 0) {
-              return resolve(that.displayResults(res.toReturn.results, ['message']));
+            var toDisplay = [];
+            if (res.toReturn.results) {
+              toDisplay.push(...res.toReturn.results);
             }
-            if (res.toError.results && res.toError.results.length > 0) {
-              return resolve(that.displayResults(res.toError.results, ['Msg']));
+            if (res.toError.results) {
+              toDisplay.push(...res.toError.results);
             }
-            if (res.toOutput.results && res.toOutput.results.length > 0) {
-              // ----------------------------------------------------------------------------------------------FSCODE
-              // ----------------------------------------------------------------------------------------------------
-              return resolve(that.displayResults(res.toOutput.results, ['Sorg', 'Msg']));
+            if (res.toOutput.results) {
+              toDisplay.push(...res.toOutput.results);
+            }
+            if (toDisplay && toDisplay.length > 0) {
+              var mapFields = [
+                // ----------------------------------------------------------------------------------------------FSCODE
+                // ----------------------------------------------------------------------------------------------------
+                "message", // toReturn
+                "Msg", // toError
+                'Sorg', 'Msg' // toOutput
+              ];
+              return resolve(that.displayResults(toDisplay, [...new Set(mapFields)]));
             }
             return reject(MessageBox.error("Empty response"));
           },
@@ -208,12 +223,12 @@ sap.ui.define([
     displayResults: function (arrResults, arrProperty) {
       if (arrResults.length > 0) {
         var oResults = arrResults.map((result) => {
-          //join value of array into string
+          // join value of array into string
           var value = arrProperty.map((property) => {
             return result[property];
           }).join(" ");
           var okFlow = value.split("&&");
-          if (okFlow.length > 1 || value.includes("succ") || value.includes("Succ")) { //-----UPDATE
+          if (okFlow.length > 1 || new RegExp(/\s[Ss]([uU][cC].*[sS]*)\w+/g).test( value)) { //-----UPDATE
             return {
               C1: okFlow.length > 1 ? okFlow[1] : value, //-----UPDATE
               state: "Success"

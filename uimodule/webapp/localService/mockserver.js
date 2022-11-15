@@ -23,6 +23,10 @@ sap.ui.define([
      */
     init: function (oOptionsParameter) {
       var oOptions = oOptionsParameter || {};
+      var sMockFieldsUrl = sap.ui.require.toUrl(`${_sAppPath  }localService/mockFields.json`);
+      var mockFields = new JSONModel(sMockFieldsUrl);
+      var sMockResponsesUrl = sap.ui.require.toUrl(`${_sAppPath  }localService/mockResponses.json`);
+      var mockResponses = new JSONModel(sMockResponsesUrl);
 
       return new Promise(function (fnResolve, fnReject) {
         var sManifestUrl = sap.ui.require.toUrl(_sAppPath + "manifest.json"),
@@ -123,82 +127,30 @@ sap.ui.define([
           //   oCall.mParameters.oFilteredData = "xxx";
           // }, "valXXXXSet");
           oMockServer.attachAfter(sap.ui.core.util.MockServer.HTTPMETHOD.POST, function (oCall) {
+            const testCase = oCall.getParameter('oXhr').requestHeaders?.testCase;
             switch (oCall.mParameters.oEntity.actionKey) {
               case 'TEMPLATE':
-                var toXLSX = {
-                  results: [{
-                    vkorg: "vkorgHEADER",
-                    bukrs: "bukrsHEADER",
-                  }]
-                };
+                var toXLSX = mockFields.getData();
                 oCall.mParameters.oEntity.toXLSX = toXLSX;
                 break;
               case 'CREATE':
                 valEntityProperties(oCall, 'MAIN');
-                var toReturn = {
-                  results: [{
-                      message: "S&&chindo one"
-                    },
-                    // {
-                    //   message: "pura madre1"
-                    // },
-                    // {
-                    //   message: "pura madre2"
-                    // }
-                  ]
-                };
-                oCall.mParameters.oEntity.toReturn = toReturn;
+                oCall.mParameters.oEntity.toReturn = testCase === 1 ?  mockResponses.getData().toReturnError: mockResponses.getData().toReturn;
                 break;
               case 'DOWNLOAD':
-                // var toReturn = {
-                //   results: [{
-                //     message: "S&&chindo one"
-                //   },
-                var toXLSX = {
-                  results: [{
-                      vkorg: "vkorgHEADER",
-                      bukrs: "bukrsHEADER",
-                    },
-                    {
-                      vkorg: "vkorg VAL",
-                      bukrs: "bukrs VAL",
-                    }
-                  ]
-                };
-                // oCall.mParameters.oEntity.toReturn = toReturn;
+                toXLSX = mockFields.getData();
                 oCall.mParameters.oEntity.toXLSX = toXLSX;
                 break;
               case 'UPLOAD':
                 valEntityProperties(oCall, 'MAIN');
-                // var toReturn = {
-                //   results: [{
-                //     "message": "&&Uploaded successfully"
-                //   },
-                //   {
-                //     "message": "perro successfully",
-                //   }]
-                // };
-                // oCall.mParameters.oEntity.toReturn = toReturn;
-                // var toError = {
-                //   results: [{
-                //     "Msg": "&&Uploaded successfully"
-                //   },
-                //   {
-                //     "Msg": "perro successfully",
-                //     "Plant": "Plant VAL1"
-                //   }]
-                // };
-                // oCall.mParameters.oEntity.toError = toError;
-                var toOutput = {
-                  results: [{
-                      "Msg": "&&Uploaded successfully"
-                    },
-                    {
-                      "Msg": "perro successfully"
-                    }
-                  ]
-                };
-                oCall.mParameters.oEntity.toOutput = toOutput;
+                // switch (testCase) {
+                //   case 1:
+                //     break;
+                //   default:
+                //     break;
+                // }
+                oCall.mParameters.oEntity.toError = mockResponses.getData().toError;
+                oCall.mParameters.oEntity.toOutput = mockResponses.getData().toOutput;
                 break;
               default:
                 break;

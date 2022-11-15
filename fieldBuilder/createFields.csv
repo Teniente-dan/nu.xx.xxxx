@@ -1,0 +1,6 @@
+id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass,type
+in1,Preiv,Periv 1,x,x,,Preiv,,,input
+in2,Ltext,in2Ltext,,x,in2Ltext,Ltext,,,input
+in3,Xkale,x,,,x,Xkale,,,checkbox
+in28,CHRULE,Chrule 1,,x,,CHRULE,,,select
+in17,strkorr,strkorr 1,x,x,,,,x,input

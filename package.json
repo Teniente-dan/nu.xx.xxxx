@@ -3,9 +3,12 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
-    "testo": "ui5 serve --config=uimodule/ui5.yaml --open 'test/mockServer.html'",    
+    "build:fields": "node ./fieldBuilder/script/fieldBuilder.js",
+    "build:mockres": "node ./fieldBuilder/script/mockserverResponseBuilder.js",
+    "buildj": "npm run build:fields && npm run build:mockres",
+    "testo": "npm run buildj && ui5 serve --config=uimodule/ui5.yaml --open 'test/mockServer.html'",
     "buildo": "run-s  build:uimodule && npm run prepDist || npm run prepDist || npm run prepDist",
-    "prepDist": "del-cli --force **/dist/controller **/dist/libs **/dist/model **/dist/resources **/dist/utils **/dist/view **/dist/Component.js **/dist/Component-dbg.js **/dist/index.html", 
+    "prepDist": "del-cli --force **/dist/<%= module %>.<%= appname %>/controller **/dist/<%= module %>.<%= appname %>/libs **/dist/<%= module %>.<%= appname %>/model **/dist/<%= module %>.<%= appname %>/resources **/dist/<%= module %>.<%= appname %>/utils **/dist/<%= module %>.<%= appname %>/view **/dist/<%= module %>.<%= appname %>/Component.js **/dist/<%= module %>.<%= appname %>/Component-dbg.js **/dist/<%= module %>.<%= appname %>/index.html",
     "test": "run-s lint karma",
     "karma-ci": "karma start karma-ci.conf.js",
     "clearCoverage": "shx rm -rf coverage",
@@ -13,7 +16,11 @@
     "lint": "eslint ./**/webapp/**/*.js && prettier --plugin-search-dir=. --check ./**/webapp/**/*.{js,xml}",
     "lint-fix": "eslint ./**/webapp/**/*.js --fix && prettier --plugin-search-dir=. --write ./**/webapp/**/*.{js,xml} --no-error-on-unmatched-pattern",
     "serve:uimodule": "ui5 serve --config=uimodule/ui5.yaml",
-    "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist --include-task=generateManifestBundle"
+    "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist/<%= module %>.<%= appname %> --include-task=generateManifestBundle",
+
+    "testoBasic": "npm run buildj && wdio run wdio.basic.conf.js -- --headless",
+    "testoSpec": "npm run buildj && wdio run wdio.spec.conf.js -- --headless",
+    "testow": "npm run buildj && wdio run wdio.wip.conf.js -- --watch"
   },
   "devDependencies": {
     "shx": "^0.3.3",
@@ -29,7 +36,20 @@
     "@prettier/plugin-xml": "^1.1.0",
     "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
     "@sapui5/ts-types": "^1.96.0",
-    "del-cli": "^5.0.0"
+    "del-cli": "^5.0.0",
+    "@wdio/cli": "^7.25.2",
+    "@wdio/local-runner": "^7.25.2",
+    "@wdio/mocha-framework": "^7.25.2",
+    "@wdio/spec-reporter": "^7.25.1",
+    "chromedriver": "^106.0.1",
+    "wdio-chromedriver-service": "^8.0.0",
+    "wdio-ui5-service": "^0.9.13",
+    "csv": "^6.2.1",
+
+    "@types/jest": "^29.2.0",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^18.11.8",
+    "@wdio/types": "^7.25.1"    
   },
   "ui5": {
     "dependencies": [

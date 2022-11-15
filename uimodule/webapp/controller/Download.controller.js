@@ -241,7 +241,9 @@ sap.ui.define([
       switch (param) {
         case "in1":
         case "in2":
-          filterProperty1 = [new Filter("Vkorg", FilterOperator.Contains, sValue)];
+          filterProperty1 = [
+            new Filter("Vkorg", FilterOperator.Contains, sValue)
+          ];
           break;
         default:
           break;
