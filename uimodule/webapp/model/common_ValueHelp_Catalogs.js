@@ -197,6 +197,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/ktoplSet", arrFields);
     },
 
+    // field status variant --> Fstva
     fstvaValueHelp: function () {
       var arrFields = [{
         text: "common>Fstva",
