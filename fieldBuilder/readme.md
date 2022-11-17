@@ -1,7 +1,7 @@
 How to fill creat fields
 0. Header for templates are taken from column tempHeader, if empty then its not counted as header
 
-1. With Search helps: these fields get their input value by selection in list, type input and valueHelp marked
+1. With Search helps: these fields get their input value by selection in list, type input and valueHelp marked; retValue has to be the one mockserver sents
 
 id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass,type
 in1,Preiv,Periv 1,x,x,,Preiv,,,input

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 // from D:\Nucleus\0ODATAs\ZNU_CONFIG_SRV.xml
 sap.ui.define([], function () {
   "use strict";
@@ -12,6 +13,7 @@ sap.ui.define([], function () {
         textName: "Short Description"
       }];
       this.valueHelpBuild("common>/ownRequestSet", arrFields);
+      
     },
 
     // title
@@ -580,8 +582,8 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/voerfSet", arrFields);
     },
 
-    // screen sequence group --> Bigrp
-    bigrpValueHelp: function () {
+    // screen sequence group --> Bifgr
+    bifgrValueHelp: function () {
       var arrFields = [{
         text: "common>Objekt",
         textName: "Object"
@@ -592,7 +594,7 @@ sap.ui.define([], function () {
         text: "common>Bezei",
         textName: "Description"
       }];
-      this.valueHelpBuild("common>/bigrpSet", arrFields);
+      this.valueHelpBuild("common>/bifgrSet", arrFields);
     },
 
     // display Range --> Umfng
