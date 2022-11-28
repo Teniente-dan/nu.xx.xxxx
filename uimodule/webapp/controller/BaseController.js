@@ -123,8 +123,8 @@ sap.ui.define(
           and: false
         }));
       },
-      get18: function () {
-        return this.getOwnerComponent().getModel("i18n").getResourceBundle();
+      get18: function (sText) {
+        return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sText);
       },
       valHeader: function (XLSXoHeader, oHeaders) {
         var oHeader = Object.values(oHeaders);

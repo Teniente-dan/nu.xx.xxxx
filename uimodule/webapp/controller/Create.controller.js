@@ -251,9 +251,10 @@ sap.ui.define([
         that.getModel().create(url, oPayload, {
           success: function (res) {
             console.trace(`CREATESucc: ${JSON.stringify(res)}`);
-            if (res.toReturn.results) {
+            if (res.toReturn.results.length > 0) {
               return resolve(that.displayResults(res.toReturn.results));
             }
+            MessageBox.error(that.get18("EmptyResponseFromBackend"));
             return resolve(true);
           },
           error: function (err) {

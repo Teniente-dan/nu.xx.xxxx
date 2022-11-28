@@ -195,7 +195,7 @@ sap.ui.define([
               ];
               return resolve(that.displayResults(toDisplay, [...new Set(mapFields)]));
             }
-            return reject(MessageBox.error("Empty response"));
+            return reject(MessageBox.error(that.get18("EmptyResponseFromBackend")));
           },
           error: function (err) {
             console.trace(`UPLOAD_ERR: ${JSON.stringify(err)}`);
