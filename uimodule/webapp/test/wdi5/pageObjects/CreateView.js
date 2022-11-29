@@ -33,7 +33,7 @@ class CreateView extends Page {
 
   async getAllInputs() {
     const inputSelector = {
-      forceSelect: true,      
+      forceSelect: true,
       selector: {
         controlType: "sap.m.Input",
         interaction: "focus"

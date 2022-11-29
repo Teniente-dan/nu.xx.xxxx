@@ -44,16 +44,18 @@ module.exports = class Page {
         from_line: fromLine
       }))
       .on("data", function (row) {
-        csv.push({
-          id: row[0],
-          retFieldId: row[1],
-          retValue: row[2],
-          valueHelp: !!row[3],
-          mandatory: !!row[4],
-          setValue: row[5],
-          excludeMass: row[8],
-          type: row[9],
-        });
+        if (row[0]) {
+          csv.push({
+            id: row[0],
+            retFieldId: row[1],
+            retValue: row[2],
+            valueHelp: !!row[3],
+            mandatory: !!row[4],
+            setValue: row[5],
+            excludeMass: row[8],
+            type: row[9],
+          });
+        }
       });
     var end = new Promise(function (resolve, reject) {
       stream.on('end', () => resolve(csv));

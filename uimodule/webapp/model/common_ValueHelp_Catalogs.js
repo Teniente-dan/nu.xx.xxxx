@@ -13,7 +13,7 @@ sap.ui.define([], function () {
         textName: "Short Description"
       }];
       this.valueHelpBuild("common>/ownRequestSet", arrFields);
-      
+
     },
 
     // title
@@ -664,6 +664,240 @@ sap.ui.define([], function () {
         textName: "Field"
       }];
       this.valueHelpBuild("common>/flrefSet", arrFields);
+    },
+
+    // MM industry sector --> Mbrsh
+    mbrshValueHelp: function () {
+      var arrFields = [{
+        text: "common>Mbrsh",
+        textName: "I"
+      }, {
+        text: "common>Mbbez",
+        textName: "Industry Description"
+      }];
+      this.valueHelpBuild("common>/mbrshSet", arrFields);
+    },
+
+    // SD billing type --> Fkart
+    fkartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Fkart",
+        textName: "BillT"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/fkartSet", arrFields);
+    },
+
+    // SD transaction group --> Trvog
+    trvogValueHelp: function () {
+      var arrFields = [{
+        text: "common>Trvog",
+        textName: "TrG"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/trvogSet", arrFields);
+    },
+
+    // SD invoice list type --> Fkart
+    fkartRlValueHelp: function () {
+      var arrFields = [{
+        text: "common>Fkart",
+        textName: "BillT"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/fkartRlSet", arrFields);
+    },
+
+    // SD account determination procedure --> Kalsm
+    kalsmcValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kalsm",
+        textName: "Proc"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/kalsmcSet", arrFields);
+    },
+
+    // SD pricing procedure for account determination --> Kalsm
+    kalsmcdValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kvewe",
+        textName: "U"
+      }, {
+        text: "common>Kappl",
+        textName: "App"
+      }, {
+        text: "common>Kalsm",
+        textName: "Proc."
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/kalsmcdSet", arrFields);
+    },
+
+    // SD reference distribution channel --> Vtwau
+    vtwauValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vtwau",
+        textName: "DChl"
+      }, {
+        text: "common>Vtext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/vtwauSet", arrFields);
+    },
+
+    // PP Cheking rule for Availability Check --> Prreg
+    prregValueHelp: function () {
+      var arrFields = [{
+        text: "common>Prreg",
+        textName: "ChR"
+      }, {
+        text: "common>Prrlt",
+        textName: "Description of Checking Rule"
+      }];
+      this.valueHelpBuild("common>/prregSet", arrFields);
+    },
+
+    // PP component check type --> Kzakp
+    kzakpValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kzakp",
+        textName: "TCC"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/kzakpSet", arrFields);
+    },
+    
+    // PP creation control collect.conv. --> Eromat
+    eromatValueHelp: function () {
+      var arrFields = [{
+        text: "common>Eromat",
+        textName: "Coll.conv."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/eromatSet", arrFields);
+    },
+
+    // PP checking rule for PRT --> CfPrreg
+    cfPrregValueHelp: function () {
+      var arrFields = [{
+        text: "common>CfPrreg",
+        textName: "Rule"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/cfPrregSet", arrFields);
+    },
+
+    // PP creation control when PRT's are not available --> CfErofhm
+    cfErofhmValueHelp: function () {
+      var arrFields = [{
+        text: "common>CfErofhm",
+        textName: "Coll.conv."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/cfErofhmSet", arrFields);
+    },
+
+    // PP id of an overall profile for capacity --> ProfileId
+    vpkapprofValueHelp: function () {
+      var arrFields = [{
+        text: "common>ProfileId",
+        textName: "Profile ID"
+      }, {
+        text: "common>Proftxt",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/vpkapprofSet", arrFields);
+    },
+
+    // PP creation control if capacity is missing --> Vpkapero
+    vpkaperoValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vpkapero",
+        textName: "Coll.conv."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/vpkaperoSet", arrFields);
+    },
+
+    // PP release control --> Vpkapfr
+    vpkapfrValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vpkapfr",
+        textName: "Relse"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/vpkapfrSet", arrFields);
+    },
+
+    // PP release control for material --> Frmat
+    frmatValueHelp: function () {
+      var arrFields = [{
+        text: "common>Frmat",
+        textName: "Rel. mat."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/frmatSet", arrFields);
+    },
+
+    // PP release control based on the PRT --> CfPrfrs
+    cfPrfrsValueHelp: function () {
+      var arrFields = [{
+        text: "common>CfPrfrs",
+        textName: "Relse"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/cfPrfrsSet", arrFields);
+    },
+
+    // PP release control for material in Batch --> Frbatch
+    frbatchValueHelp: function () {
+      var arrFields = [{
+        text: "common>Frbatch",
+        textName: "Rel. mat."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/frbatchSet", arrFields);
+    },
+
+    // PP checking group for availability check --> Mtvfp
+    mtvfpValueHelp: function () {
+      var arrFields = [{
+        text: "common>Mtvfp",
+        textName: "Av"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/mtvfpSet", arrFields);
     },
 
   };

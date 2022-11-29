@@ -53,8 +53,9 @@ const buildTemplate = async () => {
         break;
       case "select":
         line[`${row.retFieldId}${row.duplicate||""}`] = row.retValue;
-        break
+        break;
       default:
+        line[`${row.retFieldId}${row.duplicate||""}`] = "";
         break;
     }
   });

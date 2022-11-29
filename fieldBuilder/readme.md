@@ -1,3 +1,5 @@
+### VERIFY " " exists only as specified space-blank values
+
 How to fill creat fields
 0. Header for templates are taken from column tempHeader, if empty then its not counted as header
 
@@ -73,3 +75,17 @@ in28,CHRULE,Chrule 1,,x,,CHRULE,,,select
 |------|------------|----------|-----------|-----------|----------|------------|-----------|-------------|--------|
 | in28 | CHRULE     | Chrule 1 |           | x         |          | CHRULE     |           |             | select |
 |------|------------|----------|-----------|-----------|----------|------------|-----------|-------------|--------|
+
+7. Property in Odata but not used
+
+id,retFieldId,retValue,valueHelp,mandatory,setValue,tempHeader,duplicate,excludeMass,type
+in1,Werks,Werks 1,x,x,,Werks,,,input
+,Eromat,,,,,Eromat,,,
+
+|-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|-------|
+| id  | retFieldId | retValue | valueHelp | mandatory | setValue | tempHeader | duplicate | excludeMass | type  |
+|-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|-------|
+| in1 | Werks      | Werks 1  | x         | x         |          | Werks      |           |             | input |
+|-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|-------|
+|     | Eromat     |          |           |           |          | Eromat     |           |             |       |
+|-----|------------|----------|-----------|-----------|----------|------------|-----------|-------------|-------|

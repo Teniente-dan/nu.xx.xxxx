@@ -33,7 +33,9 @@ describe("Create view:", async () => {
     await dialog[1].close();
 
     const allInputs = await CreateView.getAllInputs();
-    await expect(allInputs.length).toBe(fieldConfig.length); // verify why filter for mandatory was applied??
+    await expect(allInputs.length).toBe(fieldConfig.filter(x => ["input","select"].includes(x.type)).length); 
+    // verify why filter for mandatory was applied?? Cant be always equal: checkboxes, radio buttons, etc are not mandatory
+    // verify if Select case works??
     for (const input of allInputs) {
       for (const configId of fieldConfig) {
         let ui5Id;
