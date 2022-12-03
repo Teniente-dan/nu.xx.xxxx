@@ -27,14 +27,15 @@ sap.ui.define(
         // set the device model
         this.setModel(models.createDeviceModel(), "device");
 
-        //Objeto para descargar y cargar XLSX template
-        this.oXlsxUtils = new XlsxUtils(this);
-
         //Fragmento de resultados de creacion de flujo 
         this.oFlowFrag = new FlowFrag(this);
 
         this.appConfig = this.getModel("appConfig");
       },
+      getExcelUtils: function () {
+        // Objeto para descargar y cargar XLSX template
+        return new XlsxUtils(this);
+      }
     });
   }
 );

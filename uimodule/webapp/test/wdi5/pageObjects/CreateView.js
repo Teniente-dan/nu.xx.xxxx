@@ -114,6 +114,38 @@ class CreateView extends Page {
   //   };
   //   return await browser.asControl(radioSelector);
   // }
+
+  // async getSelect(sId) {
+  //   const selectSelector = {
+  //     forceSelect: true,
+  //     selector: {
+  //       controlType: "sap.m.Select",
+  //       interaction: "press",
+  //       bindingPath: {
+  //         path: "",
+  //         propertyPath: `/${sId}`,
+  //         modelName: "datosGral"
+  //       }
+  //     }
+  //   };
+  //   return await browser.asControl(selectSelector);
+  // }
+
+  // async getInput(sId) {
+  //   const inputSelector = {
+  //     forceSelect: true,
+  //     selector: {
+  //       controlType: "sap.m.Input",
+  //       interaction: "focus",
+  //       bindingPath: {
+  //         path: "",
+  //         propertyPath: `/${sId}`,
+  //         modelName: "datosGral"
+  //       }
+  //     }
+  //   };
+  //   return await browser.asControl(inputSelector);
+  // }
 }
 
 

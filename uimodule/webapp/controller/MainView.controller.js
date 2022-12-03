@@ -36,7 +36,7 @@ sap.ui.define(
         //directly download the template file
         this.byId("downButton").setBusy(true);
         this.getTemplateHeaders().then((oHeaders) => {
-            this.getOwnerComponent().oXlsxUtils.getTemplate(oHeaders, this.appConfig.templateName);
+            this.getOwnerComponent().getExcelUtils().getTemplate(oHeaders, this.appConfig.templateName);
           })
           .catch((err) => {
             if (err) {

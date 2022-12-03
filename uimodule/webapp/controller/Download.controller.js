@@ -219,7 +219,7 @@ sap.ui.define([
             }
             return line;
           });
-          this.getOwnerComponent().oXlsxUtils.onDownloadAsExcel(arrResults, this.appConfig.downloadFileName);
+          this.getOwnerComponent().getExcelUtils().onDownloadAsExcel(arrResults, this.appConfig.downloadFileName);
         }.bind(this))
         .then(function () {
           // this.closeView();

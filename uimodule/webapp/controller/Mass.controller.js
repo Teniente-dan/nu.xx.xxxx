@@ -264,7 +264,7 @@ sap.ui.define([
           this.oHeaders = oHeaders;
         })
         .then(() => {
-          this.getOwnerComponent().oXlsxUtils.readTemplate(this.templateFile, true)
+          this.getOwnerComponent().getExcelUtils().readTemplate(this.templateFile, true)
             .then(
               //-----UPDATE
               (jsonObj) => {
