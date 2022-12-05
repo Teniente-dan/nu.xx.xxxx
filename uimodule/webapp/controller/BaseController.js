@@ -142,6 +142,15 @@ sap.ui.define(
         });
         return true;
       },
+      // baseOnlyNumbers: function (oEvent, noZero) {
+      //   var _oInput = oEvent.getSource();
+      //   var val = _oInput.getValue();
+      //   var outVal = val.replace(/[^\d.]|\.(?=.*\.)/g, "");
+      //   if (noZero) {
+      //     outVal = val === 0 ? "" : val;
+      //   }
+      //   _oInput.setValue(isNaN(outVal) ? "" : outVal);
+      // },
     });
   }
 );

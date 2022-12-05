@@ -779,7 +779,7 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/kzakpSet", arrFields);
     },
-    
+
     // PP creation control collect.conv. --> Eromat
     eromatValueHelp: function () {
       var arrFields = [{
@@ -900,5 +900,28 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/mtvfpSet", arrFields);
     },
 
+    // PP Scheduling Margin Key --> Fhori
+    fhoriValueHelp: function () {
+      var arrFields = [{
+        text: "common>Werks",
+        textName: "Plant"
+      }, {
+        text: "common>Fhori",
+        textName: "SMKey"
+      }, {
+        text: "common>Erhor",
+        textName: "Op.Pd"
+      }, {
+        text: "common>Sichz",
+        textName: "FlAftProd."
+      }, {
+        text: "common>Vorgz",
+        textName: "FlBefProd."
+      }, {
+        text: "common>Freiz",
+        textName: "ReleasePer."
+      }];
+      this.valueHelpBuild("common>/fhoriSet", arrFields);
+    },
   };
 });
