@@ -101,6 +101,17 @@ class CreateView extends Page {
     return this._selectorBuilder(this.CreateConfig, this._viewName);
   }
 
+  async getAllSelects() {
+    const inputSelector = {
+      forceSelect: true,
+      selector: {
+        controlType: "sap.m.Select",
+        interaction: "press",
+      }
+    };
+
+    return await browser.allControls(inputSelector);
+  }
   // async getRadioButtonOperation() {
   //   const radioSelector = {
   //     selector: {
@@ -146,6 +157,8 @@ class CreateView extends Page {
   //   };
   //   return await browser.asControl(inputSelector);
   // }
+
+
 }
 
 

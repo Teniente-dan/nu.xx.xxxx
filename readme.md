@@ -19,9 +19,11 @@
 
 # NOTES
 1. sap.ui.getCore().byId('container-mainConfig---createView--CreateButton')
+2. WDI5: these package corresponds to installed Chrome version
+    "chromedriver": "^108.0.0",    
 
 ## REMARKS
-1. WDI5 test
+1. WDI5 test 
 2. multimockserver
 3. generator based -> 'generator-nucleus'
 4. npm scripting to prepare json files using node (read CSV, write to directory)

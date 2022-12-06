@@ -923,5 +923,29 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/fhoriSet", arrFields);
     },
+
+    // SD Relevant for Billing --> Fkrel
+    fkrelValueHelp: function () {
+      var arrFields = [{
+        text: "common>Fkrel",
+        textName: "BilRl"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/fkrelSet", arrFields);
+    },
+
+    // SD Carry out pricing --> Prsfd
+    prsfdValueHelp: function () {
+      var arrFields = [{
+        text: "common>Prsfd",
+        textName: "Prcg."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/prsfdSet", arrFields);
+    },
   };
 });

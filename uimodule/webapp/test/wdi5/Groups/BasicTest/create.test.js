@@ -32,7 +32,8 @@ describe("Create view:", async () => {
     await expect(dialogText).toEqual("Please enter a TR Description");
     await dialog[1].close();
 
-    const allInputs = await CreateView.getAllInputs();
+    // const allInputs = await CreateView.getAllInputs();
+    const allInputs = (await CreateView.getAllInputs()).concat(await CreateView.getAllSelects());
     await expect(allInputs.length).toBe(fieldConfig.filter(x => ["input","select"].includes(x.type)).length); 
     // verify why filter for mandatory was applied?? Cant be always equal: checkboxes, radio buttons, etc are not mandatory
     // verify if Select case works??
