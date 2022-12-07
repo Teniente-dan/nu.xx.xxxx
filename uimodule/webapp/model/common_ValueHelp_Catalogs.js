@@ -289,7 +289,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vtwegSet", arrFields);
     },
 
-    // division --> Spart
+    // division --> Spart || Spaau
     spartValueHelp: function () {
       var arrFields = [{
         text: "common>Spart",
