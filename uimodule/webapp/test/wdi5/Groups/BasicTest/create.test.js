@@ -34,7 +34,7 @@ describe("Create view:", async () => {
 
     // const allInputs = await CreateView.getAllInputs();
     const allInputs = (await CreateView.getAllInputs()).concat(await CreateView.getAllSelects());
-    await expect(allInputs.length).toBe(fieldConfig.filter(x => ["input","select"].includes(x.type)).length); 
+    await expect(allInputs.length).toBe(fieldConfig.filter(x => ["input", "select"].includes(x.type)).length);
     // verify why filter for mandatory was applied?? Cant be always equal: checkboxes, radio buttons, etc are not mandatory
     // verify if Select case works??
     for (const input of allInputs) {
@@ -146,11 +146,22 @@ describe("Create view:", async () => {
     const logs = await browser.getLogs("browser");
     const requestLog = logs.filter((log) => log.level === "WARNING").filter((log) => log.message.includes("oPayload"));
     const request = Object.values(JSON.parse(requestLog[0].message.match(/(?<=oPayload:).*\]/gm)[0].replaceAll("\\", ""))[0]).map(x => x.toUpperCase());
+    const resultRequest = [...request];
     const valsExpected = fieldConfig.map((config) => config.retValue.toUpperCase());
-    // find all elements of valsExpected in request
-    const allFound = valsExpected.every((val) => request.includes(val));
+    // find all elements of valsExpected in request, remove found ones; this ensures that all expected values are found including duplicates
+    let allFound = true;
+    for (const val of valsExpected) {
+      const index = resultRequest.indexOf(val);
+      if (index > -1) {
+        resultRequest.splice(index, 1);
+      } else {
+        allFound = false;
+        break;
+      }
+    }
     console.log(valsExpected);
     console.log(request);
+    console.log(resultRequest);
     await expect(allFound).toBe(true);
   });
 });
