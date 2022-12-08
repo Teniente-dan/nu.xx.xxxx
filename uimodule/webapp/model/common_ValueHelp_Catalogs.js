@@ -3,6 +3,12 @@
 sap.ui.define([], function () {
   "use strict";
   return {
+    // empty value help; used for SearchHelps not provided
+    emptyValueHelp: function () {
+      var arrFields = [];
+      this.valueHelpBuild("common>/emptySet", arrFields);
+    },
+
     // own Request --> strkorr
     ownValueHelp: function () {
       var arrFields = [{
@@ -946,6 +952,18 @@ sap.ui.define([], function () {
         textName: "Short Descript."
       }];
       this.valueHelpBuild("common>/prsfdSet", arrFields);
+    },
+
+    // SD Item Category --> Pstyv
+    pstyvValueHelp: function () {
+      var arrFields = [{
+        text: "common>Pstyv",
+        textName: "ItCa"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/pstyvSet", arrFields);
     },
   };
 });

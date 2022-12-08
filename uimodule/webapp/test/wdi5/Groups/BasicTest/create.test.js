@@ -159,7 +159,9 @@ describe("Create view:", async () => {
         break;
       }
     }
+    console.log("Expected values:");
     console.log(valsExpected);
+    console.log("Request values:");
     console.log(request);
     console.log(resultRequest);
     await expect(allFound).toBe(true);
