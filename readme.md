@@ -27,3 +27,4 @@
 2. multimockserver
 3. generator based -> 'generator-nucleus'
 4. npm scripting to prepare json files using node (read CSV, write to directory)
+5. BABEL trasnpile to IE11; manifest --> minUI5Version: "1.87.0" lastest version support for IE11

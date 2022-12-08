@@ -1,5 +1,5 @@
 /* eslint-disable no-var */
-/* global xlsx:true */
+/* global XLSX:true */
 /* global filesaver:true */
 sap.ui.define(
   [
@@ -7,7 +7,7 @@ sap.ui.define(
     "nu/<%= module %>/<%= appname %>/libs/filesaver",
     "nu/<%= module %>/<%= appname %>/libs/xlsx.full.min"
   ],
-  function (ManagedObject, XlsxFullmin) {
+  function (ManagedObject, filesaver, XlsxFullmin) {
     "use strict";
 
     return ManagedObject.extend("nu.<%= module %>.<%= appname %>.utils.XlsxUtils", {

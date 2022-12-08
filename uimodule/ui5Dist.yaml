@@ -5,12 +5,12 @@ type: application
 resources:
   configuration:
     paths:
-      webapp: uimodule/webapp
+      webapp: uimodule/dist/<%= module %>.<%= appname %>
 builder:
   resources:
     excludes:
       - "/localService/**"
-      - "/test/**"
+      - "/test/**"      
 framework:
   name: OpenUI5
   version: 1.102.0
@@ -19,10 +19,3 @@ framework:
     - name: sap.m
     - name: sap.ui.layout
     - name: themelib_sap_fiori_3
-server:
-  customMiddleware:
-    - name: ui5-middleware-livereload
-      afterMiddleware: compression
-      configuration:
-        port: 35729
-        path: uimodule/webapp

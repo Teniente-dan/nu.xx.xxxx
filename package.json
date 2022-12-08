@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
+    "startDist": "ui5 serve --config=uimodule/ui5Dist.yaml  --open index.html",
     "build:fields": "node ./fieldBuilder/script/fieldBuilder.js",
     "build:mockres": "node ./fieldBuilder/script/mockserverResponseBuilder.js",
     "buildj": "npm run build:fields && npm run build:mockres",
