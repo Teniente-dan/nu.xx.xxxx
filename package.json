@@ -8,6 +8,7 @@
     "buildj": "npm run build:fields && npm run build:mockres",
     "testo": "npm run buildj && ui5 serve --config=uimodule/ui5.yaml --open 'test/mockServer.html'",
     "buildo": "run-s  build:uimodule && npm run prepDist || npm run prepDist || npm run prepDist",
+    "buildo:IE": "run-s  build:uimodule:IE && npm run prepDist || npm run prepDist || npm run prepDist",
     "prepDist": "del-cli --force **/dist/<%= module %>.<%= appname %>/controller **/dist/<%= module %>.<%= appname %>/libs **/dist/<%= module %>.<%= appname %>/model **/dist/<%= module %>.<%= appname %>/resources **/dist/<%= module %>.<%= appname %>/utils **/dist/<%= module %>.<%= appname %>/view **/dist/<%= module %>.<%= appname %>/Component.js **/dist/<%= module %>.<%= appname %>/Component-dbg.js **/dist/<%= module %>.<%= appname %>/index.html",
     "test": "run-s lint karma",
     "karma-ci": "karma start karma-ci.conf.js",
@@ -17,7 +18,7 @@
     "lint-fix": "eslint ./**/webapp/**/*.js --fix && prettier --plugin-search-dir=. --write ./**/webapp/**/*.{js,xml} --no-error-on-unmatched-pattern",
     "serve:uimodule": "ui5 serve --config=uimodule/ui5.yaml",
     "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist/<%= module %>.<%= appname %> --include-task=generateManifestBundle",
-
+    "build:uimodule:IE": "ui5 build --config=uimodule/ui5IE.yaml --clean-dest --dest uimodule/dist/<%= module %>.<%= appname %> --include-task=generateManifestBundle",
     "testoBasic": "npm run buildj && wdio run wdio.basic.conf.js -- --headless",
     "testoSpec": "npm run buildj && wdio run wdio.spec.conf.js -- --headless",
     "testow": "npm run buildj && wdio run wdio.wip.conf.js -- --watch"
@@ -49,11 +50,16 @@
     "@types/jest": "^29.2.0",
     "@types/mocha": "^10.0.0",
     "@types/node": "^18.11.8",
-    "@wdio/types": "^7.25.1"           
+    "@wdio/types": "^7.25.1",
+    
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "ui5-task-babel": "^2.1.0"
   },
   "ui5": {
     "dependencies": [
-      "ui5-middleware-livereload"
+      "ui5-middleware-livereload",
+      "ui5-task-babel"
     ]
   }
 }
