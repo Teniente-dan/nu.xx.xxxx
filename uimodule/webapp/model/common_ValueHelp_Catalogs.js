@@ -965,5 +965,179 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/pstyvSet", arrFields);
     },
+
+    // FI segment for segmental reporting --> Segment
+    segmentValueHelp: function () {
+      var arrFields = [{
+        text: "common>Segment",
+        textName: "Segment"
+      }, {
+        text: "common>Name",
+        textName: "Segment Name"
+      }];
+      this.valueHelpBuild("common>/segmentSet", arrFields);
+    },
+
+    // PP search procedure for batch determination --> Chsch || Kalsm
+    chschValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kvewe",
+        textName: "Usage"
+      }, {
+        text: "common>Kappl",
+        textName: "Application"
+      }, {
+        text: "common>Kalsm",
+        textName: "Proc."
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/chschSet", arrFields);
+    },
+    // PP production scheduling profile --> CoProdprf
+    coProdprfValueHelp: function () {
+      var arrFields = [{
+        text: "common>Werks",
+        textName: "Plnt"
+      }, {
+        text: "common>CoProdprf",
+        textName: "P.Prof"
+      }, {
+        text: "common>ProdprfTx",
+        textName: "Production Scheduling Profile Name"
+      }];
+      this.valueHelpBuild("common>/coProdprfSet", arrFields);
+    },
+
+    // PP MRP controller --> Dispo
+    dispoValueHelp: function () {
+      var arrFields = [{
+        text: "common>Werks",
+        textName: "Plnt"
+      }, {
+        text: "common>Dispo",
+        textName: "MRPCn"
+      }, {
+        text: "common>Dsnam",
+        textName: "Name"
+      }, {
+        text: "common>Dstel",
+        textName: "Telephone"
+      }];
+      this.valueHelpBuild("common>/dispoSet", arrFields);
+    },
+
+    // PP Profit center --> Prctr
+    prctrValueHelp: function () {
+      var arrFields = [{
+        text: "common>Prctr",
+        textName: "Profit Ctr"
+      }, {
+        text: "common>Datbi",
+        textName: "To"
+      }, {
+        text: "common>Kokrs",
+        textName: "COAr"
+      }, {
+        text: "common>Ktext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/prctrSet", arrFields);
+    },
+
+    // PP Recipient Type --> Otype
+    otypeValueHelp: function () {
+      var arrFields = [{
+        text: "common>Otype",
+        textName: "Ob"
+      }];
+      this.valueHelpBuild("common>/otypeSet", arrFields);
+    },
+
+    // PP Parameter ID --> Parid
+    paridValueHelp: function () {
+      var arrFields = [{
+        text: "common>Parid",
+        textName: "Param."
+      }, {
+        text: "common>Txt",
+        textName: "Keyword"
+      }];
+      this.valueHelpBuild("common>/paridSet", arrFields);
+    },
+
+    // PP Standard Value Key --> Vgwts
+    vgwtsValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vgwts",
+        textName: "SVK"
+      }, {
+        text: "common>Txt",
+        textName: "Text for the std value key"
+      }];
+      this.valueHelpBuild("common>/vgwtsSet", arrFields);
+    },
+
+    // PP Commitments Management --> Obligo
+    obligoValueHelp: function () {
+      var arrFields = [{
+        text: "common>Obligo",
+        textName: "Commt"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/obligoSet", arrFields);
+    },
+
+    // PP Status Profile --> Stsma
+    stsmaValueHelp: function () {
+      var arrFields = [{
+        text: "common>Stsma",
+        textName: "StatProf"
+      }, {
+        text: "common>Txt",
+        textName: "Text"
+      }];
+      this.valueHelpBuild("common>/stsmaSet", arrFields);
+    },
+
+    // PP Settlement Profile --> Aprof
+    aprofValueHelp: function () {
+      var arrFields = [{
+        text: "common>Aprof",
+        textName: "SProf."
+      }, {
+        text: "common>Ptext",
+        textName: "Text"
+      }];
+      this.valueHelpBuild("common>/aprofSet", arrFields);
+    },
+
+    // PP CO Partner Update --> Copar
+    coparValueHelp: function () {
+      var arrFields = [{
+        text: "common>Copar",
+        textName: "COP"
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/coparSet", arrFields);
+    },
+
+    // PP Functional Area --> Fkber
+    fkberValueHelp: function () {
+      var arrFields = [{
+        text: "common>Fkber",
+        textName: "Functional Area"
+      }, {
+        text: "common>Fkbtx",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/fkberSet", arrFields);
+    },
+
   };
 });
