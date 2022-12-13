@@ -51,7 +51,7 @@ sap.ui.define([
             if (res.toXLSX.results && res.toXLSX.results.length > 0) {
               var oHeaders = [];
               for (const key in res.toXLSX.results[0]) {
-                if (key !== "__metadata") {
+                if (key !== "__metadata" && res.toXLSX.results[0][key]) {
                   oHeaders.push(res.toXLSX.results[0][key]);
                 }
               }
@@ -170,7 +170,7 @@ sap.ui.define([
         this.getModel().setHeaders({
           "testCase": 0,
         });
-      }      
+      }
       return new Promise(function (resolve, reject) {
         that.getModel().create(url, oPayload, {
           success: function (res) {
@@ -228,7 +228,7 @@ sap.ui.define([
             return result[property];
           }).join(" ");
           var okFlow = value.split("&&");
-          if (okFlow.length > 1 || new RegExp(/\s[Ss]([uU][cC].*[sS]*)\w+/g).test( value)) { //-----UPDATE
+          if (okFlow.length > 1 || new RegExp(/\s[Ss]([uU][cC].*[sS]*)\w+/g).test(value)) { //-----UPDATE
             return {
               C1: okFlow.length > 1 ? okFlow[1] : value, //-----UPDATE
               state: "Success"

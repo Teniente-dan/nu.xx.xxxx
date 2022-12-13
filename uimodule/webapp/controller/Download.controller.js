@@ -213,7 +213,7 @@ sap.ui.define([
         .then(function (arrResults) {
           arrResults = arrResults.map((line) => {
             for (var key in line) {
-              if (key.includes("_metadata")) {
+              if (key.includes("_metadata") || !line[key]) {
                 delete line[key];
               }
             }
