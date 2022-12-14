@@ -65,7 +65,7 @@ sap.ui.define(
               if (res.toXLSX.results && res.toXLSX.results.length > 0) {
                 var oHeaders = {};
                 for (const key in res.toXLSX.results[0]) {
-                  if (key !== "__metadata") {
+                  if (key !== "__metadata" && res.toXLSX.results[0][key]) {
                     oHeaders[res.toXLSX.results[0][key]] = window.location.href.includes("localhost") ? res.toXLSX.results[1][key] : "";
                   }
                 }
