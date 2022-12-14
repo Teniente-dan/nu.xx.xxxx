@@ -148,6 +148,7 @@ describe("Create view:", async () => {
     const request = Object.values(JSON.parse(requestLog[0].message.match(/(?<=oPayload:).*\]/gm)[0].replaceAll("\\", ""))[0]).map(x => x.toUpperCase());
     const resultRequest = [...request];
     const valsExpected = fieldConfig.map((config) => config.retValue.toUpperCase());
+    valsExpected.push('X'); // add radiobutton value for TR option
     // find all elements of valsExpected in request, remove found ones; this ensures that all expected values are found including duplicates
     let allFound = true;
     for (const val of valsExpected) {
