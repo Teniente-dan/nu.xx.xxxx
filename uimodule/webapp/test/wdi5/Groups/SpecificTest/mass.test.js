@@ -54,10 +54,26 @@ describe("Upload File:", async () => {
     const reqPayload = browerLogs.filter((log) => log.level === "WARNING").filter((log) => log.message.includes("oPayload"));
     const request = Object.values(JSON.parse(reqPayload[0].message.match(/(?<=oPayload:).*\]/gm)[0].replaceAll("\\", ""))[0]).map(x => x.toUpperCase());
     const valsExpected = fieldConfig.filter(x => !x.excludeMass).map((config) => config.retValue.toUpperCase());
-    // find all elements of valsExpected in request
-    const allFound = valsExpected.every((val) => request.includes(val));
+    // find all elements of valsExpected in request, remove found ones; this ensures that all expected values are found including duplicates
+    const resultRequest = [...request];
+    let allFound = true;
+    for (const val of valsExpected) {
+      const index = resultRequest.indexOf(val);
+      if (index > -1) {
+        resultRequest.splice(index, 1);
+      } else {
+        allFound = false;
+        break;
+      }
+    }
+    console.log("Expected values:");
     console.log(valsExpected);
+    console.log("Request values:");
     console.log(request);
-    await expect(allFound).toBe(true);
+    console.log(resultRequest);
+    if (allFound) {
+      await browser.screenshot("after upload");
+    }
+    await expect(allFound).toBe(true);    
   });
 });
