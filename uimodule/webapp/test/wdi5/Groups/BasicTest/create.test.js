@@ -27,6 +27,8 @@ describe("Create view:", async () => {
     let dialogText = await dialogContent[0].getText();
     await expect(dialogText).toEqual("Please fill all fields with valid inputs");
     await dialog[0].close();
+
+    //with TR Options
     dialogContent = await dialog[1].getContent();
     dialogText = await dialogContent[0].getText();
     await expect(dialogText).toEqual("Please enter a TR Description");
