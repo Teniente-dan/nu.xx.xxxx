@@ -58,6 +58,102 @@ describe("Create view:", async () => {
     }
   });
 
+  //  MULTIPLE SETS in VIEW
+  // it("should send create request and return 'Please fill all fields with valid inputs' then validate mandatory", async () => {
+  //   const button = await CreateView.getCreateButton();
+  //   await button.press();
+
+  //   const dialog = await CreateView.getAllDialogs();
+  //   let dialogContent = await dialog[0].getContent();
+  //   let dialogText = await dialogContent[0].getText();
+  //   await expect(dialogText).toEqual("Please fill all fields with valid inputs");
+  //   await dialog[0].close();
+  //   dialogContent = await dialog[1].getContent();
+  //   dialogText = await dialogContent[0].getText();
+  //   await expect(dialogText).toEqual("Please enter a TR Description");
+  //   await dialog[1].close();
+
+  //   let allInputs = (await CreateView.getAllInputs());
+  //   const allSelects = await CreateView.getGenericSelect();
+  //   const allCheckBoxes = await CreateView.getCheckBoxes();
+
+  //   const setBRadio = await CreateView.getRadioButtonSetB();
+  //   await setBRadio.press();
+
+  //   let allInputsSetB = await CreateView.getAllInputs();
+  //   const allSelectsB = await CreateView.getGenericSelect();
+  //   const allCheckBoxesB = await CreateView.getCheckBoxes();
+
+  //   allInputs = allInputs.concat(allInputsSetB.filter((item) => allInputs.map(x => x._domId).indexOf(item._domId) < 0));
+  //   allInputs = allInputs.concat(allSelects).concat(allCheckBoxes).concat(allSelectsB).concat(allCheckBoxesB).filter(x => !x._domId.match(/in6\d*$/));
+  //   await expect(allInputs.length).toBe(fieldConfig.length); // verify why filter for mandatory was applied??
+
+  //   // set B
+
+  //   allInputsSetB = allInputsSetB.concat(allSelectsB).concat(allCheckBoxesB);
+  //   for (const input of allInputsSetB) {
+  //     for (const configId of fieldConfig) {
+  //       let ui5Id;
+  //       try {
+  //         ui5Id = input._domId && input._domId.match(/in\d*$/)[0];
+  //       } catch (error) {
+  //         ui5Id = input._domId && input._domId.match(/(in\d*)(.vhi)$/)[1];
+  //       }
+  //       if (ui5Id === configId.id) {
+  //         console.log(ui5Id);
+  //         const valueState = await input.getProperty("valueState");
+  //         if (configId.mandatory) {
+  //           await expect(`${ui5Id}-${valueState}`).toBe(`${ui5Id}-Error`);
+  //         } else {
+  //           await expect(`${ui5Id}-${valueState}`).toBe(`${ui5Id}-None`);
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   // set A
+  //   const setARadio = await CreateView.getRadioButtonSetA();
+  //   await setARadio.press();
+
+  //   let allInputsSetA = (await CreateView.getAllInputs());
+  //   allInputsSetA = allInputsSetA.concat(await CreateView.getGenericSelect()).concat(await CreateView.getCheckBoxes());
+
+  //   // const allInputsSetA = allInputsA.concat(allSelectA);
+  //   for (const input of allInputsSetA) {
+  //     for (const configId of fieldConfig) {
+  //       let ui5Id;
+  //       try {
+  //         ui5Id = input._domId && input._domId.match(/in\d*$/)[0];
+  //       } catch (error) {
+  //         ui5Id = input._domId && input._domId.match(/(in\d*)(.vhi)$/)[1];
+  //       }
+  //       if (ui5Id === configId.id) {
+  //         console.log(ui5Id);
+  //         const valueState = await input.getProperty("valueState");
+  //         if (configId.mandatory) {
+  //           await expect(`${ui5Id}-${valueState}`).toBe(`${ui5Id}-Error`);
+  //         } else {
+  //           await expect(`${ui5Id}-${valueState}`).toBe(`${ui5Id}-None`);
+  //         }
+  //       }
+  //     }
+  //   }
+  // });
+
+
+  // it("should set select key 0 and disable in29 ", async () => {
+  //   const managementRadio = await CreateView.getRadioButtonManagement();
+  //   await managementRadio.press();
+  //   const select = await CreateView.getSelect("in28");
+  //   await select.open();
+  //   await browser.keys("Down arrow");
+  //   const items = await select.getItems();
+  //   await items[items.length - 1].press();
+  //   const input = await CreateView.getInput("in29");
+  //   const enabled = await input.getEnabled();
+  //   await expect(enabled).toBe(false);
+  // });
+
   it("should get log", async () => {
     const test1 = await browser.getLogs("browser");
     const testa = 1;
@@ -122,6 +218,7 @@ describe("Create view:", async () => {
     for (const selector of selectorsPress) {
       // if (selector.ui5Id === "in23") {
       //   continue;
+      //   press setB Button
       // }      
       await assertInput(selector);
     }

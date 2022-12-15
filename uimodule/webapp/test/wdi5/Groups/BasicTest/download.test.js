@@ -23,9 +23,16 @@ describe("Download view: ", async () => {
     const tableItemSelector = {
       forceSelect: true,
       selector: {
-        id: new RegExp(/.*__item.-__clone*/gm),
+        id: new RegExp(/.*__item.*-__clone*/gm), // "__item2-__clone0", // item 1
         controlType: "sap.m.ColumnListItem",
         interaction: "press"
+      }
+    };
+
+    const listItemSelector = {
+      forceSelect: true,
+      selector: {
+        id: new RegExp(/.*__item.*-0/gm), // "__item2-__clone0", // item 1
       }
     };
 
@@ -53,10 +60,20 @@ describe("Download view: ", async () => {
         }
         focusVal = await focusInput.getValue();
       }
+
+      if (selector.select) {
+        await input.press();
+        const listItem = await browser.asControl(listItemSelector);
+        await listItem.press();
+        focusVal = await input.getSelectedKey();
+      }
       await expect(`${selector.ui5Id}-${focusVal}`).toEqual(`${selector.ui5Id}-${selector.expectedValue}`);
     };
 
     for (const selector of selectorsPress) {
+      // if (selector.ui5Id === "in23") {
+      //   continue;
+      // }      
       await assertInput(selector);
     }
 

@@ -168,4 +168,14 @@ module.exports = class Page {
     };
     return await browser.allControls(selectSelector);
   }
+
+  async getCheckBoxes() {
+    const checkboxSelector = {
+      forceSelect: true,
+      selector: {
+        controlType: "sap.m.CheckBox",
+      }
+    };
+    return await browser.allControls(checkboxSelector);
+  }
 };
