@@ -48,7 +48,8 @@ describe("Upload File:", async () => {
     const okDialogTexts = await okDialogContent[0].getItems();
     await expect(`total ${okDialogTexts.length}`).toEqual(`total ${parseInt(MassView.responseStats.total)}`);
     const dialogTextHighlights = await Promise.all(okDialogTexts.map(x => x.getHighlight()));
-    await expect(`green ${dialogTextHighlights.filter(x => x === 'Success').length}`).toEqual(`green ${parseInt(MassView.responseStats.succ)}`);
+    // lines configured in massResponse
+    await expect(`green line ${dialogTextHighlights.filter(x => x === 'Success').length}`).toEqual(`green line ${parseInt(MassView.responseStats.succ)}`);
 
     const browerLogs = await browser.getLogs("browser");
     const reqPayload = browerLogs.filter((log) => log.level === "WARNING").filter((log) => log.message.includes("oPayload"));
