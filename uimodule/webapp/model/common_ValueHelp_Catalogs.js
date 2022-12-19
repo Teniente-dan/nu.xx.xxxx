@@ -403,7 +403,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/rfproSet", arrFields);
     },
 
-    // order type --> Auart
+    // PP order type --> Auart
     auartValueHelp: function () {
       var arrFields = [{
         text: "common>Auart",
@@ -564,7 +564,7 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/vbtyplSet", arrFields);
     },
 
-    // default order type --> Auart
+    // SD default order type --> Auart
     auartTvakValueHelp: function () {
       var arrFields = [{
         text: "common>Auart",
@@ -1137,6 +1137,31 @@ sap.ui.define([], function () {
         textName: "Name"
       }];
       this.valueHelpBuild("common>/fkberSet", arrFields);
+    },
+
+
+    // SD Item Usage --> Vwpos
+    vwposValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vwpos",
+        textName: "Usge"
+      }, {
+        text: "common>Bezei",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/vwposSet", arrFields);
+    },
+
+    // SD Item Category of Higher Level --> Uepst
+    uepstValueHelp: function () {
+      var arrFields = [{
+        text: "common>Uepst",
+        textName: "ItCa"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/uepstSet", arrFields);
     },
 
   };
