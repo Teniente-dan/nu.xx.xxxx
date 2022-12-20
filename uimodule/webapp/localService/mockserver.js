@@ -103,6 +103,31 @@ sap.ui.define([
 
           Log.info("Running the app with mock data");
 
+          // validate request navigation properties
+          const valEntityNavigationProperties = (oCall) => {
+            var wrongProperties;
+            var outMessage;
+            try {
+              const oEntityNavProperties = Object.keys(JSON.parse(oCall.mParameters.oXhr.requestBody));
+              // template value
+              const oActionSet = oCall.getSource()._mEntitySets["actionSet"];
+              if (!oActionSet) {
+                outMessage = "Wrong 'actionSet' Property";
+              } else {
+                const oEntityNavPropertiesExpected = Object.keys(oCall.getSource()._mEntitySets["actionSet"].navprops);
+                oEntityNavPropertiesExpected.push(oActionSet.keys[0]);
+                wrongProperties = oEntityNavProperties.every(x => oEntityNavPropertiesExpected.includes(x));
+              }
+            } catch (e) {
+              wrongProperties = false;
+            }
+            if (!wrongProperties) {
+              oCall.mParameters.oXhr.respond(400, {
+                "Content-Type": "text/plain;charset=utf-8"
+              }, `Wrong navigation properties for actionSet`);
+            }
+          };
+
           // validate request properties
           const valEntityProperties = (oCall, sEntityName) => {
             var wrongProperties;
@@ -134,6 +159,7 @@ sap.ui.define([
                 oCall.mParameters.oEntity.toXLSX = toXLSX;
                 break;
               case 'CREATE':
+                valEntityNavigationProperties(oCall);
                 valEntityProperties(oCall, 'MAIN');
                 oCall.mParameters.oEntity.toReturn = testCase === 1 ?  mockResponses.getData().toReturnError: mockResponses.getData().toReturn;
                 break;
@@ -141,7 +167,8 @@ sap.ui.define([
                 toXLSX = mockFields.getData();
                 oCall.mParameters.oEntity.toXLSX = toXLSX;
                 break;
-              case 'UPLOAD':
+                case 'UPLOAD':
+                valEntityNavigationProperties(oCall);
                 valEntityProperties(oCall, 'MAIN');
                 // switch (testCase) {
                 //   case 1:

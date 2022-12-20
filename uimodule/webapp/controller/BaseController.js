@@ -128,7 +128,8 @@ sap.ui.define(
       },
       valHeader: function (XLSXoHeader, oHeaders) {
         var oHeader = Object.values(oHeaders);
-        var oHeaderXLSX = Object.keys(XLSXoHeader);
+        var oHeaderXLSX = Object.keys(XLSXoHeader);      
+        oHeaderXLSX = oHeaderXLSX.filter(x=>x !== '__EMPTY');
         var error = `File is not valid. Please verify the template`;
         oHeader.forEach((key) => {
           if (oHeaderXLSX.indexOf(key) === -1) {

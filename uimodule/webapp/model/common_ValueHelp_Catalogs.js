@@ -1164,5 +1164,65 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/uepstSet", arrFields);
     },
 
+    // PP Indicator Automatic Batch Creation --> Kzbcr
+    kzbcrValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kzbcr",
+        textName: "AB"
+      }, {
+        text: "common>Txt",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/kzbcrSet", arrFields);
+    },
+
+    // PP Options to Classify Batches --> Kzcla
+    kzclaValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kzcla",
+        tetName: "CB"
+      }, {
+        text: "common>Txt",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/kzclaSet", arrFields);
+    },
+
+    // PP Date of Manufacture --> HsdatDefDate
+    hsdatDefDateValueHelp: function () {
+      var arrFields = [{
+        text: "common>HsdatDefDate",
+        textName: "Manuf. Dte"
+      }, {
+        text: "common>Txt",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/hsdatDefDateSet", arrFields);
+    },
+
+    // PP Synchronous Posting of goods movements for EWM --> SyncGmForEwm
+    syncGmForEwmValueHelp: function () {
+      var arrFields = [{
+        text: "common>SyncGmForEwm",
+        textName: "Post Sync."
+      }, {
+        text: "common>Text",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/syncGmForEwmSet", arrFields);
+    },
+
+    // PP WM Request at Time of Order --> FlgWmRel
+    flgWmRelValueHelp: function () {
+      var arrFields = [{
+        text: "common>FlgWmRel",
+        textName: "Rq."
+      }, {
+        text: "common>Txt",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/flgWmRelSet", arrFields);
+    },
+
   };
 });
