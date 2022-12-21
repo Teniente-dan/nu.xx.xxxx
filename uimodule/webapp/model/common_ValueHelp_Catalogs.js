@@ -1224,5 +1224,130 @@ sap.ui.define([], function () {
       this.valueHelpBuild("common>/flgWmRelSet", arrFields);
     },
 
+    // SD shipping point --> Vstel
+    vstelValueHelp: function () {
+      var arrFields = [{
+        text: "common>Vstel",
+        textName: "ShPt"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/vstelSet", arrFields);
+    },
+
+    // SD Determine Loading Time --> Lazbs
+    lazbsValueHelp: function () {
+      var arrFields = [{
+        text: "common>Lazbs",
+        textName: "LoadT"
+      }, {
+        text: "common>Txt",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/lazbsSet", arrFields);
+    },
+
+    // SD Determine pick/pack time --> Rizbs
+    rizbsValueHelp: function () {
+      var arrFields = [{
+        text: "common>Rizbs",
+        textName: "PckTi"
+      }, {
+        text: "common>Txt",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/rizbsSet", arrFields);
+    },
+
+    // SD Working Times --> Tstrid
+    tstridValueHelp: function () {
+      var arrFields = [{
+        text: "common>Tstrid",
+        textName: "TS ID"
+      }, {
+        text: "common>Calendarid",
+        textName: "Cal."
+      }, {
+        text: "common>Text40",
+        textName: "Long text"
+      }];
+      this.valueHelpBuild("common>/tstridSet", arrFields);
+    },
+
+    // SD Application for Output Condition --> Kappl
+    kapplValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kappl",
+        textName: "App"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/kapplSet", arrFields);
+    },
+
+    // SD Document Classification for Pricing Procedure --> Kalvg
+    kalvgValueHelp: function () {
+      var arrFields = [{
+        text: "common>Kalvg",
+        textName: "DocPr"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/kalvgSet", arrFields);
+    },
+
+    // SD Condition Type for copying costs from line items --> KschlKo
+    kschlKoValueHelp: function () {
+      var arrFields = [{
+        text: "common>KschlKo",
+        textName: "CTyp"
+      }, {
+        text: "common>Vtext",
+        textName: "Name"
+      }];
+      this.valueHelpBuild("common>/kschlKoSet", arrFields);
+    },
+
+    // SD Payment Card Plan type --> Rpart
+    rpartValueHelp: function () {
+      var arrFields = [{
+        text: "common>Rpart",
+        textName: "BT"
+      }, {
+        text: "common>Fpbez",
+        textName: "Billing Plan Type"
+      }];
+      this.valueHelpBuild("common>/rpartSet", arrFields);
+    },
+
+    // SD Document payment guarantee procedure --> Babss
+    babssValueHelp: function () {
+      var arrFields = [{
+        text: "common>Babss",
+        textName: "PaymGuar"
+      }, {
+        text: "common>Bezei",
+        textName: "Payment Guarantee Procedure"
+      }];
+      this.valueHelpBuild("common>/babssSet", arrFields);
+    },
+
+    // SD Payment cards: Checking group --> Ccpgr
+    ccpgrValueHelp: function () {
+      var arrFields = [{
+        text: "common>Ccvor",
+        textName: "CCVOR"
+      }, {
+        text: "common>Ccpgr",
+        textName: "CkGroup"
+      }, {
+        text: "common>Vtext",
+        textName: "Description"
+      }];
+      this.valueHelpBuild("common>/ccpgrSet", arrFields);
+    },
   };
 });
