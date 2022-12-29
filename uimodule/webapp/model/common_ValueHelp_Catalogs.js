@@ -1349,5 +1349,17 @@ sap.ui.define([], function () {
       }];
       this.valueHelpBuild("common>/ccpgrSet", arrFields);
     },
+
+    // SD Check Division --> Spapr
+    spaprValueHelp: function () {
+      var arrFields = [{
+        text: "common>Spapr",
+        textName: "ChkDiv"
+      }, {
+        text: "common>Txt",
+        textName: "Short Descript."
+      }];
+      this.valueHelpBuild("common>/spaprSet", arrFields);
+    },
   };
 });
